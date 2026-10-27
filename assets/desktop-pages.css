@@ -1,0 +1,165 @@
+/* Desktop pages share one screen: compact editorial columns, natural overflow at zoom.
+   The home rally and layouts up to 900px keep their independent sizing. */
+.policy-item + .policy-item{margin-top:32px}
+.pricing-actions>.prose>article+article{margin-top:32px}
+.gallery-image-link{display:block;border-radius:18px}
+.gallery-image-link:focus-visible{outline:3px solid var(--lime);outline-offset:-4px}
+@media(min-width:901px){
+  body:not(.on-home){display:flex;flex-direction:column;min-height:100svh}
+  body:not(.on-home) .concept-bar{padding-block:6px;min-height:26px;font-size:10px}
+  body:not(.on-home) .header-inner{min-height:76px}
+  body:not(.on-home) .official-logo{height:60px}
+  body:not(.on-home) .official-logo img{height:56px}
+  body:not(.on-home) #main{flex:1;display:grid;grid-template-columns:minmax(230px,.29fr) minmax(0,1fr);align-content:center;align-items:start;gap:clamp(28px,3.2vw,54px);width:min(1400px,calc(100% - 80px));margin-inline:auto;padding:24px 0}
+  body:not(.on-home) #main>*{min-width:0}
+  #main>.page-top{padding:0;border:0}
+  #main>.page-top>.container,#main>.page-body{width:100%;margin:0;padding:0}
+  #main>.page-top h1{font-size:clamp(40px,3.5vw,58px);line-height:1.08}
+  #main>.page-top .eyebrow{font-size:10px;line-height:1.6;letter-spacing:.13em;margin-bottom:18px}
+  #main>.page-top .intro{font-size:14px;line-height:1.65;margin-top:22px}
+  .page-body p,.visit-page p{font-size:14px;line-height:1.6}
+  .page-body h2,.page-body .section-heading h2{font-size:28px;line-height:1.15}
+  .page-body h3,.page-body .prose h2{font-size:25px;line-height:1.2}
+  .page-body .two-col,.page-body .booking-layout{gap:24px;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr)}
+  .page-body .wide-photo{height:clamp(180px,26vh,290px);aspect-ratio:auto;margin:0;border-radius:14px}
+  .page-body .detail-box,.page-body .order-summary{padding:22px;border-radius:14px}
+  .page-body .detail-box h3{margin-bottom:12px}
+  .page-body .detail-box p+p{margin-top:10px}
+  .page-body .detail-box .btn{margin-top:18px}
+  .page-body .btn,.visit-page .btn{min-height:44px;font-size:13px;gap:16px;padding:9px 12px}
+  .page-body .btn .arrow,.visit-page .btn .arrow{width:24px;height:24px;flex-basis:24px;font-size:18px}
+  .page-body .text-link{font-size:13px;min-height:36px;padding:4px 0}
+  .page-body .prose{max-width:none}
+  .page-body .prose h2{margin:22px 0 10px}
+  .page-body .prose h2:first-child{margin-top:0}
+  .page-body .prose .btn{margin-top:16px}
+  .page-body .content-grid{gap:24px;margin-top:22px}
+  .page-body .content-card{padding:16px 0 0}
+  .page-body .content-card h3{margin:0 0 10px}
+  .page-body .content-card p{margin-bottom:16px}
+  .page-body .direction-links{gap:10px;margin:18px 0}
+  /* The footer retains every destination without a second oversized masthead. */
+  body:not(.on-home) .site-footer{flex:none;padding:10px 0 9px}
+  body:not(.on-home) .site-footer>.container{width:min(1400px,calc(100% - 80px))}
+  body:not(.on-home) .footer-top{display:flex;flex-wrap:wrap;gap:0 16px}
+  body:not(.on-home) .footer-brand,body:not(.on-home) .footer-word,body:not(.on-home) .footer-column h3{display:none}
+  body:not(.on-home) .footer-column{display:contents}
+  body:not(.on-home) .footer-column:nth-child(3)>a[href="#about"]{display:none}
+  body:not(.on-home) .footer-column a{display:inline-flex;align-items:center;min-height:26px;margin:0;font-size:12px;line-height:1.4}
+  body:not(.on-home) .footer-bottom{margin-top:7px;padding-top:7px;font-size:10px;line-height:1.5}
+  /* No scroll-dependent reveal is required to read a desktop page. */
+  body:not(.on-home) #main .motion-ready{opacity:1;transform:none;transition:none}
+  /* Courts: real photo and rentals alongside options and all eight amenities. */
+  body[data-page="courts"] .page-body{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.4fr);gap:16px 24px}
+  body[data-page="courts"] .page-body>.two-col{display:contents}
+  body[data-page="courts"] .page-body>.content-court-photo{grid-column:1;grid-row:1}
+  body[data-page="courts"] .wide-photo{height:100%;min-height:170px;max-height:220px}
+  body[data-page="courts"] .court-overview{grid-column:2;grid-row:1}
+  body[data-page="courts"] .court-overview>p{margin-top:10px!important}
+  body[data-page="courts"] .feature-list{gap:16px;margin:16px 0 0}
+  body[data-page="courts"] .feature-item{padding-top:12px}
+  body[data-page="courts"] .feature-item h3{font-size:21px;margin-bottom:8px}
+  body[data-page="courts"] .feature-item p{font-size:13px;line-height:1.5}
+  body[data-page="courts"] .detail-box{grid-column:1;grid-row:2;padding:18px}
+  body[data-page="courts"] .detail-box h3 br{display:none}
+  body[data-page="courts"] .court-extras{grid-column:2;grid-row:2}
+  body[data-page="courts"] .section-heading{margin:0 0 10px}
+  body[data-page="courts"] .section-heading h2{font-size:25px}
+  body[data-page="courts"] .amenity-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:0 20px;margin:0}
+  body[data-page="courts"] .amenity-grid>div{padding:9px 0;font-size:13px;line-height:1.5}
+  body[data-page="courts"] .pricing-note{grid-column:1/-1;padding:10px 14px;font-size:13px;line-height:1.5;margin:0}
+  /* Pricing: the complete rate table, then three equal next steps. */
+  body[data-page="pricing"] .price-table{margin:0 0 14px}
+  body[data-page="pricing"] .price-table th,body[data-page="pricing"] .price-table td{padding:8px 10px}
+  body[data-page="pricing"] .price-table th{font-size:10px}
+  body[data-page="pricing"] .price-table .rate{font-size:24px}
+  body[data-page="pricing"] .pricing-note{padding:10px 14px;margin:0 0 20px;font-size:13px}
+  body[data-page="pricing"] .pricing-actions{grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+  body[data-page="pricing"] .pricing-actions>.prose{display:contents}
+  body[data-page="pricing"] .pricing-actions>.prose>article{margin:0}
+  body[data-page="pricing"] .pricing-actions>.detail-box{padding:16px}
+  body[data-page="pricing"] .pricing-actions h2,body[data-page="pricing"] .pricing-actions h3{font-size:23px;margin:0 0 10px}
+  body[data-page="pricing"] .pricing-actions .btn{margin-top:14px}
+  body[data-page="pricing"] .pricing-actions .text-link{margin-top:14px}
+  /* Stories: the photograph occupies one column, copy the other. */
+  body[data-page="about"] .page-body{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1fr);gap:24px}
+  body[data-page="about"] .page-body>.two-col{display:contents}
+  body[data-page="about"] .page-body>.content-court-photo{grid-column:1;grid-row:1}
+  body[data-page="about"] .page-body .prose{grid-column:2;grid-row:1/3}
+  body[data-page="about"] .page-body .detail-box{grid-column:1;grid-row:2}
+  body[data-page="about"] .wide-photo{height:clamp(150px,22vh,240px)}
+  body[data-page="about"] .detail-box h3 br{display:none}
+  body[data-page="community"] .page-body{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1fr);gap:26px}
+  body[data-page="community"] .content-grid{grid-template-columns:1fr;gap:18px;margin:0}
+  body[data-page="community"] .content-card{padding-top:14px}
+  body[data-page="community"] .content-card:first-child{border:0;padding:0}
+  body[data-page="community"] .content-card p{margin-bottom:12px}
+  body[data-page="community"] .wide-photo{height:clamp(320px,53vh,540px)}
+  body[data-page="events"] .wide-photo{height:clamp(240px,32vh,340px)}
+  body[data-page="events"] .content-grid{margin-top:18px}
+  body[data-page="events"] .content-card p{margin-bottom:6px}
+  body[data-page="events"] .content-card h3{font-size:23px}
+  body[data-page="events"] .page-body>.text-link{margin-top:14px}
+  body[data-page="coaching"] .wide-photo{height:clamp(300px,46vh,440px)}
+  /* Six images remain visible, with full-size photo and guide links. */
+  .gallery-collection{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px 22px}
+  .gallery-collection>.people-grid,.gallery-collection>.gallery-grid,.gallery-collection>.venue-reference-grid{display:contents}
+  .gallery-collection figure{min-width:0;margin:0;grid-column:auto!important}
+  .gallery-collection figure img,.gallery-collection .gallery-grid figure:first-child img{display:block;width:100%;height:clamp(125px,20vh,215px);aspect-ratio:auto;object-fit:cover;border-radius:12px;transform:none}
+  .gallery-collection .venue-reference-grid img{object-fit:contain;background:#dce3da}
+  .gallery-collection figcaption,.gallery-collection .venue-reference-grid figcaption{font-size:12px;line-height:1.4;padding-top:8px;min-height:34px}
+  .gallery-collection .venue-reference-grid figcaption a{min-height:24px;white-space:nowrap}
+  .gallery-action{margin-top:18px}
+  /* The booking form keeps full-sized controls and room for validation. */
+  .page-body .field-grid{gap:14px 18px}
+  .page-body .field{gap:7px;font-size:13px}
+  .page-body .field select{min-height:44px;padding:9px 10px;font-size:14px}
+  .page-body .booking-step{margin-bottom:14px}
+  .page-body .booking-step h2{font-size:16px;margin-bottom:14px}
+  .page-body .booking-help{font-size:13px;margin-bottom:16px}
+  .page-body .order-summary h2{font-size:29px;margin:10px 0 14px}
+  .page-body .summary-row{font-size:13px;line-height:1.4;padding:9px 0;gap:14px}
+  .page-body .summary-row:first-child{padding-top:0}
+  .page-body .summary-total{margin:12px 0 0;padding-top:12px;font-size:13px}
+  .page-body .summary-total strong{font-size:30px}
+  .page-body .order-summary>.text-link{margin-top:12px!important}
+  .page-body .form-note{font-size:13px;line-height:1.5;margin-top:12px}
+  /* FAQs and policies stay readable; disclosures can still grow naturally. */
+  .faq-content .faq-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 28px;align-items:start}
+  .faq-content summary{font-size:14px;line-height:1.5;padding:16px 0;min-height:66px;gap:12px}
+  .faq-content .faq-list p{font-size:14px;line-height:1.55;padding:0 12px 16px 0}
+  .faq-content .faq-action{margin-top:20px!important}
+  .policy-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px}
+  .policy-grid .policy-item{margin:0;padding-top:16px;border-top:1px solid var(--line)}
+  .policy-grid .policy-item h2{font-size:26px;margin:0 0 12px}
+  .policy-grid .policy-action{grid-column:1/-1;margin:0!important}
+  .policy-grid .policy-action .btn{margin:0}
+  /* Visit essentials retain their raised position beside the introduction. */
+  body[data-page="visit"] #main{display:block;align-content:center}
+  body[data-page="visit"] .visit-page{width:100%;padding:0;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:24px 40px;grid-template-areas:"intro information" "photo information"}
+  .visit-intro h1{font-size:clamp(40px,3.5vw,58px)}
+  .visit-intro .eyebrow{font-size:10px;line-height:1.6;margin-bottom:16px}
+  .visit-intro .intro{font-size:14px;line-height:1.6;margin-top:18px}
+  .visit-information .visit-list{gap:6px}
+  .visit-information .visit-row{font-size:13px;line-height:1.5;padding:0 0 10px;margin-bottom:0;grid-template-columns:110px minmax(0,1fr)}
+  .visit-information .direction-links{margin:14px 0;gap:12px}
+  .visit-information h3{font-size:25px;margin-top:18px!important}
+  .visit-information p{font-size:14px;line-height:1.55;margin:10px 0 12px!important}
+  .visit-information .venue-map{height:clamp(170px,23vh,260px);margin-top:18px;border-radius:12px}
+  .visit-photo .entrance-photo{width:100%;height:clamp(140px,23vh,260px);object-fit:cover;object-position:50% 66%;aspect-ratio:auto;border-radius:14px}
+}
+@media(min-width:901px) and (max-width:1100px){
+  body:not(.on-home) #main{grid-template-columns:minmax(190px,.26fr) minmax(0,1fr);width:calc(100% - 56px);gap:24px}
+  #main>.page-top h1{font-size:38px}
+  body:not(.on-home) .site-footer>.container{width:calc(100% - 56px)}
+  .page-body .two-col,.page-body .booking-layout{gap:18px}
+  .page-body .detail-box,.page-body .order-summary{padding:18px}
+}
+
+@media(min-width:901px) and (max-height:760px){
+  body:not(.on-home) #main{padding-block:10px}
+  .visit-information .direction-links{margin-block:10px}
+  .visit-information h3{margin-top:14px!important}
+  .visit-information .venue-map{margin-top:14px}
+  .page-body .content-grid{gap:20px}
+}
