@@ -1,0 +1,13 @@
+URBAN PICKLE — HTML PAGES AND ASSETS
+Updated 27 October 2026
+Source release: d21e7dea1c0e1cbf8b1400b31204d46be0718636
+
+Includes the latest matching lime action buttons, responsive mobile headers, fuller layouts, unified colour theme, phone scrolling and homepage footer.
+
+Download the Website folder, then open index.html. Keep all 15 HTML pages and the assets folder together. Navigation works between the page files.
+
+assets/ contains the images, illustrations, logos, fonts, CSS and JavaScript referenced by these pages. Font licences and a SHA-256 asset manifest are included. The manifest lists the current package; any older unreferenced assets are retained separately from the current dependency list.
+
+External booking, WhatsApp, directions, social links and the embedded map need internet access. The booking page shows an estimate; reservations go through Courtsite.
+
+The current hosted preview is https://urban-pickle-club.swift-krill-7833.chatgpt.site/ . This folder is an editable, offline-capable multi-page export of that release.

@@ -1,0 +1,47 @@
+/* Shared UI palette follows the approved white / forest / lime homepage.
+   Load after the retained layout and historical brand comparison styles. */
+:root{--up-white:#fff;--up-forest:#27372e;--up-lime:#bbdf57;--up-surface:#f3f5ef;--up-muted:#536358;--up-line:#e3e9e1;--up-control-line:#a4b1a6;--up-hover:#344b3c}
+body:not(.on-home){--ink:var(--up-forest);--paper:var(--up-white);--blue:var(--up-forest);--blue-dark:var(--up-hover);--lime:var(--up-lime);--muted:var(--up-muted);--line:var(--up-line);background:var(--up-white);color:var(--up-forest);accent-color:var(--up-forest)}
+body:not(.on-home) .concept-bar{background:var(--up-surface);color:var(--up-muted);border-bottom:1px solid var(--up-line)}
+body:not(.on-home) .site-header{background:rgba(255,255,255,.94);color:var(--up-forest);border-color:var(--up-line);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+body:not(.on-home) .official-logo img{content:url('../official-logotype-green.png')}
+body:not(.on-home) .menu-button{background:var(--up-white);color:var(--up-forest);border-color:var(--up-control-line)}
+body:not(.on-home) .mobile-nav{background:var(--up-white);color:var(--up-forest);border-color:var(--up-line);box-shadow:0 12px 30px #27372e12}
+body:not(.on-home) .text-link,body:not(.on-home) .quiet-link{color:var(--up-forest);border-color:var(--up-control-line)}
+body:not(.on-home) :is(.detail-box,.order-summary,.notice,.pricing-note,.map-placeholder,.venue-map){background:var(--up-surface);color:var(--up-forest)}
+body:not(.on-home) :is(.notice,.availability-label){border-color:var(--up-lime)}
+body:not(.on-home) :is(.summary-row,.summary-total,.page-top,.feature-item,.content-card,.visit-row,details,.policy-item){border-color:var(--up-line)}
+body:not(.on-home) :is(.page-top .eyebrow,.page-top .intro,.prose p,.prose li,.detail-box p,.content-card p,.feature-item p,.visit-row span,.booking-help,.form-note,.people-grid figcaption,.gallery-grid figcaption,.venue-reference-grid figcaption){color:var(--up-muted)}
+body:not(.on-home) :is(.field input,.field select,.field textarea){background:var(--up-white);color:var(--up-forest);border-color:var(--up-control-line)}
+body:not(.on-home) :is(.field input,.field select,.field textarea):hover{border-color:var(--up-forest)}
+body:not(.on-home) :is(.field input,.field select,.field textarea):focus{outline:2px solid var(--up-forest);outline-offset:2px;box-shadow:0 0 0 5px #bbdf5733}
+body:not(.on-home) :is(a,button,summary):focus-visible{outline:2px solid var(--up-forest);outline-offset:4px}
+body:not(.on-home) .gallery-image-link:focus-visible{outline-offset:-4px}
+body:not(.on-home) .venue-reference-grid img{background:var(--up-surface)}
+body:not(.on-home) .filter[aria-pressed="true"],body:not(.on-home) .time-slot[aria-pressed="true"]{background:var(--up-lime);color:var(--up-forest);border-color:var(--up-forest)}
+body:not(.on-home) .site-footer{background:#f7f8f5;color:var(--up-forest);border-top:1px solid var(--up-line)}
+body:not(.on-home) :is(.footer-brand p,.footer-column h3,.footer-column a,.footer-bottom){color:var(--up-muted)}
+body:not(.on-home) .footer-bottom{border-color:var(--up-line)}
+body:not(.on-home) .footer-word{color:#d9e0d8}
+body:not(.on-home) .mobile-book{background:rgba(255,255,255,.97);color:var(--up-forest);border-color:var(--up-line)}
+
+/* One primary action style across the homepage, navigation and inner pages. */
+:root{--up-action-hover:#afd344}
+body .btn{border-radius:100px}
+:is(body.on-home,body:not(.on-home)) .btn:not(.outline):not(.light){background:var(--up-lime);color:var(--up-forest);border-color:var(--up-lime)}
+:is(body.on-home,body:not(.on-home)) .btn:not(.outline):not(.light):hover{background:var(--up-action-hover);color:var(--up-forest);border-color:var(--up-action-hover)}
+:is(body.on-home,body:not(.on-home)) .btn:not(.outline):not(.light) .arrow{background:var(--up-forest);color:var(--up-lime);border-radius:50%}
+:is(body.on-home,body:not(.on-home)) .btn:is(.outline,.light){background:var(--up-white);color:var(--up-forest);border-color:var(--up-control-line)}
+:is(body.on-home,body:not(.on-home)) .btn:is(.outline,.light):hover{background:var(--up-surface);color:var(--up-forest);border-color:var(--up-forest)}
+:is(body.on-home,body:not(.on-home)) .btn:is(.outline,.light) .arrow{background:transparent;color:var(--up-forest)}
+body .site-header .header-actions .btn{white-space:nowrap;flex-shrink:0}
+@media(max-width:600px){
+ body .site-header .header-inner{min-height:76px;gap:12px}
+ body .site-header .official-logo{width:91px;height:52px;flex-shrink:0}
+ body .site-header .official-logo img{height:48px}
+ body .site-header .header-actions{gap:9px}
+ body .site-header .header-actions .btn{min-height:44px;font-size:12px;padding:8px 15px;gap:10px}
+ body .site-header .header-actions .btn .arrow{width:20px;height:20px;flex-basis:20px}
+ body .site-header .menu-button{width:44px;height:44px;min-height:44px;border-radius:50%;border-color:var(--up-line)}
+}
+@media(max-width:360px){body .site-header .header-actions .btn{font-size:11px;padding-inline:12px;gap:8px}}
