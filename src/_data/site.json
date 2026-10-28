@@ -1,0 +1,19 @@
+{
+  "name": "Urban Pickle",
+  "phone": "+60 12-600 2178",
+  "phoneHref": "tel:+60126002178",
+  "bookingUrl": "https://www.courtsite.my/centre/Urban%20Pickle/cmcbibxfl08jw087xkm8ycrfv/select/hourly?serviceId=&amp;categoryId=clc8tlc5bbt2p6ogmj1xm2h3a",
+  "mainNav": [
+    { "id": "courts", "label": "Courts" },
+    { "id": "pricing", "label": "Pricing" },
+    { "id": "about", "label": "The club" },
+    { "id": "gallery", "label": "Gallery" },
+    { "id": "events", "label": "Events" },
+    { "id": "visit", "label": "Visit us" }
+  ],
+  "brandOptions": [
+    { "id": "1", "label": "2025 · beige" },
+    { "id": "2", "label": "Modern · beige" },
+    { "id": "3", "label": "2025 · lime" }
+  ]
+}
