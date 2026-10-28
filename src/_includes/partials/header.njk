@@ -4,7 +4,6 @@
     <a href="{{ fileSlug }}.html?brand={{ option.id }}" data-brand-choice="{{ option.id }}"{% if loop.first %} aria-current="true"{% endif %}>{{ option.id }} <span>{{ option.label }}</span></a>
   {%- endfor -%}
   </div></aside>
-  <div class="concept-bar">{{ business.address.street | upper }}, {{ business.address.city | upper }} <span aria-hidden="true">·</span> {{ business.hoursLine | upper }}</div>
   <header class="site-header">
     <div class="container header-inner">
       {% include "partials/logo.njk" %}
