@@ -82,4 +82,8 @@ Before finishing, check that:
 
 ## Deploy
 
-The host runs `npm run build` and publishes `dist/` (Node 20+). See README.md, "Deploying".
+GitHub Actions (`.github/workflows/deploy.yml`) builds and deploys `dist/` to GitHub Pages on every
+push to `main`. Pull requests into `main` only build and lint. Only a build failure blocks deployment;
+lint is reported but non-blocking, so still run `npm run lint` locally. Keep all paths relative: the
+site is served from `/urban-pickle-website/` until the custom domain `www.urbanpickle.com.my` (primary; bare domain redirects to it) is set up.
+Do not add `src/CNAME` until the user confirms the domain is bought (see README.md, "Deploying").

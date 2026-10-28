@@ -2,6 +2,8 @@
 export default function (eleventyConfig) {
   // Assets are served exactly as written; no bundling or fingerprinting.
   eleventyConfig.addPassthroughCopy("src/assets");
+  // GitHub Pages: skip Jekyll processing. Add "src/CNAME" here too once the custom domain is live.
+  eleventyConfig.addPassthroughCopy("src/.nojekyll");
 
   return {
     dir: {

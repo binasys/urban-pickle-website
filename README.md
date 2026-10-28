@@ -125,15 +125,58 @@ Stylelint uses `stylelint-config-recommended` with two rules turned off,
 
 ## Deploying
 
-The host has to run the build and publish `dist/`:
+The site is deployed to **GitHub Pages** by `.github/workflows/deploy.yml`:
 
-- **Build command:** `npm run build`
-- **Publish directory:** `dist`
-- **Node version:** 20 or later
+| Event                    | What happens                         |
+| ------------------------ | ------------------------------------ |
+| Push to `main`           | Build, lint (report only), deploy    |
+| Pull request into `main` | Build and lint only, no deploy       |
+| Manual run (Actions tab) | Build and deploy, when run on `main` |
+| Push to `dev` or others  | Nothing                              |
 
-This works as is on Netlify, Cloudflare Pages and Vercel. On GitHub Pages, use a GitHub Actions
-workflow that runs the build and uploads `dist/`. To deploy by hand, run `npm run build` and upload
-the contents of `dist/`.
+Only a **failed build** stops a deploy. Formatting, CSS and HTML lint failures appear as failed steps
+in the run, but the site is still published. Run `npm run lint` locally to see them.
+
+Live URL: `https://binasys.github.io/urban-pickle-website/` (until the custom domain is set up).
+All links are relative, so the site works both in that subfolder and on its own domain.
+
+`src/.nojekyll` is copied to `dist/` so GitHub serves the files as they are, without Jekyll.
+
+### One-time GitHub setup
+
+1. In **Settings → Pages → Build and deployment → Source**, choose **GitHub Actions**.
+2. Push or merge to `main`. The run's `deploy` job shows the live URL.
+
+### Custom domain checklist (`www.urbanpickle.com.my`, not bought yet)
+
+The main address is **`www.urbanpickle.com.my`**. The bare domain `urbanpickle.com.my` redirects to
+it.
+
+Do **not** add a `CNAME` file before owning the domain; the site would redirect to a domain that
+doesn't resolve.
+
+1. Buy `urbanpickle.com.my`.
+2. Optional but recommended: verify `urbanpickle.com.my` under your GitHub account (or the `binasys`
+   organisation) **Settings → Pages → Verified domains**, so nobody else can claim it.
+3. At the DNS provider, add:
+   - `CNAME` record for `www` → `binasys.github.io` (this serves the main address)
+   - `A` records for the bare domain `urbanpickle.com.my` (`@`) → `185.199.108.153`,
+     `185.199.109.153`, `185.199.110.153`, `185.199.111.153` (needed so it can redirect to `www`)
+   - Optionally `AAAA` for `@` → `2606:50c0:8000::153`, `2606:50c0:8001::153`,
+     `2606:50c0:8002::153`, `2606:50c0:8003::153`
+4. Create `src/CNAME` containing the single line `www.urbanpickle.com.my`, and add
+   `eleventyConfig.addPassthroughCopy("src/CNAME");` to `eleventy.config.js`.
+5. In **Settings → Pages → Custom domain**, enter `www.urbanpickle.com.my` and save. With `www` as
+   primary, GitHub redirects `urbanpickle.com.my` to it automatically, as long as the `A` records
+   above exist.
+6. Once the DNS check passes and the certificate is issued (can take up to 24 hours), tick
+   **Enforce HTTPS**.
+
+### Other hosts
+
+To deploy elsewhere (Netlify, Cloudflare Pages, Vercel), use build command `npm run build`, publish
+directory `dist` and Node 20 or later. To deploy by hand, run `npm run build` and upload the
+contents of `dist/`.
 
 External booking (Courtsite), WhatsApp, directions, social links and the embedded map need an
 internet connection. The booking page only shows an estimate; reservations go through Courtsite.
