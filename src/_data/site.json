@@ -1,0 +1,15 @@
+{
+  "mainNav": [
+    { "id": "courts", "label": "Courts" },
+    { "id": "pricing", "label": "Pricing" },
+    { "id": "about", "label": "The club" },
+    { "id": "gallery", "label": "Gallery" },
+    { "id": "events", "label": "Events" },
+    { "id": "visit", "label": "Visit us" }
+  ],
+  "brandOptions": [
+    { "id": "1", "label": "2025 · beige" },
+    { "id": "2", "label": "Modern · beige" },
+    { "id": "3", "label": "2025 · lime" }
+  ]
+}

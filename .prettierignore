@@ -1,0 +1,7 @@
+dist/
+node_modules/
+package-lock.json
+# Nunjucks templates are not supported by Prettier
+*.njk
+# Optimised SVG artwork; keep minified
+src/assets/images/

@@ -1,1 +1,0 @@
-window.__UP_LOGO_URL__="assets/official-up-mark-grey.png";window.__UP_TEXTURE_URL__="assets/ink-paper.webp";

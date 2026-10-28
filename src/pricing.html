@@ -1,0 +1,77 @@
+---
+title: "Pricing"
+pageId: "pricing"
+headerHeight: 77
+---
+
+<div class="page-top">
+  <div class="container">
+    <div class="eyebrow"><span class="dot"></span>Hourly court hire</div>
+    <h1>More play.<br />No surprises.</h1>
+    <p class="intro">Choose your court. Find your time. Rates are per court, per hour.</p>
+  </div>
+</div>
+<section class="container page-body">
+  <div class="price-table-wrap">
+    <table class="price-table">
+      <caption class="visually-hidden">
+        {{ business.name }} published hourly rates
+      </caption>
+      <thead>
+        <tr>
+          <th>Day</th>
+          <th>Time</th>
+          <th>Covered</th>
+          <th>Open</th>
+          <th>Covered + ball machine</th>
+        </tr>
+      </thead>
+      <tbody>
+        {%- for rate in business.courtRates %}
+        <tr>
+          <td>{{ rate.days | escape }}</td>
+          <td>{{ rate.times | escape }}</td>
+          <td class="rate">
+            <span class="rate-label">Covered</span
+            ><span>{{ business.currency }}{{ rate.covered }}</span>
+          </td>
+          <td class="rate">
+            <span class="rate-label">Open</span><span>{{ business.currency }}{{ rate.open }}</span>
+          </td>
+          <td class="rate">
+            <span class="rate-label">Covered + machine</span
+            ><span>{{ business.currency }}{{ rate.machine }}</span>
+          </td>
+        </tr>
+        {%- endfor %}
+      </tbody>
+    </table>
+  </div>
+  <p class="pricing-note">
+    Paddle rental · {{ business.currency }}{{ business.extras.paddle }} per session. Pickleballs ·
+    {{ business.currency }}{{ business.extras.ball }} each. Available at the front desk.
+  </p>
+  <div class="two-col pricing-actions">
+    <div class="detail-box">
+      <h3>Pick your next game.</h3>
+      <p>Find an open court and make your next game happen.</p>
+      <a class="btn" href="book.html"
+        >Plan &amp; book<span class="arrow" aria-hidden="true">↗</span></a
+      >
+    </div>
+    <div class="prose">
+      <article>
+        <h2>Bringing a team?</h2>
+        <p>Bring your colleagues, clients or favourite people. Talk to us about a group booking.</p>
+        <a class="btn" href="events.html"
+          >Corporate play<span class="arrow" aria-hidden="true">↗</span></a
+        >
+      </article>
+      <article>
+        <h2>A change of plan?</h2>
+        <p>Read the cancellation, booking-change and rain policy before reserving.</p>
+        <a class="text-link" href="cancellation.html">Read the policy ↗</a>
+      </article>
+    </div>
+  </div>
+</section>

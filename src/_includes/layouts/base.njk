@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" style="--header-height: {{ headerHeight or 77 }}px;">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="description" content="{% if description %}{{ description | safe }}{% else %}{{ business.description | escape }}{% endif %}">
+  <title>{{ title | safe }} — {{ business.name | escape }}</title>
+  <link rel="preload" href="assets/fonts/playfair-display-regular.woff2" as="font" type="font/woff2" crossorigin="">
+  <link rel="preload" href="assets/fonts/work-sans-medium.woff2" as="font" type="font/woff2" crossorigin="">
+  <link rel="icon" href="{{ business.logo.favicon }}">
+  <link rel="stylesheet" href="assets/css/site.css">
+  <!-- Fonts: SIL Open Font License 1.1, see assets/fonts/*-OFL.txt -->
+</head>
+<body data-brand="1" data-compare="false"{% if bodyClass %} class="{{ bodyClass }}"{% endif %} data-page="{{ pageId }}">
+  <script src="assets/js/brand-query.js"></script>
+  <a class="skip" href="#main">Skip to content</a>
+  {% include "partials/header.njk" %}
+  <main id="main" tabindex="-1">{{ content | safe }}</main>
+  {% include "partials/footer.njk" %}
+  {%- if pageId == "book" %}
+  <script>window.__UP_PRICING__ = {{ business.pricingForScript | dump | safe }};</script>
+  {%- endif %}
+  <script src="assets/js/site.js"></script>
+  <script src="assets/js/motion.js"></script>
+  <script src="assets/js/brand-options.js"></script>
+  {%- if courtScene %}
+  <script src="assets/js/court-scene.js"></script>
+  <script>window.__UP_LOGO_URL__ = {{ business.logo.mark | dump | safe }};</script>
+  <script src="assets/js/court-scene-config.js"></script>
+  <script src="assets/js/home-cinema.js"></script>
+  {%- endif %}
+</body>
+</html>

@@ -1,0 +1,76 @@
+---
+title: "Visit us"
+pageId: "visit"
+headerHeight: 77
+---
+
+<section class="container visit-page">
+  <header class="visit-intro page-top">
+    <div class="eyebrow">
+      <span class="dot"></span>{{ business.address.street }} · {{ business.address.city }}
+    </div>
+    <h1>Your game<br />starts here.</h1>
+    <p class="intro">
+      Find {{ business.name }} in {{ business.address.area }}. Open {{ business.hoursLine }}.
+    </p>
+  </header>
+  <div class="visit-information">
+    <div class="visit-list">
+      <div class="visit-row"><strong>Address</strong><span>{{ business.addressLine }}</span></div>
+      <div class="visit-row">
+        <strong>Opening hours</strong><span>{{ business.hoursLine }}</span>
+      </div>
+      <div class="visit-row">
+        <strong>Phone</strong><a href="{{ business.phoneHref }}">{{ business.phone }}</a>
+      </div>
+    </div>
+    <div class="direction-links">
+      <a
+        class="btn"
+        href="{{ business.mapsDirectionsUrl | escape }}"
+        target="_blank"
+        rel="noopener noreferrer"
+        >Google Maps<span class="arrow" aria-hidden="true">↗</span></a
+      ><a
+        class="btn outline"
+        href="{{ business.wazeUrl | escape }}"
+        target="_blank"
+        rel="noopener noreferrer"
+        >Waze<span class="arrow" aria-hidden="true">↗</span></a
+      >
+    </div>
+    <h3 style="margin-top: 30px">A place to park.</h3>
+    <p class="muted" style="margin: 16px 0">
+      Limited free parking at the entrance. {{ business.parking.name }} faces the main road: {{
+      business.currency }}{{ business.parking.price }} flat rate on weekdays after 5pm and weekends
+      all day. Validate at the counter.
+    </p>
+    <a
+      class="btn outline"
+      href="{{ business.parking.link }}"
+      target="_blank"
+      rel="noopener noreferrer"
+      >{{ business.parking.name }}<span class="arrow" aria-hidden="true">↗</span></a
+    ><iframe
+      class="venue-map"
+      title="{{ business.name }} on Google Maps"
+      src="{{ business.mapEmbedUrl | escape }}"
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      allowfullscreen=""
+    ></iframe>
+  </div>
+  <div class="visit-photo">
+    <img
+      class="entrance-photo"
+      src="assets/images/entrance.webp"
+      srcset=""
+      sizes="(max-width:900px) 100vw, 50vw"
+      alt="{{ business.name }} entrance beside The Haven Club"
+      width="1125"
+      height="1500"
+      loading="lazy"
+      decoding="async"
+    />
+  </div>
+</section>

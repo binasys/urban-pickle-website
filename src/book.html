@@ -1,0 +1,90 @@
+---
+title: "Book a court"
+pageId: "book"
+headerHeight: 77
+---
+
+<div class="page-top">
+  <div class="container">
+    <div class="eyebrow"><span class="dot"></span>Your next rally</div>
+    <h1>Pick a time.<br />Make it yours.</h1>
+    <p class="intro">Choose your court, playing time and paddle rental.</p>
+  </div>
+</div>
+<section class="container page-body">
+  <div class="booking-layout">
+    <div>
+      <div class="booking-step">
+        <h2>Your court</h2>
+        <div class="field-grid">
+          <label class="field full"
+            >Court type<select id="court-type">
+              <option value="covered">Covered court</option>
+              <option value="open">Open court</option>
+              <option value="machine">Covered + ball machine</option>
+            </select></label
+          ><label class="field"
+            >Day type<select id="day-type">
+              <option value="weekday">Monday–Friday</option>
+              <option value="weekend">Weekend / public holiday</option>
+            </select></label
+          ><label class="field"
+            >Start time<select id="start-hour">
+              {%- for h in business.bookingStartHours %}
+              <option value="{{ h }}">{{ "0" if h < 10 }}{{ h }}:00</option>
+              {%- endfor %}
+            </select></label
+          ><label class="field"
+            >Hours<select id="duration">
+              <option value="1">1 hour</option>
+              <option value="2">2 hours</option>
+              <option value="3">3 hours</option>
+            </select></label
+          ><label class="field"
+            >Paddle rental<select id="paddles">
+              <option value="0">Bring my own</option>
+              {%- for n in range(1, business.extras.maxPaddles + 1) %}
+              <option value="{{ n }}">
+                {{ n }} paddle{{ "s" if n > 1 }} · {{ business.currency }}{{ n *
+                business.extras.paddle }}
+              </option>
+              {%- endfor %}
+            </select></label
+          >
+        </div>
+      </div>
+      <p class="booking-help">Paddles are available at the front desk.</p>
+      <a
+        class="btn"
+        href="{{ business.bookingUrl | escape }}"
+        target="_blank"
+        rel="noopener noreferrer"
+        >Book on Courtsite<span class="arrow" aria-hidden="true">↗</span></a
+      >
+    </div>
+    <aside class="order-summary" aria-live="polite">
+      <span class="sample">Your session</span>
+      <h2>Your game plan.</h2>
+      <div id="order-details">
+        <div class="summary-row"><span>Court</span><span>Covered</span></div>
+        <div class="summary-row"><span>Day</span><span>Monday–Friday</span></div>
+        <div class="summary-row">
+          <span>Start / duration</span><span>{{ business.hours.openHour }}:00 · 1 hr</span>
+        </div>
+        <div class="summary-row">
+          <span>Court hire</span
+          ><span>{{ business.currency }} {{ business.openingCoveredRate }}</span>
+        </div>
+        <div class="summary-row"><span>Paddles at counter</span><span>Own equipment</span></div>
+      </div>
+      <div class="summary-total">
+        <span>Session estimate</span
+        ><strong id="order-total">{{ business.currency }} {{ business.openingCoveredRate }}</strong>
+      </div>
+      <p class="form-note" id="order-note"></p>
+      <a class="text-link" href="cancellation.html" style="margin-top: 22px"
+        >Booking changes &amp; rain ↗</a
+      >
+    </aside>
+  </div>
+</section>
