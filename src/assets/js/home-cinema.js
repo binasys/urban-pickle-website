@@ -73,7 +73,6 @@
   }
   function target() {
     if (!root || !stage) return 0;
-    if (reduce.matches) return 1;
     const header = document.querySelector(".site-header").offsetHeight;
     return clamp(
       (header - root.getBoundingClientRect().top) /
@@ -147,11 +146,6 @@
   function tick() {
     frame = 0;
     if (!root || !controller || document.hidden) return;
-    if (root.classList.contains("is-static") !== reduce.matches) {
-      root.classList.toggle("is-static", reduce.matches);
-      syncSnapPoints();
-      lastRendered = -1;
-    }
     const to = target(),
       delta = to - current;
     current = reduce.matches || Math.abs(delta) < 0.0003 ? to : current + delta * 0.19;
@@ -244,7 +238,7 @@
       controller.setProgress(current);
       paintCopy(current);
       stage.classList.add("is-ready");
-      root.classList.toggle("is-static", reduce.matches);
+      root.classList.remove("is-static");
       syncSnapPoints();
     } catch (error) {
       if (token !== generation) return;
@@ -267,8 +261,6 @@
     request();
   });
   reduce.addEventListener("change", () => {
-    root?.classList.toggle("is-static", reduce.matches || !controller);
-    current = reduce.matches ? 1 : 0;
     lastRendered = -1;
     syncSnapPoints();
     request();

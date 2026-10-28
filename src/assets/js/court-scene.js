@@ -84,10 +84,6 @@
             p = Math.min(u ? 36 : 62, M * 0.57),
             m = P * 0.5 + (p + 7 - y - 1) / 2,
             O = u ? k(g * 0.29, 95, 125) : k(g * 0.15, 150, 230),
-            B = g * 0.065,
-            D = n * 2.6 + g * 0.035,
-            A = -D,
-            s = g + D,
             b,
             I,
             H,
@@ -95,37 +91,39 @@
             W,
             J,
             U;
-          (t < 0.405
-            ? ((I = 0),
-              (b = k(t / 0.405)),
-              (H = "right"),
-              (Q = b),
-              (W = j(B, s, b)),
-              (U = 4 * b * (1 - b) * M))
-            : t < 0.455
-              ? ((I = 0), (b = 1), (H = "offscreen-right"), (Q = 1), (W = s), (U = 0))
-              : t < 0.775
-                ? ((I = 1),
-                  (b = k((t - 0.455) / 0.32)),
-                  (H = "left"),
-                  (Q = 1 - b),
-                  (W = j(s, A, b)),
-                  (U = 4 * b * (1 - b) * M))
-                : ((I = 1),
-                  (b = 1),
-                  (H = t < 0.815 ? "offscreen-left" : "stationary"),
-                  (Q = 0),
-                  (W = A),
-                  (U = 0)),
-            (J = m - n - U));
+          // Ball rallies from just behind each visible court line, one shot per chapter.
+          // The canvas sits beneath the copy, so tall arcs pass behind the text.
+          let back = 3 * n,
+            lx = Math.max(n + 4, r + e * 0.345 - back),
+            rx = Math.min(g - n - 4, r + e * 0.655 + back),
+            legs = [0, 0.215, 0.43, 0.65],
+            arc = Math.max(
+              M + 2 * n,
+              Math.min(Math.max((rx - lx) * 0.3, P * 0.16), m - 2 * n - 12),
+            );
+          if (t < 0.65) {
+            I = Math.max(
+              0,
+              legs.findIndex((c, z) => t >= c && t < legs[z + 1]),
+            );
+            b = k((t - legs[I]) / (legs[I + 1] - legs[I]));
+            let ltr = I % 2 === 0;
+            H = ltr ? "right" : "left";
+            Q = ltr ? b : 1 - b;
+            W = j(lx, rx, Q);
+            U = 4 * b * (1 - b) * arc;
+          } else ((I = 3), (b = 1), (H = "to-logo"), (Q = 1), (W = rx), (U = 0));
+          J = m - n - U;
           let pt = N(0.815, 1, t),
-            dt = N(0.815, 0.945, t),
+            dt = N(0.65, 0.945, t),
             bt = N(0.85, 1, t),
             V = ot.finalArt || { left: g * 0.55, top: 24, width: g * 0.4, height: P - 48 },
             wt = Math.max(1, Math.min(V.width, V.height) / 2) * 0.85,
             yt = V.left + V.width / 2,
             Mt = V.top + V.height / 2;
-          t >= 0.815 && ((W = j(A, yt, dt)), (J = j(m - n, Mt, dt)));
+          // From the last rally chapter the ball lobs straight from the right line into the logo.
+          t >= 0.65 &&
+            ((W = j(rx, yt, dt)), (J = j(m - n, Mt, dt) - 4 * dt * (1 - dt) * arc * 0.35));
           let L = j(n, wt, bt),
             kt = t < 0.78 ? t * 9.2 : j(0.78 * 9.2, Math.PI * 2, N(0.78, 0.975, t)),
             ut = N(0.845, 0.96, t),
@@ -159,10 +157,10 @@
             bounce: {
               leg: I,
               t: b,
-              height: t < 0.78 ? U : 0,
-              atCourt: t < 0.78 && (b < 0.015 || b > 0.985),
+              height: t < 0.65 ? U : 0,
+              atCourt: t < 0.65 && (b < 0.015 || b > 0.985),
             },
-            phase: t < 0.455 ? "left-to-right" : t < 0.815 ? "right-to-left" : "ball-close-up",
+            phase: t < 0.65 ? (I % 2 ? "right-to-left" : "left-to-right") : "ball-close-up",
           };
         },
         T = function (t, u, o = 1) {
