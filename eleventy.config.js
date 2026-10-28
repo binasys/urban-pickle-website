@@ -4,6 +4,8 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/assets");
   // GitHub Pages: skip Jekyll processing. Add "src/CNAME" here too once the custom domain is live.
   eleventyConfig.addPassthroughCopy("src/.nojekyll");
+  // Business info (prices, phone, hours…) lives in this YAML file, loaded by src/_data/business.js.
+  eleventyConfig.addWatchTarget("src/_data/business.yaml");
 
   return {
     dir: {

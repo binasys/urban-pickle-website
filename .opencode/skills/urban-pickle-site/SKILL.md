@@ -45,15 +45,16 @@ Page bodies are rendered with Nunjucks, so a literal `{{` or `{%` in content mus
 
 ## Common tasks
 
-| Task                       | Where                                                                                     |
-| -------------------------- | ----------------------------------------------------------------------------------------- |
-| Change page copy           | `src/<page>.html`                                                                         |
-| Add a page                 | New `src/<name>.html`; add to `mainNav` in `src/_data/site.json` if it belongs in the nav |
-| Footer links               | `src/_includes/partials/footer.njk`                                                       |
-| Phone, booking URL, nav    | `src/_data/site.json` (use `{{ site.phone }}` etc. in templates)                          |
-| `<head>`, global CSS/JS    | `src/_includes/layouts/base.njk`                                                          |
-| Logo markup                | `src/_includes/partials/logo.njk`                                                         |
-| Prices in booking estimate | `RATES` in `src/assets/js/site.js`. Keep in sync with `src/pricing.html`                  |
+| Task                                                   | Where                                                                                                                                                                        |
+| ------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Change page copy                                       | `src/<page>.html`                                                                                                                                                            |
+| Add a page                                             | New `src/<name>.html`; add to `mainNav` in `src/_data/site.json` if it belongs in the nav                                                                                    |
+| Footer links                                           | `src/_includes/partials/footer.njk`                                                                                                                                          |
+| Name, phone, address, hours, prices, logo, booking URL | `src/_data/business.yaml` (loaded/validated/derived by `src/_data/business.js`; use `{{ business.phone }}`, `{{ business.whatsappUrl }}` etc. Never hardcode these in pages) |
+| Nav, brand options                                     | `src/_data/site.json`                                                                                                                                                        |
+| `<head>`, global CSS/JS                                | `src/_includes/layouts/base.njk`                                                                                                                                             |
+| Logo markup                                            | `src/_includes/partials/logo.njk`                                                                                                                                            |
+| Prices in booking estimate                             | `RATES` in `src/assets/js/site.js`. Keep in sync with `src/pricing.html`                                                                                                     |
 
 ## Scripts (`src/assets/js/`)
 

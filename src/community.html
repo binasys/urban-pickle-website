@@ -1,6 +1,5 @@
 ---
-title: "Community &amp; social play — Urban Pickle"
-description: "Your game. Your people. Your place in Kuala Lumpur. Covered and open pickleball courts, food and drinks on Jalan Tun Razak."
+title: "Community &amp; social play"
 pageId: "community"
 headerHeight: 77
 ---
@@ -27,7 +26,7 @@ headerHeight: 77
       sizes="100vw"
       width="1448"
       height="1086"
-      alt="Covered courts at Urban Pickle, Jalan Tun Razak"
+      alt="Covered courts at {{ business.name }}, {{ business.address.street }}"
       loading="lazy"
       decoding="async"
   /></picture>
@@ -51,7 +50,7 @@ headerHeight: 77
       <p>Looking for playing partners? Talk to us about social play.</p>
       <a
         class="btn outline"
-        href="https://wa.me/60126002178"
+        href="{{ business.whatsappUrl }}"
         target="_blank"
         rel="noopener noreferrer"
         >Talk to the team<span class="arrow" aria-hidden="true">↗</span></a

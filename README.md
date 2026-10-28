@@ -23,7 +23,9 @@ npm run build    # writes the finished site to dist/
 src/                         Everything that ends up on the site
   index.html, about.html …   One file per page: front matter + the page's <main> content
   src.11tydata.json          Defaults for all pages (layout, output file name)
-  _data/site.json            Shared data: navigation, phone number, booking URL, brand options
+  _data/business.yaml        BUSINESS INFO: name, logo, phone, address, hours, prices (edit this!)
+  _data/business.js          Loads + checks business.yaml and works out links/prices from it
+  _data/site.json            Developer settings: navigation, brand options
   _includes/
     layouts/base.njk         The page shell: <head>, CSS/JS includes, header, footer
     partials/header.njk      Brand switcher, concept bar, site header, desktop + mobile nav
@@ -41,18 +43,58 @@ dist/                        Build output (git-ignored, never edit by hand)
 
 ## Editing
 
+### Editing business info (prices, phone, hours, address, logo)
+
+Everything a non-developer usually needs to change is in **one file:
+`src/_data/business.yaml`**. Each setting has a note explaining it. Prices are typed once: the
+Pricing table, the "from RM__" text on Courts, the FAQ, and the booking calculator on "Book a court"
+all update from the same numbers.
+
+**On github.com (no tools needed)**
+
+1. Open the repository, go to `src/_data/business.yaml` and click the pencil icon (Edit).
+2. Change the values you need, e.g. `covered: 50` → `covered: 55`.
+3. Click **Commit changes…**, describe the change (e.g. "Raise weekday covered price") and commit to
+   `main`.
+4. Open the **Actions** tab. After a green tick (about a minute) the live site is updated. A red
+   cross means the file has a mistake: click the run, open the **build** step, and the message
+   names the setting or line to fix. The live site keeps the previous version until it is fixed.
+
+**With git**
+
+```sh
+git pull
+# edit src/_data/business.yaml
+npm run build        # optional: checks the file and builds locally (npm start to preview)
+git add src/_data/business.yaml
+git commit -m "Update court prices"
+git push
+```
+
+**Common mistakes**
+
+- Only change text after the colon; never rename the word before it.
+- Keep the spaces at the start of lines exactly as they were (spaces, never Tab).
+- Put "double quotes" around values containing `:` or `#`.
+- Prices are plain numbers: `50`, not `RM50`.
+- `whatsapp` is digits only with country code (`60126002178`); `phone` is how it is displayed.
+- Weekday price rows must together cover every hour from `openHour` to `closeHour`.
+- To change a logo, the easiest way is to replace the image in `src/assets/images/` keeping the
+  same file name. The green homepage logo (`official-logotype-green.webp`) is set in `site.css`, so
+  replace that file by name.
+
 ### Change a page's content
 
 Edit the page in `src/`, e.g. `src/pricing.html`. Everything below the front matter is the page's
 `<main>` content. The page is plain HTML, and you can also use
-[Nunjucks](https://mozilla.github.io/nunjucks/) tags such as `{{ site.phone }}`.
+[Nunjucks](https://mozilla.github.io/nunjucks/) tags such as `{{ business.phone }}`.
 
 ### Front matter fields
 
 ```yaml
 ---
-title: "Pricing — Urban Pickle" # <title>
-description: "…" # <meta name="description">
+title: "Pricing" # <title>; " — <business name>" is added automatically
+description: "…" # optional <meta name="description">; defaults to business.description
 pageId: "pricing" # <body data-page>, used by CSS and to highlight the nav item
 headerHeight: 77 # initial --header-height (JS updates it at runtime)
 bodyClass: "on-home" # optional extra <body> class (home page only)

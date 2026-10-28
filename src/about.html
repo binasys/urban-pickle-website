@@ -1,6 +1,5 @@
 ---
-title: "Our story — Urban Pickle"
-description: "Your game. Your people. Your place in Kuala Lumpur. Covered and open pickleball courts, food and drinks on Jalan Tun Razak."
+title: "Our story"
 pageId: "about"
 headerHeight: 77
 ---
@@ -22,7 +21,7 @@ headerHeight: 77
       sizes="100vw"
       width="1448"
       height="1086"
-      alt="Covered courts at Urban Pickle, Jalan Tun Razak"
+      alt="Covered courts at {{ business.name }}, {{ business.address.street }}"
       loading="lazy"
       decoding="async"
   /></picture>
@@ -35,8 +34,9 @@ headerHeight: 77
       </p>
       <h2>Your place in the city.</h2>
       <p>
-        Covered courts and open-air play, right off Jalan Tun Razak in Taman U Thant. Food, drinks,
-        changing rooms and showers at the venue. Everything around your game has a place too.
+        Covered courts and open-air play, right off {{ business.address.street }} in {{
+        business.address.area }}. Food, drinks, changing rooms and showers at the venue. Everything
+        around your game has a place too.
       </p>
     </div>
     <aside class="detail-box">
@@ -44,7 +44,7 @@ headerHeight: 77
         Early rallies.<br />
         Late games.
       </h3>
-      <p>7am to midnight, every day. Find a time that fits your life.</p>
+      <p>{{ business.hoursLine }}. Find a time that fits your life.</p>
       <a class="btn" href="book.html"
         >Make time for a game<span class="arrow" aria-hidden="true">↗</span></a
       >

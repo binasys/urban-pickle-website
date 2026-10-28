@@ -1,6 +1,5 @@
 ---
-title: "Pricing — Urban Pickle"
-description: "Your game. Your people. Your place in Kuala Lumpur. Covered and open pickleball courts, food and drinks on Jalan Tun Razak."
+title: "Pricing"
 pageId: "pricing"
 headerHeight: 77
 ---
@@ -16,7 +15,7 @@ headerHeight: 77
   <div class="price-table-wrap">
     <table class="price-table">
       <caption class="visually-hidden">
-        Urban Pickle published hourly rates
+        {{ business.name }} published hourly rates
       </caption>
       <thead>
         <tr>
@@ -28,39 +27,29 @@ headerHeight: 77
         </tr>
       </thead>
       <tbody>
+        {%- for rate in business.courtRates %}
         <tr>
-          <td>Mon–Fri</td>
-          <td>7am–5pm</td>
-          <td class="rate"><span class="rate-label">Covered</span><span>RM50</span></td>
-          <td class="rate"><span class="rate-label">Open</span><span>RM40</span></td>
-          <td class="rate"><span class="rate-label">Covered + machine</span><span>RM65</span></td>
+          <td>{{ rate.days | escape }}</td>
+          <td>{{ rate.times | escape }}</td>
+          <td class="rate">
+            <span class="rate-label">Covered</span
+            ><span>{{ business.currency }}{{ rate.covered }}</span>
+          </td>
+          <td class="rate">
+            <span class="rate-label">Open</span><span>{{ business.currency }}{{ rate.open }}</span>
+          </td>
+          <td class="rate">
+            <span class="rate-label">Covered + machine</span
+            ><span>{{ business.currency }}{{ rate.machine }}</span>
+          </td>
         </tr>
-        <tr>
-          <td>Mon–Fri</td>
-          <td>5pm–10pm</td>
-          <td class="rate"><span class="rate-label">Covered</span><span>RM85</span></td>
-          <td class="rate"><span class="rate-label">Open</span><span>RM75</span></td>
-          <td class="rate"><span class="rate-label">Covered + machine</span><span>RM100</span></td>
-        </tr>
-        <tr>
-          <td>Mon–Fri</td>
-          <td>10pm–midnight</td>
-          <td class="rate"><span class="rate-label">Covered</span><span>RM50</span></td>
-          <td class="rate"><span class="rate-label">Open</span><span>RM40</span></td>
-          <td class="rate"><span class="rate-label">Covered + machine</span><span>RM100</span></td>
-        </tr>
-        <tr>
-          <td>Weekends &amp; public holidays</td>
-          <td>7am–midnight</td>
-          <td class="rate"><span class="rate-label">Covered</span><span>RM70</span></td>
-          <td class="rate"><span class="rate-label">Open</span><span>RM60</span></td>
-          <td class="rate"><span class="rate-label">Covered + machine</span><span>RM85</span></td>
-        </tr>
+        {%- endfor %}
       </tbody>
     </table>
   </div>
   <p class="pricing-note">
-    Paddle rental · RM5 per session. Pickleballs · RM10 each. Available at the front desk.
+    Paddle rental · {{ business.currency }}{{ business.extras.paddle }} per session. Pickleballs ·
+    {{ business.currency }}{{ business.extras.ball }} each. Available at the front desk.
   </p>
   <div class="two-col pricing-actions">
     <div class="detail-box">

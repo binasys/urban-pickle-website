@@ -1,6 +1,5 @@
 ---
-title: "Courts &amp; facilities — Urban Pickle"
-description: "Your game. Your people. Your place in Kuala Lumpur. Covered and open pickleball courts, food and drinks on Jalan Tun Razak."
+title: "Courts &amp; facilities"
 pageId: "courts"
 headerHeight: 77
 ---
@@ -10,7 +9,8 @@ headerHeight: 77
     <div class="eyebrow"><span class="dot"></span>Covered &amp; open-air</div>
     <h1>Made for the game.</h1>
     <p class="intro">
-      Steel-framed covered courts and open-air play on Jalan Tun Razak, Taman U Thant.
+      Steel-framed covered courts and open-air play on {{ business.address.street }}, {{
+      business.address.area }}.
     </p>
   </div>
 </div>
@@ -24,7 +24,7 @@ headerHeight: 77
       sizes="100vw"
       width="1448"
       height="1086"
-      alt="Covered courts at Urban Pickle, Jalan Tun Razak"
+      alt="Covered courts at {{ business.name }}, {{ business.address.street }}"
       loading="lazy"
       decoding="async"
   /></picture>
@@ -32,21 +32,30 @@ headerHeight: 77
     <div class="court-overview">
       <h2>Room to rally.</h2>
       <p class="muted" style="margin-top: 22px">
-        Choose a covered or open court, or book a covered court with the ball machine. Play from 7am
-        until midnight, every day.
+        Choose a covered or open court, or book a covered court with the ball machine. Play {{
+        business.hoursLine }}.
       </p>
       <div class="feature-list">
         <div class="feature-item">
           <h3>Covered courts</h3>
-          <p>Daytime and late-evening weekday hire from RM50 an hour.</p>
+          <p>
+            Daytime and late-evening weekday hire from {{ business.currency }}{{
+            business.fromPrice.covered }} an hour.
+          </p>
         </div>
         <div class="feature-item">
           <h3>Open-air play</h3>
-          <p>Weekday daytime and late-evening hire from RM40 an hour.</p>
+          <p>
+            Weekday daytime and late-evening hire from {{ business.currency }}{{
+            business.fromPrice.open }} an hour.
+          </p>
         </div>
         <div class="feature-item">
           <h3>Ball machine</h3>
-          <p>Covered court plus ball machine from RM65 an hour.</p>
+          <p>
+            Covered court plus ball machine from {{ business.currency }}{{
+            business.fromPrice.machine }} an hour.
+          </p>
         </div>
       </div>
     </div>
@@ -55,7 +64,10 @@ headerHeight: 77
         Make it<br />
         game-ready.
       </h3>
-      <p>Rent a paddle for RM5 per session or buy a ball for RM10 at the counter.</p>
+      <p>
+        Rent a paddle for {{ business.currency }}{{ business.extras.paddle }} per session or buy a
+        ball for {{ business.currency }}{{ business.extras.ball }} at the counter.
+      </p>
       <a class="btn" href="pricing.html"
         >See all court rates<span class="arrow" aria-hidden="true">↗</span></a
       >
@@ -76,6 +88,6 @@ headerHeight: 77
   </div>
   <p class="pricing-note">
     Parking options include limited free entrance parking and nearby paid parking. See Visit Us for
-    the Ottomu arrangement.
+    the {{ business.parking.name }} arrangement.
   </p>
 </section>

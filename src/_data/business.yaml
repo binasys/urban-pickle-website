@@ -1,0 +1,135 @@
+# =====================================================================
+#  URBAN PICKLE: BUSINESS INFO
+# =====================================================================
+#  This is the one file to edit when the business details change
+#  (prices, phone number, opening hours, address, links, logo files).
+#  Every page on the website reads from here when the site is built.
+#
+#  HOW TO EDIT SAFELY
+#   - Only change the text AFTER the colon ( : ). Never rename the words
+#     before the colon.
+#   - Keep the spaces at the start of each line exactly as they are.
+#     Use spaces, never the Tab key.
+#   - Lines starting with # are notes and are ignored.
+#   - If a value contains a colon ( : ) or a # sign, wrap it in
+#     "double quotes".
+#   - Prices are plain numbers: write 50, not RM50 or "50.00".
+#
+#  If you make a mistake, the build fails with a message telling you
+#  which line to fix, and the live site stays as it was.
+# =====================================================================
+
+# ---------------------------------------------------------------------
+# COMPANY
+# ---------------------------------------------------------------------
+name: Urban Pickle # shown in page titles, footer, alt text
+legalName: JD Urban Ventures Sdn Bhd # shown in the footer copyright line
+# Default description used by search engines (Google) for every page
+description: "Your game. Your people. Your place in Kuala Lumpur. Covered and open pickleball courts, food and drinks on Jalan Tun Razak."
+
+# ---------------------------------------------------------------------
+# LOGO
+#   Put new image files in src/assets/images/ and update the paths
+#   below. Easiest option: replace the image file and keep the same name.
+#   Note: the green homepage logo (official-logotype-green.webp) is set
+#   in the stylesheet; replace that file with the same name to change it.
+# ---------------------------------------------------------------------
+logo:
+  wordmark: assets/images/official-logotype-grey.webp # main logo in header/footer
+  wordmarkWidth: 1086 # pixel size of the image above
+  wordmarkHeight: 664
+  mark: assets/images/official-up-mark-grey.webp # "UP" mark on the homepage ball
+  favicon: assets/favicon.svg # little icon in the browser tab
+
+# ---------------------------------------------------------------------
+# CONTACT
+# ---------------------------------------------------------------------
+phone: "+60 12-600 2178" # how the number is displayed
+whatsapp: "60126002178" # digits only, with country code, no + or spaces
+instagram: https://www.instagram.com/urbanpicklemy/
+# Courtsite booking page (copy the full link from your browser)
+bookingUrl: "https://www.courtsite.my/centre/Urban%20Pickle/cmcbibxfl08jw087xkm8ycrfv/select/hourly?serviceId=&categoryId=clc8tlc5bbt2p6ogmj1xm2h3a"
+
+# ---------------------------------------------------------------------
+# LOCATION
+# ---------------------------------------------------------------------
+address:
+  street: Jalan Tun Razak
+  area: Taman U Thant
+  city: Kuala Lumpur
+  cityShort: KL # used in the footer
+# Map pin. In Google Maps: right-click the venue, click the numbers to
+# copy them. The first number is latitude, the second is longitude.
+map:
+  latitude: 3.1560055
+  longitude: 101.7228836
+parking:
+  name: Ottomu Parking
+  price: 4 # RM, flat rate
+  link: https://go.courtsite.my/upparking
+
+# ---------------------------------------------------------------------
+# OPENING HOURS
+# ---------------------------------------------------------------------
+hours:
+  openHour: 7 # 24-hour clock: 7 means 7am
+  closeHour: 24 # 24 means midnight. Booking times stop 1 hour before this.
+  label: "7am – midnight" # how the hours are written on the website
+  days: every day
+
+# ---------------------------------------------------------------------
+# COURT PRICING (RM per court, per hour)
+#   One block per row of the price table on the Pricing page.
+#   The booking calculator on the "Book a court" page uses the same
+#   numbers, and "from RM__" text on the Courts page is worked out
+#   automatically from the lowest price.
+#
+#   dayType:   weekday  or  weekend   (weekend also covers public holidays)
+#   fromHour / toHour: 24-hour clock, e.g. 17 = 5pm, 24 = midnight.
+#              Weekday rows must cover every hour from opening to closing.
+# ---------------------------------------------------------------------
+currency: RM
+courtRates:
+  - days: Mon–Fri
+    times: 7am–5pm
+    dayType: weekday
+    fromHour: 7
+    toHour: 17
+    covered: 50
+    open: 40
+    machine: 65 # covered court + ball machine
+
+  - days: Mon–Fri
+    times: 5pm–10pm
+    dayType: weekday
+    fromHour: 17
+    toHour: 22
+    covered: 85
+    open: 75
+    machine: 100
+
+  - days: Mon–Fri
+    times: 10pm–midnight
+    dayType: weekday
+    fromHour: 22
+    toHour: 24
+    covered: 50
+    open: 40
+    machine: 100
+
+  - days: Weekends & public holidays
+    times: 7am–midnight
+    dayType: weekend
+    fromHour: 7
+    toHour: 24
+    covered: 70
+    open: 60
+    machine: 85
+
+# ---------------------------------------------------------------------
+# EXTRAS (RM)
+# ---------------------------------------------------------------------
+extras:
+  paddle: 5 # paddle rental, per paddle, per session
+  ball: 10 # one pickleball
+  maxPaddles: 4 # how many paddles the booking calculator offers

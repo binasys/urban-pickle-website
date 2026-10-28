@@ -1,6 +1,5 @@
 ---
-title: "Events &amp; private hire — Urban Pickle"
-description: "Your game. Your people. Your place in Kuala Lumpur. Covered and open pickleball courts, food and drinks on Jalan Tun Razak."
+title: "Events &amp; private hire"
 pageId: "events"
 headerHeight: 77
 ---
@@ -10,7 +9,8 @@ headerHeight: 77
     <div class="eyebrow"><span class="dot"></span>Teams &amp; private play</div>
     <h1>Out of office.<br />On court.</h1>
     <p class="intro">
-      Host team outings, client sessions or private play at Urban Pickle in Taman U Thant.
+      Host team outings, client sessions or private play at {{ business.name }} in {{
+      business.address.area }}.
     </p>
   </div>
 </div>
@@ -26,7 +26,7 @@ headerHeight: 77
           sizes="100vw"
           width="1448"
           height="1086"
-          alt="Covered courts at Urban Pickle, Jalan Tun Razak"
+          alt="Covered courts at {{ business.name }}, {{ business.address.street }}"
           loading="lazy"
           decoding="async"
       /></picture>
@@ -38,7 +38,7 @@ headerHeight: 77
         space to unwind.
       </p>
       <p>Tell us your date and group size. We’ll help you plan the day.</p>
-      <a class="btn" href="https://wa.me/60126002178" target="_blank" rel="noopener noreferrer"
+      <a class="btn" href="{{ business.whatsappUrl }}" target="_blank" rel="noopener noreferrer"
         >Enquire on WhatsApp<span class="arrow" aria-hidden="true">↗</span></a
       >
     </aside>

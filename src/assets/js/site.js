@@ -15,14 +15,9 @@
   });
   document.getElementById("year").textContent = new Date().getFullYear();
   if (document.body.dataset.page === "book") {
-    const RATES = {
-      covered: { day: 50, evening: 85, late: 50, weekend: 70 },
-      open: { day: 40, evening: 75, late: 40, weekend: 60 },
-      machine: { day: 65, evening: 100, late: 100, weekend: 85 },
-      paddle: 5,
-      ball: 10,
-    };
-    const money = (n) => "RM " + Number(n).toFixed(0);
+    // Prices come from src/_data/business.yaml, injected by the page layout.
+    const PRICING = window.__UP_PRICING__;
+    const money = (n) => PRICING.currency + " " + Number(n).toFixed(0);
     function bookingData() {
       const type = document.getElementById("court-type").value,
         day = document.getElementById("day-type").value,
@@ -31,8 +26,10 @@
         paddles = Number(document.getElementById("paddles").value);
       let courtTotal = 0;
       for (let h = start; h < start + duration; h++) {
-        const band = day === "weekend" ? "weekend" : h < 17 ? "day" : h < 22 ? "evening" : "late";
-        courtTotal += RATES[type][band];
+        const rate = PRICING.rates.find(
+          (r) => r.dayType === day && r.fromHour <= h && h < r.toHour,
+        );
+        courtTotal += rate ? rate[type] : 0;
       }
       return {
         type,
@@ -41,14 +38,14 @@
         duration,
         paddles,
         courtTotal,
-        total: courtTotal + paddles * RATES.paddle,
-        valid: start + duration <= 24,
+        total: courtTotal + paddles * PRICING.paddle,
+        valid: start + duration <= PRICING.closeHour,
       };
     }
     function updateBooking() {
       const b = bookingData();
       document.getElementById("order-details").innerHTML =
-        `<div class="summary-row"><span>Court</span><span>${{ covered: "Covered", open: "Open", machine: "Covered + ball machine" }[b.type]}</span></div><div class="summary-row"><span>Day</span><span>${b.day === "weekend" ? "Weekend / public holiday" : "Monday–Friday"}</span></div><div class="summary-row"><span>Start / duration</span><span>${b.start}:00 · ${b.duration} hr</span></div><div class="summary-row"><span>Court hire</span><span>${b.valid ? money(b.courtTotal) : "Outside opening hours"}</span></div><div class="summary-row"><span>Paddles at counter</span><span>${b.paddles ? money(b.paddles * RATES.paddle) : "Own equipment"}</span></div>`;
+        `<div class="summary-row"><span>Court</span><span>${{ covered: "Covered", open: "Open", machine: "Covered + ball machine" }[b.type]}</span></div><div class="summary-row"><span>Day</span><span>${b.day === "weekend" ? "Weekend / public holiday" : "Monday–Friday"}</span></div><div class="summary-row"><span>Start / duration</span><span>${b.start}:00 · ${b.duration} hr</span></div><div class="summary-row"><span>Court hire</span><span>${b.valid ? money(b.courtTotal) : "Outside opening hours"}</span></div><div class="summary-row"><span>Paddles at counter</span><span>${b.paddles ? money(b.paddles * PRICING.paddle) : "Own equipment"}</span></div>`;
       document.getElementById("order-total").textContent = b.valid ? money(b.total) : "—";
       document.getElementById("order-note").textContent = b.valid
         ? ""

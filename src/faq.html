@@ -1,6 +1,5 @@
 ---
-title: "FAQs — Urban Pickle"
-description: "Your game. Your people. Your place in Kuala Lumpur. Covered and open pickleball courts, food and drinks on Jalan Tun Razak."
+title: "FAQs"
 pageId: "faq"
 headerHeight: 77
 ---
@@ -16,24 +15,26 @@ headerHeight: 77
   <div class="prose faq-content">
     <div class="faq-list">
       <details name="club-faq">
-        <summary>Where is Urban Pickle?</summary>
+        <summary>Where is {{ business.name }}?</summary>
         <p>
-          On Jalan Tun Razak in Taman U Thant, Kuala Lumpur. Open 7am–midnight daily. Use the Google
-          Maps or Waze link on Visit Us.
+          On {{ business.address.street }} in {{ business.address.area }}, {{ business.address.city
+          }}. Open {{ business.hoursLine }}. Use the Google Maps or Waze link on Visit Us.
         </p>
       </details>
       <details name="club-faq">
         <summary>Do I need my own paddle?</summary>
         <p>
-          Paddle rental is RM5 per paddle, per session, at the counter. Balls are available for RM10
-          each.
+          Paddle rental is {{ business.currency }}{{ business.extras.paddle }} per paddle, per
+          session, at the counter. Balls are available for {{ business.currency }}{{
+          business.extras.ball }} each.
         </p>
       </details>
       <details name="club-faq">
         <summary>Where can I park?</summary>
         <p>
-          Limited free parking at the entrance. Ottomu Parking faces the main road: RM4 flat rate on
-          weekdays after 5pm and weekends all day. Validate at the counter.
+          Limited free parking at the entrance. {{ business.parking.name }} faces the main road: {{
+          business.currency }}{{ business.parking.price }} flat rate on weekdays after 5pm and
+          weekends all day. Validate at the counter.
         </p>
       </details>
       <details name="club-faq">
@@ -68,7 +69,7 @@ headerHeight: 77
       </details>
     </div>
     <div class="faq-action" style="margin-top: 30px">
-      <a class="btn" href="https://wa.me/60126002178" target="_blank" rel="noopener noreferrer"
+      <a class="btn" href="{{ business.whatsappUrl }}" target="_blank" rel="noopener noreferrer"
         >Ask on WhatsApp<span class="arrow" aria-hidden="true">↗</span></a
       >
     </div>
