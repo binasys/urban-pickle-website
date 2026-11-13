@@ -32,8 +32,8 @@ headerHeight: 77
     <div class="court-overview">
       <h2>Room to rally.</h2>
       <p class="muted" style="margin-top: 22px">
-        Choose a covered or open court, or book a covered court with the ball machine. Play {{
-        business.hoursLine }}.
+        Choose a covered or open court. The ball machine is {{ business.currency }}{{
+        business.extras.ballMachine }} an hour, on top of court hire. Play {{ business.hoursLine }}.
       </p>
       <div class="feature-list">
         <div class="feature-item">
@@ -53,8 +53,7 @@ headerHeight: 77
         <div class="feature-item">
           <h3>Ball machine</h3>
           <p>
-            Covered court plus ball machine from {{ business.currency }}{{
-            business.fromPrice.machine }} an hour.
+            {{ business.currency }}{{ business.extras.ballMachine }} an hour, added to your court.
           </p>
         </div>
       </div>
@@ -65,8 +64,9 @@ headerHeight: 77
         game-ready.
       </h3>
       <p>
-        Rent a paddle for {{ business.currency }}{{ business.extras.paddle }} per session or buy a
-        ball for {{ business.currency }}{{ business.extras.ball }} at the counter.
+        Rent a paddle for {{ business.currency }}{{ business.extras.paddle }} per session, or buy
+        balls for {{ business.currency }}{{ business.extras.ball }} each or {{ business.currency
+        }}{{ business.extras.ballPack }} for 3, at the counter.
       </p>
       <a class="btn" href="pricing.html"
         >See all court rates<span class="arrow" aria-hidden="true">↗</span></a

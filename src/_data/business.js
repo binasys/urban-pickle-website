@@ -96,7 +96,7 @@ function validate(d) {
       fail(`${p} (${r.days} ${r.times}): "dayType" must be weekday or weekend.`);
     }
     ["fromHour", "toHour"].forEach((k) => requireNumber({ r }, `r.${k}`, { min: 0, max: 24 }));
-    ["covered", "open", "machine"].forEach((k) => {
+    ["covered", "open"].forEach((k) => {
       if (typeof r[k] !== "number") {
         fail(
           `${p} (${r.days} ${r.times}): "${k}" must be a plain number. Found: ${JSON.stringify(r[k])}`,
@@ -134,7 +134,7 @@ export default function () {
       (r) =>
         r.dayType === "weekday" && r.fromHour <= d.hours.openHour && d.hours.openHour < r.toHour,
     ).covered,
-    fromPrice: { covered: min("covered"), open: min("open"), machine: min("machine") },
+    fromPrice: { covered: min("covered"), open: min("open") },
     bookingStartHours: Array.from(
       { length: d.hours.closeHour - d.hours.openHour },
       (_, i) => d.hours.openHour + i,
@@ -143,16 +143,17 @@ export default function () {
     pricingForScript: {
       currency: d.currency,
       closeHour: d.hours.closeHour,
-      rates: d.courtRates.map(({ dayType, fromHour, toHour, covered, open, machine }) => ({
+      rates: d.courtRates.map(({ dayType, fromHour, toHour, covered, open }) => ({
         dayType,
         fromHour,
         toHour,
         covered,
         open,
-        machine,
       })),
       paddle: d.extras.paddle,
       ball: d.extras.ball,
+      ballPack: d.extras.ballPack,
+      ballMachine: d.extras.ballMachine,
     },
   };
 }
