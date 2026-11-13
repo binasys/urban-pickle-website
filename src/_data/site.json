@@ -1,5 +1,6 @@
 {
   "mainNav": [
+    { "id": "home", "label": "Home", "href": "index.html" },
     { "id": "courts", "label": "Courts" },
     { "id": "pricing", "label": "Pricing" },
     { "id": "about", "label": "The club" },

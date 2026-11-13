@@ -132,4 +132,6 @@ courtRates:
 extras:
   paddle: 5 # paddle rental, per paddle, per session
   ball: 10 # one pickleball
+  ballPack: 25 # three pickleballs
+  ballMachine: 15 # ball machine add-on, per hour
   maxPaddles: 4 # how many paddles the booking calculator offers

@@ -81,6 +81,8 @@ function validate(d) {
     fail(`"hours.closeHour" must be after "hours.openHour".`);
   requireNumber(d, "extras.paddle");
   requireNumber(d, "extras.ball");
+  requireNumber(d, "extras.ballPack");
+  requireNumber(d, "extras.ballMachine");
   requireNumber(d, "extras.maxPaddles", { min: 0, max: 20 });
 
   if (!Array.isArray(d.courtRates) || d.courtRates.length === 0) {
