@@ -8522,3 +8522,173 @@ body .site-header .header-actions .btn {
     font-size: 28px;
   }
 }
+
+/* Quiet motion: transform and opacity only. Content stays put until JS marks it. */
+:root {
+  --ease-out: cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+:is(body.on-home, body:not(.on-home))
+  :is(a, button, summary, input, select, textarea):focus-visible {
+  outline: 2px solid #27372e;
+  outline-offset: 3px;
+}
+.btn,
+.btn .arrow,
+.desktop-nav a,
+.desktop-nav a::after,
+.mobile-nav a,
+.text-link,
+.footer-column a,
+.footer-column a::after,
+.cinema-footer-links a,
+summary,
+:is(.add-on-card, .content-card, .feature-item, .detail-box, .order-summary, .amenity-grid > div),
+:is(.gallery-grid, .people-grid) figure img {
+  transition-property: transform, opacity;
+  transition-duration: 220ms;
+  transition-timing-function: var(--ease-out);
+}
+.btn:active {
+  transform: scale(0.98);
+  transition-duration: 160ms;
+}
+.btn:active .arrow {
+  transform: translateX(3px);
+}
+.desktop-nav a::after {
+  transition-duration: 220ms;
+  transition-timing-function: var(--ease-out);
+}
+.mobile-nav a:active,
+.cinema-footer-links a:active,
+.text-link:active,
+summary:active {
+  transform: scale(0.98);
+  transition-duration: 160ms;
+}
+.footer-column a {
+  position: relative;
+  width: fit-content;
+  max-width: 100%;
+}
+.footer-column a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -2px;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+}
+:is(.add-on-card, .content-card, .detail-box, .order-summary) {
+  position: relative;
+}
+:is(.add-on-card, .content-card, .detail-box, .order-summary)::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: 0 10px 22px #27372e16;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 220ms var(--ease-out);
+}
+@media (hover: hover) and (pointer: fine) {
+  .btn:hover {
+    transform: translateY(-2px) scale(1.02);
+  }
+  .btn:hover .arrow {
+    transform: translateX(4px);
+  }
+  .desktop-nav a:hover,
+  .cinema-footer-links a:hover {
+    transform: translateY(-1px);
+  }
+  .text-link:hover {
+    opacity: 1;
+    transform: translateX(4px);
+  }
+  .footer-column a:hover::after,
+  .footer-column a:focus-visible::after {
+    transform: scaleX(1);
+  }
+  :is(
+    .add-on-card,
+    .content-card,
+    .feature-item,
+    .detail-box,
+    .order-summary,
+    .amenity-grid > div
+  ):hover {
+    transform: translateY(-4px);
+  }
+  :is(.add-on-card, .content-card, .detail-box, .order-summary):hover::after {
+    opacity: 1;
+  }
+  :is(.gallery-grid, .people-grid) figure:hover img {
+    transform: scale(1.02);
+  }
+}
+:is(
+  .add-on-card,
+  .content-card,
+  .feature-item,
+  .detail-box,
+  .order-summary,
+  .amenity-grid > div
+):active,
+.btn:active,
+.btn:hover:active {
+  transform: scale(0.98);
+  transition-duration: 160ms;
+}
+.footer-column a:focus-visible::after,
+.desktop-nav a:focus-visible::after {
+  transform: scaleX(1);
+}
+body:not(.on-home) #main .motion-ready,
+body.on-home #main .motion-ready,
+.site-footer .motion-ready {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 560ms var(--ease-out),
+    transform 560ms var(--ease-out);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+body:not(.on-home) #main .motion-ready.is-visible,
+body.on-home #main .motion-ready.is-visible,
+.site-footer .motion-ready.is-visible {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .motion-ready,
+  body:not(.on-home) #main .motion-ready,
+  body.on-home #main .motion-ready,
+  .site-footer .motion-ready,
+  .btn,
+  .btn .arrow,
+  .desktop-nav a,
+  .mobile-nav a,
+  .text-link,
+  .footer-column a,
+  .footer-column a::after,
+  .cinema-footer-links a,
+  summary,
+  :is(.add-on-card, .content-card, .feature-item, .detail-box, .order-summary, .amenity-grid > div),
+  :is(.gallery-grid, .people-grid) figure img {
+    transform: none;
+    transition: none;
+    animation: none;
+  }
+  .motion-ready,
+  .motion-ready.is-visible {
+    opacity: 1;
+  }
+}
