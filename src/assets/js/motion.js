@@ -56,36 +56,44 @@
     observer?.disconnect();
     const main = document.getElementById("main");
     main.classList.remove("route-enter");
-    main
-      .querySelectorAll(".motion-ready")
-      .forEach((el) => el.classList.remove("motion-ready", "is-visible"));
-    if (!reduce.matches) {
+    document.querySelectorAll(".motion-ready").forEach((el) => {
+      if (!el.closest(".cinematic-home")) el.classList.remove("motion-ready", "is-visible");
+    });
+    if (!reduce.matches && "IntersectionObserver" in window) {
       if (!document.startViewTransition) {
         void main.offsetWidth;
         main.classList.add("route-enter");
       }
-      if ("IntersectionObserver" in window) {
-        observer = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                entry.target.classList.add("is-visible");
-                observer.unobserve(entry.target);
-              }
-            });
-          },
-          { rootMargin: "0px 0px -35px 0px", threshold: 0.08 },
-        );
-        main
-          .querySelectorAll(
-            ".section-label,.about-intro>*,.about-visuals>*,.section-heading,.experience,.content-card,.feature-item,.detail-box,.gallery-grid figure,.amenity-grid>div,.page-top h1,.page-top .intro,.belonging-line,.belonging-bottom,.club-detail-grid article,.closing-invitation h2,.closing-invitation p,.people-grid figure",
-          )
-          .forEach((el, i) => {
-            el.style.setProperty("--reveal-delay", `${(i % 3) * 65}ms`);
-            el.classList.add("motion-ready");
-            observer.observe(el);
+      const nodes = [
+        ...document.querySelectorAll(
+          ".page-top, .page-body > *, .feature-item, .add-on-card, .amenity-grid > div, .content-card, .pricing-actions article, .faq-list details, .policy-item, .gallery-grid figure, .people-grid figure, .visit-row, .footer-column, .footer-word",
+        ),
+      ].filter((el) => !el.closest(".cinematic-home") && !el.closest(".site-header"));
+      const below = nodes.filter((el) => el.getBoundingClientRect().top >= innerHeight);
+      const hidden = new Set(below);
+      const targets = below.filter((el) => {
+        let parent = el.parentElement;
+        while (parent) {
+          if (hidden.has(parent)) return false;
+          parent = parent.parentElement;
+        }
+        return true;
+      });
+      observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
           });
-      }
+        },
+        { rootMargin: "0px 0px 12% 0px", threshold: 0.01 },
+      );
+      targets.forEach((el, i) => {
+        el.style.setProperty("--reveal-delay", `${(i % 3) * 70}ms`);
+        el.classList.add("motion-ready");
+        observer.observe(el);
+      });
     }
     document.documentElement.style.setProperty(
       "--header-height",

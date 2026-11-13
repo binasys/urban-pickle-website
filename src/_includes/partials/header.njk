@@ -9,14 +9,14 @@
       {% include "partials/logo.njk" %}
       <nav class="desktop-nav" aria-label="Main navigation">
         {%- for item in site.mainNav -%}
-          <a href="{{ item.id }}.html"{% if item.id == pageId %} aria-current="page"{% endif %}>{{ item.label }}</a>
+          <a href="{{ item.href or (item.id + '.html') }}"{% if item.id == pageId %} aria-current="page"{% endif %}>{{ item.label }}</a>
         {%- endfor -%}
       </nav>
       <div class="header-actions"><a class="btn" href="book.html">Book a court <span class="arrow" aria-hidden="true">↗</span></a><button class="menu-button" type="button" id="menu-toggle" aria-expanded="false" aria-controls="mobile-nav">Menu <svg width="20" height="18" viewbox="0 0 20 18" fill="none" aria-hidden="true"><path d="M1 4h18M1 13h18" stroke="currentColor" stroke-width="1.5"></path></svg></button></div>
     </div>
     <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation" hidden="">
       {%- for item in site.mainNav -%}
-        <a href="{{ item.id }}.html">{{ item.label }}</a>
+        <a href="{{ item.href or (item.id + '.html') }}"{% if item.id == pageId %} aria-current="page"{% endif %}>{{ item.label }}</a>
       {%- endfor -%}
       <a class="btn" href="book.html">Book a court <span class="arrow" aria-hidden="true">↗</span></a></nav>
   </header>

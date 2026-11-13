@@ -4983,7 +4983,7 @@ summary:after {
   }
   .price-table tr {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 12px 8px;
     padding: 18px;
     border: 1px solid var(--line);
@@ -8359,5 +8359,336 @@ body .site-header .header-actions .btn {
   .cinema-final-footer .cinema-footer-meta {
     font-size: 9px;
     gap: 12px;
+  }
+}
+
+/* Pricing add-ons, and the current page in the mobile menu. */
+.mobile-nav a[aria-current="page"] {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 7px;
+}
+.mobile-nav a[aria-current="page"]:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 7px;
+}
+.add-ons {
+  background: var(--up-surface);
+  border-radius: 18px;
+  padding: 22px 18px 18px;
+  margin: 4px 0 8px;
+}
+.add-ons .section-heading {
+  align-items: baseline;
+  gap: 16px 28px;
+  margin-bottom: 16px;
+}
+.add-ons .section-heading p {
+  margin: 0;
+  max-width: 28ch;
+  color: var(--up-muted);
+  font-size: 14px;
+  line-height: 1.5;
+}
+.add-on-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.add-on-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+  margin: 0;
+  padding: 12px 12px 16px;
+  background: var(--up-white);
+  border-radius: 14px;
+}
+.add-on-art {
+  display: grid;
+  place-items: center;
+  height: 104px;
+  border-radius: 10px;
+  background: #fff;
+}
+.add-on-art img,
+.add-on-ball {
+  width: auto;
+  max-width: 100%;
+  height: 88px;
+  object-fit: contain;
+}
+.add-on-card h3 {
+  margin: 0;
+  font-family: var(--display);
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+}
+.add-on-prices {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 4px 12px;
+  margin: 6px 0 0;
+}
+.add-on-figure {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  font-family: var(--body);
+  font-weight: 500;
+  font-size: clamp(34px, 2.6vw, 44px);
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  font-variant-numeric: tabular-nums;
+}
+.add-on-figure small {
+  font-family: var(--body);
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: 0;
+  color: var(--up-muted);
+}
+.add-on-or {
+  align-self: center;
+  margin-bottom: 18px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--up-muted);
+}
+@media (max-width: 900px) {
+  .add-ons {
+    padding: 18px 14px 14px;
+    margin-top: 8px;
+  }
+  .add-ons .section-heading {
+    display: block;
+    margin-bottom: 14px;
+  }
+  .add-ons .section-heading h2 {
+    font-size: 36px;
+    line-height: 1.1;
+  }
+  .add-ons .section-heading p {
+    margin-top: 8px;
+    font-size: 14px;
+  }
+  .add-on-list {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .add-on-card {
+    display: grid;
+    grid-template-columns: 84px minmax(0, 1fr);
+    align-items: center;
+    gap: 12px 14px;
+    padding: 12px;
+  }
+  .add-on-art {
+    height: 84px;
+  }
+  .add-on-art img,
+  .add-on-ball {
+    height: 72px;
+  }
+  .add-on-card h3 {
+    font-size: 22px;
+  }
+  .add-on-prices {
+    flex-wrap: nowrap;
+    align-items: flex-end;
+    gap: 2px 10px;
+  }
+  .add-on-figure {
+    font-size: 32px;
+  }
+  .add-on-or {
+    margin-bottom: 18px;
+  }
+}
+@media (max-width: 360px) {
+  .add-on-card {
+    grid-template-columns: 72px minmax(0, 1fr);
+  }
+  .add-on-figure {
+    font-size: 28px;
+  }
+}
+
+/* Quiet motion: transform and opacity only. Content stays put until JS marks it. */
+:root {
+  --ease-out: cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+:is(body.on-home, body:not(.on-home))
+  :is(a, button, summary, input, select, textarea):focus-visible {
+  outline: 2px solid #27372e;
+  outline-offset: 3px;
+}
+.btn,
+.btn .arrow,
+.desktop-nav a,
+.desktop-nav a::after,
+.mobile-nav a,
+.text-link,
+.footer-column a,
+.footer-column a::after,
+.cinema-footer-links a,
+summary,
+:is(.add-on-card, .content-card, .feature-item, .detail-box, .order-summary, .amenity-grid > div),
+:is(.gallery-grid, .people-grid) figure img {
+  transition-property: transform, opacity;
+  transition-duration: 220ms;
+  transition-timing-function: var(--ease-out);
+}
+.btn:active {
+  transform: scale(0.98);
+  transition-duration: 160ms;
+}
+.btn:active .arrow {
+  transform: translateX(3px);
+}
+.desktop-nav a::after {
+  transition-duration: 220ms;
+  transition-timing-function: var(--ease-out);
+}
+.mobile-nav a:active,
+.cinema-footer-links a:active,
+.text-link:active,
+summary:active {
+  transform: scale(0.98);
+  transition-duration: 160ms;
+}
+.footer-column a {
+  position: relative;
+  width: fit-content;
+  max-width: 100%;
+}
+.footer-column a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -2px;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+}
+:is(.add-on-card, .content-card, .detail-box, .order-summary) {
+  position: relative;
+}
+:is(.add-on-card, .content-card, .detail-box, .order-summary)::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: 0 10px 22px #27372e16;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 220ms var(--ease-out);
+}
+@media (hover: hover) and (pointer: fine) {
+  .btn:hover {
+    transform: translateY(-2px) scale(1.02);
+  }
+  .btn:hover .arrow {
+    transform: translateX(4px);
+  }
+  .desktop-nav a:hover,
+  .cinema-footer-links a:hover {
+    transform: translateY(-1px);
+  }
+  .text-link:hover {
+    opacity: 1;
+    transform: translateX(4px);
+  }
+  .footer-column a:hover::after,
+  .footer-column a:focus-visible::after {
+    transform: scaleX(1);
+  }
+  :is(
+    .add-on-card,
+    .content-card,
+    .feature-item,
+    .detail-box,
+    .order-summary,
+    .amenity-grid > div
+  ):hover {
+    transform: translateY(-4px);
+  }
+  :is(.add-on-card, .content-card, .detail-box, .order-summary):hover::after {
+    opacity: 1;
+  }
+  :is(.gallery-grid, .people-grid) figure:hover img {
+    transform: scale(1.02);
+  }
+}
+:is(
+  .add-on-card,
+  .content-card,
+  .feature-item,
+  .detail-box,
+  .order-summary,
+  .amenity-grid > div
+):active,
+.btn:active,
+.btn:hover:active {
+  transform: scale(0.98);
+  transition-duration: 160ms;
+}
+.footer-column a:focus-visible::after,
+.desktop-nav a:focus-visible::after {
+  transform: scaleX(1);
+}
+body:not(.on-home) #main .motion-ready,
+body.on-home #main .motion-ready,
+.site-footer .motion-ready {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 560ms var(--ease-out),
+    transform 560ms var(--ease-out);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+body:not(.on-home) #main .motion-ready.is-visible,
+body.on-home #main .motion-ready.is-visible,
+.site-footer .motion-ready.is-visible {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .motion-ready,
+  body:not(.on-home) #main .motion-ready,
+  body.on-home #main .motion-ready,
+  .site-footer .motion-ready,
+  .btn,
+  .btn .arrow,
+  .desktop-nav a,
+  .mobile-nav a,
+  .text-link,
+  .footer-column a,
+  .footer-column a::after,
+  .cinema-footer-links a,
+  summary,
+  :is(.add-on-card, .content-card, .feature-item, .detail-box, .order-summary, .amenity-grid > div),
+  :is(.gallery-grid, .people-grid) figure img {
+    transform: none;
+    transition: none;
+    animation: none;
+  }
+  .motion-ready,
+  .motion-ready.is-visible {
+    opacity: 1;
   }
 }

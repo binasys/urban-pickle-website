@@ -83,6 +83,7 @@ hours:
 #   The booking calculator on the "Book a court" page uses the same
 #   numbers, and "from RM__" text on the Courts page is worked out
 #   automatically from the lowest price.
+#   The ball machine is not a court rate. It is an add-on (extras.ballMachine).
 #
 #   dayType:   weekday  or  weekend   (weekend also covers public holidays)
 #   fromHour / toHour: 24-hour clock, e.g. 17 = 5pm, 24 = midnight.
@@ -97,7 +98,6 @@ courtRates:
     toHour: 17
     covered: 50
     open: 40
-    machine: 65 # covered court + ball machine
 
   - days: Mon–Fri
     times: 5pm–10pm
@@ -106,7 +106,6 @@ courtRates:
     toHour: 22
     covered: 85
     open: 75
-    machine: 100
 
   - days: Mon–Fri
     times: 10pm–midnight
@@ -115,7 +114,6 @@ courtRates:
     toHour: 24
     covered: 50
     open: 40
-    machine: 100
 
   - days: Weekends & public holidays
     times: 7am–midnight
@@ -124,7 +122,6 @@ courtRates:
     toHour: 24
     covered: 70
     open: 60
-    machine: 85
 
 # ---------------------------------------------------------------------
 # EXTRAS (RM)
@@ -132,4 +129,6 @@ courtRates:
 extras:
   paddle: 5 # paddle rental, per paddle, per session
   ball: 10 # one pickleball
+  ballPack: 25 # three pickleballs
+  ballMachine: 15 # ball machine add-on, per hour
   maxPaddles: 4 # how many paddles the booking calculator offers

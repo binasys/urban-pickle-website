@@ -23,7 +23,6 @@ headerHeight: 77
           <th>Time</th>
           <th>Covered</th>
           <th>Open</th>
-          <th>Covered + ball machine</th>
         </tr>
       </thead>
       <tbody>
@@ -38,19 +37,70 @@ headerHeight: 77
           <td class="rate">
             <span class="rate-label">Open</span><span>{{ business.currency }}{{ rate.open }}</span>
           </td>
-          <td class="rate">
-            <span class="rate-label">Covered + machine</span
-            ><span>{{ business.currency }}{{ rate.machine }}</span>
-          </td>
         </tr>
         {%- endfor %}
       </tbody>
     </table>
   </div>
-  <p class="pricing-note">
-    Paddle rental · {{ business.currency }}{{ business.extras.paddle }} per session. Pickleballs ·
-    {{ business.currency }}{{ business.extras.ball }} each. Available at the front desk.
-  </p>
+  <section class="add-ons" aria-labelledby="add-ons-heading">
+    <div class="section-heading">
+      <h2 id="add-ons-heading">Add-ons</h2>
+      <p>Available at the front desk.</p>
+    </div>
+    <ul class="add-on-list">
+      <li class="add-on-card">
+        <span class="add-on-art"
+          ><img src="assets/images/feature-art/paddle-rental.webp" width="600" height="400" alt=""
+        /></span>
+        <div class="add-on-copy">
+          <h3>Paddle rental</h3>
+          <p class="add-on-prices">
+            <span class="add-on-figure"
+              >{{ business.currency }}{{ business.extras.paddle }}<small>per session</small></span
+            >
+          </p>
+        </div>
+      </li>
+      <li class="add-on-card">
+        <span class="add-on-art" aria-hidden="true">
+          <svg class="add-on-ball" viewbox="0 0 80 80">
+            <circle cx="40" cy="40" r="28" fill="#bbdf57"></circle>
+            <circle cx="29" cy="32" r="3.1" fill="#27372e"></circle>
+            <circle cx="41" cy="29" r="3.1" fill="#27372e"></circle>
+            <circle cx="52" cy="36" r="3.1" fill="#27372e"></circle>
+            <circle cx="27" cy="45" r="3.1" fill="#27372e"></circle>
+            <circle cx="39" cy="44" r="3.1" fill="#27372e"></circle>
+            <circle cx="51" cy="50" r="3.1" fill="#27372e"></circle>
+            <circle cx="33" cy="56" r="3.1" fill="#27372e"></circle>
+          </svg>
+        </span>
+        <div class="add-on-copy">
+          <h3>Pickleballs</h3>
+          <p class="add-on-prices">
+            <span class="add-on-figure"
+              >{{ business.currency }}{{ business.extras.ball }}<small>each</small></span
+            ><span class="add-on-or">or</span
+            ><span class="add-on-figure"
+              >{{ business.currency }}{{ business.extras.ballPack }}<small>for 3</small></span
+            >
+          </p>
+        </div>
+      </li>
+      <li class="add-on-card">
+        <span class="add-on-art"
+          ><img src="assets/images/feature-art/ball-machine.webp" width="600" height="400" alt=""
+        /></span>
+        <div class="add-on-copy">
+          <h3>Ball machine</h3>
+          <p class="add-on-prices">
+            <span class="add-on-figure"
+              >{{ business.currency }}{{ business.extras.ballMachine }}<small>per hour</small></span
+            >
+          </p>
+        </div>
+      </li>
+    </ul>
+  </section>
   <div class="two-col pricing-actions">
     <div class="detail-box">
       <h3>Pick your next game.</h3>

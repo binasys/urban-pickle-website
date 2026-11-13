@@ -23,7 +23,8 @@
         day = document.getElementById("day-type").value,
         start = Number(document.getElementById("start-hour").value),
         duration = Number(document.getElementById("duration").value),
-        paddles = Number(document.getElementById("paddles").value);
+        paddles = Number(document.getElementById("paddles").value),
+        machine = document.getElementById("ball-machine").value === "1";
       let courtTotal = 0;
       for (let h = start; h < start + duration; h++) {
         const rate = PRICING.rates.find(
@@ -31,27 +32,32 @@
         );
         courtTotal += rate ? rate[type] : 0;
       }
+      const valid = start + duration <= PRICING.closeHour;
+      const machineTotal = machine && valid ? duration * PRICING.ballMachine : 0;
       return {
         type,
         day,
         start,
         duration,
         paddles,
+        machine,
         courtTotal,
-        total: courtTotal + paddles * PRICING.paddle,
-        valid: start + duration <= PRICING.closeHour,
+        machineTotal,
+        total: courtTotal + machineTotal + paddles * PRICING.paddle,
+        valid,
       };
     }
     function updateBooking() {
       const b = bookingData();
+      const courtName = { covered: "Covered", open: "Open" }[b.type];
       document.getElementById("order-details").innerHTML =
-        `<div class="summary-row"><span>Court</span><span>${{ covered: "Covered", open: "Open", machine: "Covered + ball machine" }[b.type]}</span></div><div class="summary-row"><span>Day</span><span>${b.day === "weekend" ? "Weekend / public holiday" : "Monday–Friday"}</span></div><div class="summary-row"><span>Start / duration</span><span>${b.start}:00 · ${b.duration} hr</span></div><div class="summary-row"><span>Court hire</span><span>${b.valid ? money(b.courtTotal) : "Outside opening hours"}</span></div><div class="summary-row"><span>Paddles at counter</span><span>${b.paddles ? money(b.paddles * PRICING.paddle) : "Own equipment"}</span></div>`;
+        `<div class="summary-row"><span>Court</span><span>${courtName}</span></div><div class="summary-row"><span>Day</span><span>${b.day === "weekend" ? "Weekend / public holiday" : "Monday–Friday"}</span></div><div class="summary-row"><span>Start / duration</span><span>${b.start}:00 · ${b.duration} hr</span></div><div class="summary-row"><span>Court hire</span><span>${b.valid ? money(b.courtTotal) : "Outside opening hours"}</span></div><div class="summary-row"><span>Ball machine</span><span>${b.machine && b.valid ? money(b.machineTotal) : "Not added"}</span></div><div class="summary-row"><span>Paddles at counter</span><span>${b.paddles ? money(b.paddles * PRICING.paddle) : "Own equipment"}</span></div>`;
       document.getElementById("order-total").textContent = b.valid ? money(b.total) : "—";
       document.getElementById("order-note").textContent = b.valid
         ? ""
         : "Sessions end at midnight. Choose a shorter duration.";
     }
-    ["court-type", "day-type", "start-hour", "duration", "paddles"].forEach((id) =>
+    ["court-type", "day-type", "start-hour", "duration", "paddles", "ball-machine"].forEach((id) =>
       document.getElementById(id).addEventListener("change", updateBooking),
     );
     updateBooking();

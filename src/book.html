@@ -8,7 +8,7 @@ headerHeight: 77
   <div class="container">
     <div class="eyebrow"><span class="dot"></span>Your next rally</div>
     <h1>Pick a time.<br />Make it yours.</h1>
-    <p class="intro">Choose your court, playing time and paddle rental.</p>
+    <p class="intro">Choose your court, playing time, paddle rental and ball machine.</p>
   </div>
 </div>
 <section class="container page-body">
@@ -21,7 +21,13 @@ headerHeight: 77
             >Court type<select id="court-type">
               <option value="covered">Covered court</option>
               <option value="open">Open court</option>
-              <option value="machine">Covered + ball machine</option>
+            </select></label
+          ><label class="field"
+            >Ball machine<select id="ball-machine">
+              <option value="0">No ball machine</option>
+              <option value="1">
+                Add · {{ business.currency }}{{ business.extras.ballMachine }} per hour
+              </option>
             </select></label
           ><label class="field"
             >Day type<select id="day-type">
@@ -53,7 +59,11 @@ headerHeight: 77
           >
         </div>
       </div>
-      <p class="booking-help">Paddles are available at the front desk.</p>
+      <p class="booking-help">
+        Paddles and balls are at the front desk. Balls are {{ business.currency }}{{
+        business.extras.ball }} each or {{ business.currency }}{{ business.extras.ballPack }} for 3.
+        The ball machine is {{ business.currency }}{{ business.extras.ballMachine }} an hour.
+      </p>
       <a
         class="btn"
         href="{{ business.bookingUrl | escape }}"
@@ -75,6 +85,7 @@ headerHeight: 77
           <span>Court hire</span
           ><span>{{ business.currency }} {{ business.openingCoveredRate }}</span>
         </div>
+        <div class="summary-row"><span>Ball machine</span><span>Not added</span></div>
         <div class="summary-row"><span>Paddles at counter</span><span>Own equipment</span></div>
       </div>
       <div class="summary-total">
