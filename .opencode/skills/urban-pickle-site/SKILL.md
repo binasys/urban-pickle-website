@@ -15,9 +15,10 @@ or client-side router.
 2. **One page = one file** in `src/<name>.html`, containing front matter + the `<main>` content only.
    No `<html>`, `<head>`, header or footer in page files; those come from
    `src/_includes/layouts/base.njk`.
-3. **Relative, root-level paths.** Pages are at the site root: `href="pricing.html"`,
-   `src="assets/images/x.webp"`. No leading `/` and no pretty URLs (`/pricing/`). JS that builds
-   URLs to assets uses the same `assets/...` form.
+3. **Relative, root-level paths.** Pages are at the site root and links are extensionless:
+   `href="pricing"`, `src="assets/images/x.webp"`. No leading `/`, no `.html` and no trailing-slash
+   URLs (`/pricing/`). GitHub Pages serves `pricing.html` at `/pricing`, but relative assets break
+   under `/pricing/`. JS that builds URLs to assets uses the same `assets/...` form.
 4. **CSS order is the cascade.** `src/assets/css/site.css` is eight former stylesheets in their
    original load order, and later sections override earlier ones. Add new rules to the end of the
    most specific relevant section. Do not reorder sections or "dedupe" rules without a visual check.
@@ -40,6 +41,8 @@ courtScene: true # home only: loads court-scene.js, court-scene-config.js, home-
 ```
 
 Defaults (`layout`, `permalink: {{ page.filePathStem }}.html`) live in `src/src.11tydata.json`.
+Pages are written to `dist/<name>.html` but linked without the extension; GitHub Pages serves them
+at `/<name>`. Do not remove `.html` from the permalink or switch to directory output.
 Page bodies are rendered with Nunjucks, so a literal `{{` or `{%` in content must be wrapped in
 `{% raw %}…{% endraw %}`.
 
@@ -49,6 +52,7 @@ Page bodies are rendered with Nunjucks, so a literal `{{` or `{%` in content mus
 | ------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Change page copy                                       | `src/<page>.html`                                                                                                                                                            |
 | Add a page                                             | New `src/<name>.html`; add to `mainNav` in `src/_data/site.json` if it belongs in the nav                                                                                    |
+| Internal links                                         | Extensionless and relative: `href="pricing"`, never `pricing.html`                                                                                                           |
 | Footer links                                           | `src/_includes/partials/footer.njk`                                                                                                                                          |
 | Name, phone, address, hours, prices, logo, booking URL | `src/_data/business.yaml` (loaded/validated/derived by `src/_data/business.js`; use `{{ business.phone }}`, `{{ business.whatsappUrl }}` etc. Never hardcode these in pages) |
 | Nav, brand options                                     | `src/_data/site.json`                                                                                                                                                        |
@@ -77,6 +81,8 @@ npm start        # http://localhost:8080. Check affected pages at desktop and ~3
 Before finishing, check that:
 
 - The browser console has no errors and the network tab has no 404s.
+- Internal links are extensionless (`href="pricing"`, not `pricing.html`), and `dist/` is previewed
+  through `npm start`, not opened from disk.
 - When renaming or moving an asset, a search of `src/` finds no remaining references to the old
   path.
 - The homepage court animation still runs, and the reduced-motion and static fallbacks still work.
@@ -85,6 +91,8 @@ Before finishing, check that:
 
 GitHub Actions (`.github/workflows/deploy.yml`) builds and deploys `dist/` to GitHub Pages on every
 push to `main`. Pull requests into `main` only build and lint. Only a build failure blocks deployment;
-lint is reported but non-blocking, so still run `npm run lint` locally. Keep all paths relative: the
-site is served from `/urban-pickle-website/` until the custom domain `www.urbanpickle.com.my` (primary; bare domain redirects to it) is set up.
-Do not add `src/CNAME` until the user confirms the domain is bought (see README.md, "Deploying").
+lint is reported but non-blocking, so still run `npm run lint` locally. Keep all paths relative and
+extensionless. GitHub Pages serves `/pricing` from `pricing.html`. `src/CNAME` is copied to `dist/`
+for the custom domain `www.urbanpickle.com.my` (primary; bare domain redirects to it). The `www`
+record must be a `CNAME` to `binasys.github.io`. Only keep `src/CNAME` while the domain is owned and
+configured (see README.md, "Deploying").

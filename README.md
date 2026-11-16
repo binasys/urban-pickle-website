@@ -23,6 +23,7 @@ npm run build    # writes the finished site to dist/
 src/                         Everything that ends up on the site
   index.html, about.html …   One file per page: front matter + the page's <main> content
   src.11tydata.json          Defaults for all pages (layout, output file name)
+  CNAME                      Custom domain for GitHub Pages
   _data/business.yaml        BUSINESS INFO: name, logo, phone, address, hours, prices (edit this!)
   _data/business.js          Loads + checks business.yaml and works out links/prices from it
   _data/site.json            Developer settings: navigation, brand options
@@ -105,7 +106,7 @@ courtScene: true # optional: load the homepage court animation scripts
 ### Add a page
 
 1. Create `src/<name>.html` with the front matter above and its content. It is built to
-   `dist/<name>.html`.
+   `dist/<name>.html` and served at `/<name>`.
 2. To show it in the main navigation, add `{ "id": "<name>", "label": "…" }` to `mainNav` in
    `src/_data/site.json`. Footer links are in `src/_includes/partials/footer.njk`.
 
@@ -115,9 +116,13 @@ Edit the files in `src/_includes/`. The change applies to every page on the next
 
 ### Links and asset paths
 
-All pages are at the site root, so links are relative: `href="pricing.html"`,
-`src="assets/images/entrance.webp"`. Keep that convention; it lets `dist/` work from any folder,
-including opened straight from disk.
+All pages are at the site root. Links are relative and extensionless: `href="pricing"`,
+`src="assets/images/entrance.webp"`. GitHub Pages serves `dist/pricing.html` at `/pricing`. Do not
+link to `pricing.html` or use trailing-slash URLs such as `pricing/`, because relative asset paths
+break under the latter.
+
+Because links omit `.html`, `dist/` must be served over HTTP (`npm start` or any static host).
+Opening `dist/index.html` straight from disk no longer works.
 
 ## CSS
 
@@ -179,23 +184,24 @@ The site is deployed to **GitHub Pages** by `.github/workflows/deploy.yml`:
 Only a **failed build** stops a deploy. Formatting, CSS and HTML lint failures appear as failed steps
 in the run, but the site is still published. Run `npm run lint` locally to see them.
 
-Live URL: `https://binasys.github.io/urban-pickle-website/` (until the custom domain is set up).
-All links are relative, so the site works both in that subfolder and on its own domain.
+Live URL: `https://www.urbanpickle.com.my/` (the GitHub Pages URL redirects to it). Links are
+relative and extensionless, so GitHub Pages serves `dist/pricing.html` at `/pricing`.
 
 `src/.nojekyll` is copied to `dist/` so GitHub serves the files as they are, without Jekyll.
+`src/CNAME` is copied to `dist/` too, for the custom domain.
 
 ### One-time GitHub setup
 
 1. In **Settings → Pages → Build and deployment → Source**, choose **GitHub Actions**.
 2. Push or merge to `main`. The run's `deploy` job shows the live URL.
 
-### Custom domain checklist (`www.urbanpickle.com.my`, not bought yet)
+### Custom domain checklist (`www.urbanpickle.com.my`)
 
 The main address is **`www.urbanpickle.com.my`**. The bare domain `urbanpickle.com.my` redirects to
 it.
 
-Do **not** add a `CNAME` file before owning the domain; the site would redirect to a domain that
-doesn't resolve.
+Only keep `src/CNAME` while you own the domain; otherwise the site redirects to a domain that does
+not resolve.
 
 1. Buy `urbanpickle.com.my`.
 2. Optional but recommended: verify `urbanpickle.com.my` under your GitHub account (or the `binasys`
@@ -206,13 +212,17 @@ doesn't resolve.
      `185.199.109.153`, `185.199.110.153`, `185.199.111.153` (needed so it can redirect to `www`)
    - Optionally `AAAA` for `@` → `2606:50c0:8000::153`, `2606:50c0:8001::153`,
      `2606:50c0:8002::153`, `2606:50c0:8003::153`
-4. Create `src/CNAME` containing the single line `www.urbanpickle.com.my`, and add
-   `eleventyConfig.addPassthroughCopy("src/CNAME");` to `eleventy.config.js`.
+4. Ensure `src/CNAME` contains the single line `www.urbanpickle.com.my`, and that
+   `eleventyConfig.addPassthroughCopy("src/CNAME");` is in `eleventy.config.js` (both already
+   done).
 5. In **Settings → Pages → Custom domain**, enter `www.urbanpickle.com.my` and save. With `www` as
    primary, GitHub redirects `urbanpickle.com.my` to it automatically, as long as the `A` records
    above exist.
 6. Once the DNS check passes and the certificate is issued (can take up to 24 hours), tick
    **Enforce HTTPS**.
+
+If HTTPS shows a certificate warning, check that `www` is a `CNAME` to `binasys.github.io` (not to
+the bare domain) and wait for GitHub to issue the certificate.
 
 ### Other hosts
 
