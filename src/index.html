@@ -1,5 +1,5 @@
 ---
-title: "Your game. Your people."
+title: "Your game for your people."
 pageId: "home"
 headerHeight: 85
 bodyClass: "on-home"
@@ -59,7 +59,12 @@ courtScene: true
           <h2>Make it yours</h2>
         </div>
         <div class="cinema-final-actions">
-          <a class="btn" href="book" tabindex="0"
+          <a
+            class="btn"
+            href="{{ business.bookingUrl | escape }}"
+            target="_blank"
+            rel="noopener noreferrer"
+            tabindex="0"
             >Book a court<span class="arrow" aria-hidden="true">↗</span></a
           ><a class="btn outline" href="about" tabindex="0"
             >Explore the club<span class="arrow" aria-hidden="true">↗</span></a

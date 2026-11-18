@@ -55,7 +55,13 @@ headerHeight: 77
     <div class="detail-box">
       <h3>Pick your next game.</h3>
       <p>Find an open court and make your next game happen.</p>
-      <a class="btn" href="book">Plan &amp; book<span class="arrow" aria-hidden="true">↗</span></a>
+      <a
+        class="btn"
+        href="{{ business.bookingUrl | escape }}"
+        target="_blank"
+        rel="noopener noreferrer"
+        >Book on Courtsite<span class="arrow" aria-hidden="true">↗</span></a
+      >
     </div>
     <div class="prose">
       <article>

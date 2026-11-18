@@ -11,9 +11,7 @@ headerHeight: 77
       Your people.<br />
       Your place.
     </h1>
-    <p class="intro">
-      A game to look forward to. People to share it with. A place to come back to.
-    </p>
+    <p class="intro">A great game, good company, and a place that always feels like home.</p>
   </div>
 </div>
 <section class="container page-body">
@@ -34,7 +32,11 @@ headerHeight: 77
     <article class="content-card">
       <h3>Bring your crew.</h3>
       <p>Make court time your time together. A catch-up with a little friendly competition.</p>
-      <a class="btn outline" href="book"
+      <a
+        class="btn outline"
+        href="{{ business.bookingUrl | escape }}"
+        target="_blank"
+        rel="noopener noreferrer"
         >Find a court<span class="arrow" aria-hidden="true">↗</span></a
       >
     </article>
@@ -50,10 +52,10 @@ headerHeight: 77
       <p>Looking for playing partners? Talk to us about social play.</p>
       <a
         class="btn outline"
-        href="{{ business.whatsappUrl }}"
+        href="{{ business.whatsappCommunityUrl }}"
         target="_blank"
         rel="noopener noreferrer"
-        >Talk to the team<span class="arrow" aria-hidden="true">↗</span></a
+        >Join our community<span class="arrow" aria-hidden="true">↗</span></a
       >
     </article>
   </div>

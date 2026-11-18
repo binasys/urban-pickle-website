@@ -57,6 +57,7 @@ function validate(d) {
     "phone",
     "instagram",
     "bookingUrl",
+    "whatsappCommunityUrl",
     "address.street",
     "address.area",
     "address.city",

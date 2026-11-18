@@ -25,7 +25,7 @@
 name: Urban Pickle # shown in page titles, footer, alt text
 legalName: JD Urban Ventures Sdn Bhd # shown in the footer copyright line
 # Default description used by search engines (Google) for every page
-description: "Your game. Your people. Your place in Kuala Lumpur. Covered and open pickleball courts, food and drinks on Jalan Tun Razak."
+description: "Your game for your people. Covered and open pickleball courts, food and drinks in the heart of Kuala Lumpur."
 
 # ---------------------------------------------------------------------
 # LOGO
@@ -49,6 +49,7 @@ whatsapp: "60126002178" # digits only, with country code, no + or spaces
 instagram: https://www.instagram.com/urbanpicklemy/
 # Courtsite booking page (copy the full link from your browser)
 bookingUrl: "https://www.courtsite.my/centre/Urban%20Pickle/cmcbibxfl08jw087xkm8ycrfv/select/hourly?serviceId=&categoryId=clc8tlc5bbt2p6ogmj1xm2h3a"
+whatsappCommunityUrl: "https://chat.whatsapp.com/Fdwi55VsjUk1k0GfSiamox"
 
 # ---------------------------------------------------------------------
 # LOCATION
@@ -91,7 +92,7 @@ hours:
 currency: RM
 courtRates:
   - days: Mon–Fri
-    times: 7am–5pm
+    times: 7am – 5pm
     dayType: weekday
     fromHour: 7
     toHour: 17
@@ -100,7 +101,7 @@ courtRates:
     machine: 65 # covered court + ball machine
 
   - days: Mon–Fri
-    times: 5pm–10pm
+    times: 5pm – 10pm
     dayType: weekday
     fromHour: 17
     toHour: 22
@@ -109,7 +110,7 @@ courtRates:
     machine: 100
 
   - days: Mon–Fri
-    times: 10pm–midnight
+    times: 10pm – midnight
     dayType: weekday
     fromHour: 22
     toHour: 24
@@ -118,7 +119,7 @@ courtRates:
     machine: 100
 
   - days: Weekends & public holidays
-    times: 7am–midnight
+    times: 7am – midnight
     dayType: weekend
     fromHour: 7
     toHour: 24
