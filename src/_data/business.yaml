@@ -2,7 +2,7 @@
 #  URBAN PICKLE: BUSINESS INFO
 # =====================================================================
 #  This is the one file to edit when the business details change
-#  (prices, phone number, opening hours, address, links, logo files).
+#  (prices, phone number, opening hours, address, court counts, links, logo files).
 #  Every page on the website reads from here when the site is built.
 #
 #  HOW TO EDIT SAFELY
@@ -77,6 +77,14 @@ hours:
   closeHour: 24 # 24 means midnight. Booking times stop 1 hour before this.
   label: "7am – midnight" # how the hours are written on the website
   days: every day
+
+# ---------------------------------------------------------------------
+# COURTS
+# ---------------------------------------------------------------------
+courts:
+  total: 10 # shown on the homepage
+  openAir: 4
+  covered: 6
 
 # ---------------------------------------------------------------------
 # COURT PRICING (RM per court, per hour)

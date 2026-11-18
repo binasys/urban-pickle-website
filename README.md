@@ -24,7 +24,7 @@ src/                         Everything that ends up on the site
   index.html, about.html …   One file per page: front matter + the page's <main> content
   src.11tydata.json          Defaults for all pages (layout, output file name)
   CNAME                      Custom domain for GitHub Pages
-  _data/business.yaml        BUSINESS INFO: name, logo, phone, address, hours, prices (edit this!)
+  _data/business.yaml        BUSINESS INFO: name, logo, phone, address, hours, prices, courts (edit this!)
   _data/business.js          Loads + checks business.yaml and works out links/prices from it
   _data/site.json            Developer settings: navigation, brand options
   _includes/
@@ -48,8 +48,8 @@ dist/                        Build output (git-ignored, never edit by hand)
 
 Everything a non-developer usually needs to change is in **one file:
 `src/_data/business.yaml`**. Each setting has a note explaining it. Prices are typed once: the
-Pricing table, the "from RM__" text on Courts, the FAQ, and the booking calculator on "Book a court"
-all update from the same numbers.
+Pricing table, the "from RM__" text on Courts, and the session estimator on Pricing all update from
+the same numbers.
 
 **On github.com (no tools needed)**
 
@@ -100,6 +100,7 @@ pageId: "pricing" # <body data-page>, used by CSS and to highlight the nav item
 headerHeight: 77 # initial --header-height (JS updates it at runtime)
 bodyClass: "on-home" # optional extra <body> class (home page only)
 courtScene: true # optional: load the homepage court animation scripts
+estimator: true # optional: expose prices to the session estimator (Pricing page)
 ---
 ```
 
@@ -109,6 +110,14 @@ courtScene: true # optional: load the homepage court animation scripts
    `dist/<name>.html` and served at `/<name>`.
 2. To show it in the main navigation, add `{ "id": "<name>", "label": "…" }` to `mainNav` in
    `src/_data/site.json`. Footer links are in `src/_includes/partials/footer.njk`.
+
+### Page map
+
+The site has eight pages. Six are in the header nav (`courts`, `pricing`, `about`, `gallery`,
+`events`, `visit`). The `about` page also covers social play and coaching under `about#play`. The
+`help` page keeps FAQs, cancellation, club guidelines and privacy as anchored sections
+(`help#faqs`, `help#cancellation`, `help#guidelines`, `help#privacy`). The homepage (`index`) is the
+eighth.
 
 ### Change the header, footer or `<head>`
 
@@ -146,7 +155,7 @@ Use `var(--display)` and `var(--body)` for fonts rather than font names.
 | File                       | Loaded on  | Purpose                                                  |
 | -------------------------- | ---------- | -------------------------------------------------------- |
 | `js/brand-query.js`        | every page | Reads `?brand=` / `?compare=` before first paint         |
-| `js/site.js`               | every page | Mobile menu, footer year, booking-page price estimator   |
+| `js/site.js`               | every page | Mobile menu, footer year, Pricing page session estimator |
 | `js/motion.js`             | every page | Header scroll state, reveal animations                   |
 | `js/brand-options.js`      | every page | Brand switcher links, shown with `?compare=1`            |
 | `js/court-scene.js`        | home only  | Court illustration renderer (`window.UPCourt`), minified |

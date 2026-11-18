@@ -1,5 +1,6 @@
 ---
-title: "Our story"
+title: "The club"
+description: "A place to play and a reason to stay — social games, regular play and coaching at Urban Pickle."
 pageId: "about"
 headerHeight: 77
 ---
@@ -8,7 +9,10 @@ headerHeight: 77
   <div class="container">
     <div class="eyebrow"><span class="dot"></span>Your game for your people.</div>
     <h1>A place to play.<br />A reason to stay.</h1>
-    <p class="intro">Enjoy a good game with the people you love.</p>
+    <p class="intro">
+      Enjoy a good game with the people you love — social play, regular games and coaching, all in
+      one place.
+    </p>
   </div>
 </div>
 <section class="container page-body">
@@ -16,12 +20,12 @@ headerHeight: 77
     ><source media="(max-width:600px)" srcset="" sizes="100vw" />
     <img
       class="wide-photo"
-      src="assets/images/courts-detail-wide.webp"
+      src="assets/images/courts-lounge-umbrellas.webp"
       srcset=""
       sizes="100vw"
-      width="1448"
-      height="1086"
-      alt="Covered courts at {{ business.name }}, {{ business.address.street }}"
+      width="1080"
+      height="810"
+      alt="Courtside seating and umbrellas beside the covered courts at {{ business.name }}"
       loading="lazy"
       decoding="async"
   /></picture>
@@ -53,5 +57,56 @@ headerHeight: 77
         >Book on Courtsite<span class="arrow" aria-hidden="true">↗</span></a
       >
     </aside>
+  </div>
+</section>
+<section class="container club-play" id="play">
+  <div class="section-heading">
+    <h2>Ways to play.</h2>
+    <p>Come with your crew, join a regular game or work on your game with a coach.</p>
+  </div>
+  <div class="content-grid">
+    <article class="content-card">
+      <h3>Bring your crew.</h3>
+      <p>Make court time your time together. A catch-up with a little friendly competition.</p>
+      <a
+        class="btn outline"
+        href="{{ business.bookingUrl | escape }}"
+        target="_blank"
+        rel="noopener noreferrer"
+        >Find a court<span class="arrow" aria-hidden="true">↗</span></a
+      >
+    </article>
+    <article class="content-card">
+      <h3>Make it regular.</h3>
+      <p>Choose a day. Bring your favourite people. Give your week a game to look forward to.</p>
+      <a class="btn outline" href="pricing"
+        >See court rates<span class="arrow" aria-hidden="true">↗</span></a
+      >
+    </article>
+    <article class="content-card">
+      <h3>Coming solo?</h3>
+      <p>Looking for playing partners? Talk to us about social play and open games.</p>
+      <a
+        class="btn outline"
+        href="{{ business.whatsappCommunityUrl }}"
+        target="_blank"
+        rel="noopener noreferrer"
+        >Join our community<span class="arrow" aria-hidden="true">↗</span></a
+      >
+    </article>
+    <article class="content-card">
+      <h3>Sharpen your game.</h3>
+      <p>
+        A better serve. A steadier return. More confidence on court. Tell us where you are with your
+        game and what you’d like to work on.
+      </p>
+      <a
+        class="btn outline"
+        href="{{ business.whatsappUrl }}"
+        target="_blank"
+        rel="noopener noreferrer"
+        >Ask about coaching<span class="arrow" aria-hidden="true">↗</span></a
+      >
+    </article>
   </div>
 </section>

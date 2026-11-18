@@ -1,3 +1,31 @@
-<footer class="site-footer"><div class="container"><div class="footer-top"><div class="footer-brand">{% include "partials/logo.njk" %}<p>{{ business.address.street }}, {{ business.address.area }}, {{ business.address.cityShort }}.<br>{{ business.hoursLine }}.<br><a href="{{ business.phoneHref }}">{{ business.phone }}</a></p></div><div class="footer-column"><h3>On court</h3><a href="courts">Courts &amp; facilities</a><a href="pricing">Pricing</a><a href="book">Book a court</a><a href="about">The club</a><a href="community">Social play</a><a href="coaching">Coaching</a></div><div class="footer-column"><h3>Off court</h3><a href="about">Our story</a><a href="events">Events &amp; private hire</a><a href="visit">Visit us</a><a href="faq">FAQs</a><a href="contact">Get in touch</a></div><div class="footer-column"><h3>The details</h3><a href="cancellation">Cancellation &amp; weather</a><a href="terms">Club guidelines</a><a href="privacy">Privacy &amp; contact</a></div></div><div class="footer-word" aria-hidden="true">SEE YOU ON COURT.</div><div class="footer-bottom"><span>© <span id="year">2026</span> {{ business.name }} · {{ business.legalName }}</span><span><a href="contact">Contact {{ business.name }}</a></span></div></div></footer>
-  <div class="mobile-book"><span>Your next good game.</span><a class="btn" href="book">Book a court <span class="arrow" aria-hidden="true">↗</span></a></div>
-  <noscript><div class="container page-body"><h1>{{ business.name }}</h1><p>Covered and open-air courts on {{ business.address.street }}.<br>{{ business.hoursLine }}.</p><a class="btn" href="{{ business.bookingUrl | escape }}" target="_blank" rel="noopener noreferrer">Book on Courtsite ↗</a></div></noscript>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        {% include "partials/logo.njk" %}
+        <p>{{ business.address.street }}, {{ business.address.area }}, {{ business.address.cityShort }}.<br>{{ business.hoursLine }}.<br><a href="{{ business.phoneHref }}">{{ business.phone }}</a></p>
+      </div>
+      <div class="footer-column">
+        <h3>Explore</h3>
+        {%- for item in site.mainNav -%}
+          <a href="{{ item.id }}">{{ item.label }}</a>
+        {%- endfor -%}
+      </div>
+      <div class="footer-column">
+        <h3>Book &amp; contact</h3>
+        <a href="{{ business.bookingUrl | escape }}" target="_blank" rel="noopener noreferrer">Book a court</a>
+        <a href="{{ business.whatsappUrl }}" target="_blank" rel="noopener noreferrer">WhatsApp us</a>
+        <a href="{{ business.whatsappCommunityUrl }}" target="_blank" rel="noopener noreferrer">Community chat</a>
+        <a href="{{ business.instagram }}" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a href="{{ business.mapsDirectionsUrl | escape }}" target="_blank" rel="noopener noreferrer">Get directions</a>
+      </div>
+    </div>
+    <div class="footer-word" aria-hidden="true">SEE YOU ON COURT.</div>
+    <div class="footer-bottom">
+      <span>© <span id="year">2026</span> {{ business.name }} · {{ business.legalName }}</span>
+      <a href="help#privacy">Privacy</a>
+    </div>
+  </div>
+</footer>
+<div class="mobile-book"><span>Your next good game.</span><a class="btn" href="{{ business.bookingUrl | escape }}" target="_blank" rel="noopener noreferrer">Book a court <span class="arrow" aria-hidden="true">↗</span></a></div>
+<noscript><div class="container page-body"><h1>{{ business.name }}</h1><p>Covered and open-air courts on {{ business.address.street }}.<br>{{ business.hoursLine }}.</p><a class="btn" href="{{ business.bookingUrl | escape }}" target="_blank" rel="noopener noreferrer">Book on Courtsite ↗</a></div></noscript>

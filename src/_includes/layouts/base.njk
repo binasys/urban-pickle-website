@@ -18,7 +18,7 @@
   {% include "partials/header.njk" %}
   <main id="main" tabindex="-1">{{ content | safe }}</main>
   {% include "partials/footer.njk" %}
-  {%- if pageId == "book" %}
+  {%- if estimator %}
   <script>window.__UP_PRICING__ = {{ business.pricingForScript | dump | safe }};</script>
   {%- endif %}
   <script src="assets/js/site.js"></script>

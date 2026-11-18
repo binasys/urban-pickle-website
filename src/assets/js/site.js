@@ -14,7 +14,7 @@
     if (e.key === "Escape") closeMenu();
   });
   document.getElementById("year").textContent = new Date().getFullYear();
-  if (document.body.dataset.page === "book") {
+  if (document.getElementById("court-type")) {
     // Prices come from src/_data/business.yaml, injected by the page layout.
     const PRICING = window.__UP_PRICING__;
     const money = (n) => PRICING.currency + " " + Number(n).toFixed(0);
