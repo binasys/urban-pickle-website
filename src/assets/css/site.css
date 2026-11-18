@@ -839,7 +839,7 @@ details p {
 }
 .footer-top {
   display: grid;
-  grid-template-columns: 1.7fr 1fr 1fr 1fr;
+  grid-template-columns: 1.7fr 1fr 1fr;
   gap: 45px;
 }
 .footer-brand .brand-name {
@@ -4717,7 +4717,7 @@ summary:after {
   padding: 0 32px 20px 0;
 }
 .footer-top {
-  grid-template-columns: minmax(0, 1.5fr) repeat(3, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 1.5fr) repeat(2, minmax(0, 1fr));
   gap: 40px;
   align-items: start;
 }
@@ -4922,6 +4922,13 @@ summary:after {
     grid-template-columns: 1fr;
     gap: 24px;
   }
+  body[data-page="about"] .club-play {
+    padding-bottom: 52px;
+  }
+  body[data-page="about"] .club-play .content-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
   .detail-box,
   .order-summary {
     padding: 24px;
@@ -5023,10 +5030,6 @@ summary:after {
   }
   .footer-top {
     gap: 28px 20px;
-  }
-  .footer-column:last-child {
-    display: block;
-    grid-column: 1/-1;
   }
   .footer-bottom {
     align-items: flex-start;
@@ -7286,28 +7289,19 @@ html.has-cinema-snap {
   body[data-page="about"] .detail-box h3 br {
     display: none;
   }
-  body[data-page="community"] .page-body {
-    display: grid;
-    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1fr);
-    gap: 26px;
+  body[data-page="about"] .club-play {
+    padding: 0 0 85px;
   }
-  body[data-page="community"] .content-grid {
-    grid-template-columns: 1fr;
-    gap: 18px;
-    margin: 0;
+  body[data-page="about"] .club-play .section-heading {
+    margin-bottom: 20px;
   }
-  body[data-page="community"] .content-card {
-    padding-top: 14px;
+  body[data-page="about"] .club-play .content-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px 40px;
+    margin-top: 0;
   }
-  body[data-page="community"] .content-card:first-child {
-    border: 0;
-    padding: 0;
-  }
-  body[data-page="community"] .content-card p {
-    margin-bottom: 12px;
-  }
-  body[data-page="community"] .wide-photo {
-    height: clamp(320px, 53vh, 540px);
+  body[data-page="about"] .club-play .content-card {
+    padding-top: 24px;
   }
   body[data-page="events"] .wide-photo {
     height: clamp(240px, 32vh, 340px);
@@ -7323,9 +7317,6 @@ html.has-cinema-snap {
   }
   body[data-page="events"] .page-body > .text-link {
     margin-top: 14px;
-  }
-  body[data-page="coaching"] .wide-photo {
-    height: clamp(300px, 46vh, 440px);
   }
   /* Six images remain visible, with full-size photo and guide links. */
   .gallery-collection {
@@ -7922,32 +7913,6 @@ body .site-header .header-actions .btn {
   body[data-page="about"] .prose {
     align-self: center;
   }
-  body[data-page="community"] .wide-photo {
-    height: 100%;
-    min-height: 420px;
-    max-height: none;
-    object-fit: cover;
-  }
-  body[data-page="community"] .content-grid {
-    align-content: space-between;
-  }
-  body[data-page="coaching"] .page-body > .two-col {
-    height: 100%;
-    align-items: stretch;
-  }
-  body[data-page="coaching"] .page-body > .two-col > div,
-  body[data-page="coaching"] .content-court-photo {
-    height: 100%;
-  }
-  body[data-page="coaching"] .wide-photo {
-    height: 100%;
-    min-height: 420px;
-    max-height: none;
-    object-fit: cover;
-  }
-  body[data-page="coaching"] .detail-box {
-    align-self: center;
-  }
   body[data-page="events"] .page-body {
     display: flex;
     flex-direction: column;
@@ -7960,60 +7925,54 @@ body .site-header .header-actions .btn {
   body[data-page="gallery"] .gallery-collection img {
     height: clamp(160px, 27dvh, 360px);
   }
-  body[data-page="book"] .field-grid {
+  body[data-page="pricing"] .field-grid {
     gap: 24px;
   }
-  body[data-page="book"] .field {
+  body[data-page="pricing"] .field {
     font-size: 15px;
     gap: 10px;
   }
-  body[data-page="book"] .field select {
+  body[data-page="pricing"] .field select {
     min-height: 54px;
     font-size: 16px;
     padding: 13px 14px;
   }
-  body[data-page="book"] .booking-step h2 {
+  body[data-page="pricing"] .booking-step h2 {
     font-size: 22px;
     margin-bottom: 28px;
   }
-  body[data-page="book"] .summary-row {
+  body[data-page="pricing"] .summary-row {
     font-size: 15px;
     padding: 15px 0;
   }
-  body[data-page="book"] .summary-total strong {
+  body[data-page="pricing"] .summary-total strong {
     font-size: 40px;
   }
-  body[data-page="faq"] .faq-content {
+  body[data-page="help"] .faq-content {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     gap: 24px;
   }
-  body[data-page="faq"] .faq-list {
+  body[data-page="help"] .faq-list {
     gap: 16px 24px;
   }
-  body[data-page="faq"] details {
+  body[data-page="help"] details {
     background: var(--up-surface);
     border: 0;
     border-radius: 14px;
     padding: 0 20px;
   }
-  body[data-page="faq"] summary {
+  body[data-page="help"] summary {
     font-size: 17px;
     min-height: 92px;
     padding: 20px 0;
   }
-  body[data-page="cancellation"] .policy-item,
-  body[data-page="terms"] .policy-item,
-  body[data-page="privacy"] .policy-item {
+  body[data-page="help"] .policy-item {
     background: var(--up-surface);
     border: 0;
     border-radius: 16px;
     padding: 24px;
-  }
-  body[data-page="contact"] .page-body > .two-col {
-    height: 100%;
-    align-items: center;
   }
   body[data-page="visit"] .visit-page {
     grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.2fr);
@@ -8215,9 +8174,6 @@ body .site-header .header-actions .btn {
   body[data-page="courts"] .page-body {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr);
   }
-  body[data-page="coaching"] .page-body > .two-col {
-    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-  }
 }
 
 /* The final contact links form one quiet, deliberate footer panel. */
@@ -8360,4 +8316,29 @@ body .site-header .header-actions .btn {
     font-size: 9px;
     gap: 12px;
   }
+}
+
+/* Good to know: anchored sections clear the sticky header and breathe. */
+body[data-page="help"] .help-jump {
+  margin-top: 22px;
+}
+body[data-page="help"] .page-body > h2 {
+  margin-top: 48px;
+}
+body[data-page="help"] :is(#faqs, .page-body > h2) {
+  scroll-margin-top: calc(var(--header-height, 77px) + 24px);
+}
+body[data-page="about"] #play {
+  scroll-margin-top: calc(var(--header-height, 77px) + 24px);
+}
+body[data-page="help"] .policy-grid .policy-item h3 {
+  font-size: 26px;
+  margin: 0 0 12px;
+}
+
+/* Gallery: landscape court photos keep their 4:3 composition. */
+.gallery-wide img,
+.gallery-collection .gallery-wide img {
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
 }

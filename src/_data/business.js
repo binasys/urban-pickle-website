@@ -57,6 +57,7 @@ function validate(d) {
     "phone",
     "instagram",
     "bookingUrl",
+    "whatsappCommunityUrl",
     "address.street",
     "address.area",
     "address.city",
@@ -79,6 +80,12 @@ function validate(d) {
   requireNumber(d, "hours.closeHour", { min: 1, max: 24 });
   if (d.hours.closeHour <= d.hours.openHour)
     fail(`"hours.closeHour" must be after "hours.openHour".`);
+  requireNumber(d, "courts.total", { min: 1 });
+  requireNumber(d, "courts.openAir");
+  requireNumber(d, "courts.covered");
+  if (d.courts.openAir + d.courts.covered !== d.courts.total) {
+    fail(`"courts.openAir" plus "courts.covered" must equal "courts.total".`);
+  }
   requireNumber(d, "extras.paddle");
   requireNumber(d, "extras.ball");
   requireNumber(d, "extras.maxPaddles", { min: 0, max: 20 });

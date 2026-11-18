@@ -1,5 +1,5 @@
 ---
-title: "Visit us"
+title: "Visit &amp; contact"
 pageId: "visit"
 headerHeight: 77
 ---
@@ -39,6 +39,27 @@ headerHeight: 77
         >Waze<span class="arrow" aria-hidden="true">↗</span></a
       >
     </div>
+    <div class="direction-links">
+      <a
+        class="btn outline"
+        href="{{ business.whatsappUrl }}"
+        target="_blank"
+        rel="noopener noreferrer"
+        >WhatsApp us<span class="arrow" aria-hidden="true">↗</span></a
+      ><a
+        class="btn outline"
+        href="{{ business.whatsappCommunityUrl }}"
+        target="_blank"
+        rel="noopener noreferrer"
+        >Join our community<span class="arrow" aria-hidden="true">↗</span></a
+      ><a
+        class="btn outline"
+        href="{{ business.instagram }}"
+        target="_blank"
+        rel="noopener noreferrer"
+        >Instagram<span class="arrow" aria-hidden="true">↗</span></a
+      >
+    </div>
     <h3 style="margin-top: 30px">A place to park.</h3>
     <p class="muted" style="margin: 16px 0">
       Limited free parking at the entrance. {{ business.parking.name }} faces the main road: {{
@@ -51,6 +72,15 @@ headerHeight: 77
       target="_blank"
       rel="noopener noreferrer"
       >{{ business.parking.name }}<span class="arrow" aria-hidden="true">↗</span></a
+    >
+    <h3 style="margin-top: 30px">Ready to rally?</h3>
+    <p class="muted" style="margin: 16px 0">Choose available courts and times on Courtsite.</p>
+    <a
+      class="btn"
+      href="{{ business.bookingUrl | escape }}"
+      target="_blank"
+      rel="noopener noreferrer"
+      >Book on Courtsite<span class="arrow" aria-hidden="true">↗</span></a
     ><iframe
       class="venue-map"
       title="{{ business.name }} on Google Maps"

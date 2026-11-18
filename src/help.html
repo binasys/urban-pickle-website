@@ -1,0 +1,126 @@
+---
+title: "Good to know"
+pageId: "help"
+headerHeight: 77
+---
+
+<div class="page-top">
+  <div class="container">
+    <div class="eyebrow"><span class="dot"></span>Good to know</div>
+    <h1>Good questions.<br />Clear answers.</h1>
+    <p class="intro">
+      Practical details, booking policies and the few house rules that keep the games good.
+    </p>
+    <div class="direction-links help-jump">
+      <a class="text-link" href="#faqs">FAQs</a>
+      <a class="text-link" href="#cancellation">Cancellation &amp; weather</a>
+      <a class="text-link" href="#guidelines">Club guidelines</a>
+      <a class="text-link" href="#privacy">Privacy &amp; your data</a>
+    </div>
+  </div>
+</div>
+<section class="container page-body">
+  <div class="prose faq-content">
+    <h2 id="faqs">FAQs</h2>
+    <div class="faq-list">
+      <details name="club-faq">
+        <summary>Where is {{ business.name }}?</summary>
+        <p>
+          On {{ business.address.street }} in {{ business.address.area }}, {{ business.address.city
+          }}. Open {{ business.hoursLine }}. Directions and parking are on
+          <a href="visit">Visit us</a>.
+        </p>
+      </details>
+      <details name="club-faq">
+        <summary>Do I need my own paddle?</summary>
+        <p>
+          No. Paddle rental and pickleballs are available at the counter. Prices are on
+          <a href="pricing">Pricing</a>.
+        </p>
+      </details>
+      <details name="club-faq">
+        <summary>Where can I park?</summary>
+        <p>
+          Limited free parking is available at the entrance, with paid parking nearby. Rates,
+          directions and the parking guide are on <a href="visit">Visit us</a>.
+        </p>
+      </details>
+      <details name="club-faq">
+        <summary>Can I book coaching or social play?</summary>
+        <p>
+          Yes. Coaching enquiries and community games are on
+          <a href="about#play">The club</a>.
+        </p>
+      </details>
+      <details name="club-faq">
+        <summary>Where do I book?</summary>
+        <p>
+          Book your court through Courtsite using the
+          <a href="{{ business.bookingUrl | escape }}" target="_blank" rel="noopener noreferrer"
+            >Book a court button<span class="arrow" aria-hidden="true">↗</span></a
+          >.
+        </p>
+      </details>
+    </div>
+    <div class="faq-action" style="margin-top: 30px">
+      <a class="btn" href="{{ business.whatsappUrl }}" target="_blank" rel="noopener noreferrer"
+        >Ask on WhatsApp<span class="arrow" aria-hidden="true">↗</span></a
+      >
+    </div>
+  </div>
+
+  <h2 id="cancellation">Cancellation &amp; weather</h2>
+  <div class="prose policy-grid">
+    <article class="policy-item">
+      <h3>Booking changes</h3>
+      <p>
+        To change your time, contact us at least 72 hours before your booking. One change is
+        allowed, subject to court availability.
+      </p>
+    </article>
+    <article class="policy-item">
+      <h3>Cancellations</h3>
+      <p>Bookings are non-refundable. Unused sessions cannot be carried forward.</p>
+    </article>
+    <article class="policy-item">
+      <h3>Rain-affected games</h3>
+      <p>
+        If rain interrupts a session of less than 35 minutes, contact us on WhatsApp within 48 hours
+        of your original booking. Your game can be rescheduled within one month, subject to
+        availability.
+      </p>
+    </article>
+  </div>
+
+  <h2 id="guidelines">Club guidelines</h2>
+  <div class="prose policy-grid">
+    <article class="policy-item">
+      <h3>Play together</h3>
+      <p>Respect other players and follow the team’s guidance on court.</p>
+    </article>
+    <article class="policy-item">
+      <h3>Bringing children</h3>
+      <p>
+        Children aged 12 and below must be supervised by an adult responsible for their safety and
+        behaviour.
+      </p>
+    </article>
+  </div>
+
+  <h2 id="privacy">Privacy &amp; your data</h2>
+  <div class="prose">
+    <p>
+      Court reservations and payments are completed through Courtsite, and its privacy policy covers
+      the information you share with that service. Directions use Google Maps or Waze, and enquiries
+      may reach us through WhatsApp or Instagram; each service’s privacy policy applies when you use
+      it.
+    </p>
+    <p>
+      Questions about your information? Contact the team on {{ business.phone }} or through the
+      options on <a href="visit">Visit us</a>.
+    </p>
+    <div class="policy-action" style="margin-top: 30px">
+      <a class="btn" href="visit">Get in touch<span class="arrow" aria-hidden="true">↗</span></a>
+    </div>
+  </div>
+</section>

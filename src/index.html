@@ -1,5 +1,5 @@
 ---
-title: "Your game. Your people."
+title: "Your game for your people."
 pageId: "home"
 headerHeight: 85
 bodyClass: "on-home"
@@ -59,7 +59,12 @@ courtScene: true
           <h2>Make it yours</h2>
         </div>
         <div class="cinema-final-actions">
-          <a class="btn" href="book" tabindex="0"
+          <a
+            class="btn"
+            href="{{ business.bookingUrl | escape }}"
+            target="_blank"
+            rel="noopener noreferrer"
+            tabindex="0"
             >Book a court<span class="arrow" aria-hidden="true">↗</span></a
           ><a class="btn outline" href="about" tabindex="0"
             >Explore the club<span class="arrow" aria-hidden="true">↗</span></a
@@ -81,8 +86,8 @@ courtScene: true
       </figure>
       <dl class="cinema-final-essentials" aria-label="Plan your visit">
         <div>
-          <dt>10 courts</dt>
-          <dd>4 open air · 6 covered</dd>
+          <dt>{{ business.courts.total }} courts</dt>
+          <dd>{{ business.courts.openAir }} open air · {{ business.courts.covered }} covered</dd>
         </div>
         <div>
           <dt>Heart of KL</dt>
@@ -147,7 +152,7 @@ courtScene: true
           >
         </nav>
         <div class="cinema-footer-meta">
-          <small>© 2026 {{ business.name }}</small><a href="privacy" tabindex="0">Privacy</a>
+          <small>© 2026 {{ business.name }}</small><a href="help#privacy" tabindex="0">Privacy</a>
         </div>
       </footer>
     </div>
@@ -168,7 +173,10 @@ courtScene: true
               alt=""
               decoding="async"
               fetchpriority="low"
-            /><strong>10 courts</strong><span>4 open air · 6 covered</span>
+            /><strong>{{ business.courts.total }} courts</strong
+            ><span
+              >{{ business.courts.openAir }} open air · {{ business.courts.covered }} covered</span
+            >
           </div>
           <div>
             <img
