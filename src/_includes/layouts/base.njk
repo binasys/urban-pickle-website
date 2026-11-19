@@ -1,14 +1,38 @@
+{%- set pageTitle -%}{% if fullTitle %}{{ title | safe }}{% else %}{{ title | safe }} — {{ business.name | escape }}{% endif %}{%- endset -%}
+{%- set pageDescription -%}{% if description %}{{ description | safe }}{% else %}{{ business.description | escape }}{% endif %}{%- endset -%}
+{%- set canonicalPath = "/" if page.filePathStem == "/index" else page.filePathStem -%}
+{%- set canonicalUrl = business.siteUrl + canonicalPath -%}
+{%- set ogImageUrl = business.siteUrl + "/" + (ogImage or "assets/images/courts.webp") -%}
 <!DOCTYPE html>
 <html lang="en" style="--header-height: {{ headerHeight or 77 }}px;">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#ffffff">
-  <meta name="description" content="{% if description %}{{ description | safe }}{% else %}{{ business.description | escape }}{% endif %}">
-  <title>{{ title | safe }} — {{ business.name | escape }}</title>
+  <meta name="description" content="{{ pageDescription | safe }}">
+  <title>{{ pageTitle | safe }}</title>
+  <link rel="canonical" href="{{ canonicalUrl }}">
   <link rel="preload" href="assets/fonts/playfair-display-regular.woff2" as="font" type="font/woff2" crossorigin="">
   <link rel="preload" href="assets/fonts/work-sans-medium.woff2" as="font" type="font/woff2" crossorigin="">
-  <link rel="icon" href="{{ business.logo.favicon }}">
+  <link rel="icon" href="favicon.ico" sizes="48x48">
+  <link rel="icon" type="image/png" sizes="48x48" href="{{ business.logo.favicon }}">
+  <link rel="icon" type="image/png" sizes="96x96" href="assets/icons/icon-96.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/icons/icon-192.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_MY">
+  <meta property="og:site_name" content="{{ business.name | escape }}">
+  <meta property="og:title" content="{{ pageTitle | safe }}">
+  <meta property="og:description" content="{{ pageDescription | safe }}">
+  <meta property="og:url" content="{{ canonicalUrl }}">
+  <meta property="og:image" content="{{ ogImageUrl }}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ pageTitle | safe }}">
+  <meta name="twitter:description" content="{{ pageDescription | safe }}">
+  <meta name="twitter:image" content="{{ ogImageUrl }}">
+  {%- if pageId == "home" %}
+  <script type="application/ld+json">{{ business.structuredDataJson | safe }}</script>
+  {%- endif %}
   <link rel="stylesheet" href="assets/css/site.css">
   <!-- Fonts: SIL Open Font License 1.1, see assets/fonts/*-OFL.txt -->
 </head>

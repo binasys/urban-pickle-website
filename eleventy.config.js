@@ -6,6 +6,8 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/.nojekyll");
   // Custom domain.
   eleventyConfig.addPassthroughCopy("src/CNAME");
+  // Root favicon for Google Search and browsers requesting /favicon.ico.
+  eleventyConfig.addPassthroughCopy("src/favicon.ico");
   // Business info (prices, phone, hours…) lives in this YAML file, loaded by src/_data/business.js.
   eleventyConfig.addWatchTarget("src/_data/business.yaml");
 
