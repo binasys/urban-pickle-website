@@ -1,5 +1,6 @@
 ---
-title: "Courts &amp; facilities"
+title: "Courts &amp; Facilities"
+description: "10 covered and open-air pickleball courts in Taman U Thant, Kuala Lumpur. Ball machine hire, paddle rental, showers, cafe, and parking from 7am to midnight."
 pageId: "courts"
 headerHeight: 77
 ---
@@ -15,16 +16,14 @@ headerHeight: 77
   </div>
 </div>
 <section class="container page-body">
-  <picture class="content-court-photo"
-    ><source media="(max-width:600px)" srcset="" sizes="100vw" />
+  <picture class="content-court-photo">
     <img
-      class="wide-photo"
-      src="assets/images/courts-detail-wide.webp"
-      srcset=""
+      class="wide-photo page-photo"
+      src="assets/images/courts.webp"
       sizes="100vw"
       width="1448"
       height="1086"
-      alt="Covered courts at {{ business.name }}, {{ business.address.street }}"
+      alt="Covered courts at {{ business.name }}"
       loading="lazy"
       decoding="async"
   /></picture>
@@ -32,8 +31,8 @@ headerHeight: 77
     <div class="court-overview">
       <h2>Room to rally.</h2>
       <p class="muted" style="margin-top: 22px">
-        Choose a covered or open court, or book a covered court with the ball machine. Play {{
-        business.hoursLine }}.
+        Choose a covered or open court. The ball machine is {{ business.currency }}{{
+        business.extras.ballMachine }} an hour, on top of court hire. Play {{ business.hoursLine }}.
       </p>
       <div class="feature-list">
         <div class="feature-item">
@@ -53,8 +52,7 @@ headerHeight: 77
         <div class="feature-item">
           <h3>Ball machine</h3>
           <p>
-            Covered court plus ball machine from {{ business.currency }}{{
-            business.fromPrice.machine }} an hour.
+            {{ business.currency }}{{ business.extras.ballMachine }} an hour, added to your court.
           </p>
         </div>
       </div>
@@ -65,11 +63,12 @@ headerHeight: 77
         game-ready.
       </h3>
       <p>
-        Paddle and ball rental are available at the counter. Court, paddle and ball prices are on
-        Pricing.
+        Rent a paddle for {{ business.currency }}{{ business.extras.paddle }} per session, or buy
+        balls for {{ business.currency }}{{ business.extras.ball }} each or {{ business.currency
+        }}{{ business.extras.ballPack }} for 3, at the counter.
       </p>
       <a class="btn" href="pricing"
-        >See rates &amp; extras<span class="arrow" aria-hidden="true">↗</span></a
+        >See all court rates<span class="arrow" aria-hidden="true">↗</span></a
       >
     </aside>
   </div>
@@ -85,6 +84,24 @@ headerHeight: 77
       <div>AED</div>
       <div>Entrance &amp; nearby parking</div>
     </div>
+  </div>
+  <div class="venue-reference-grid">
+    <figure>
+      <img
+        src="assets/images/court-layout.svg"
+        alt="Court layout"
+        width="960"
+        height="720"
+        loading="lazy"
+        decoding="async"
+      />
+      <figcaption>
+        <span>Court layout</span
+        ><a href="assets/images/court-layout.svg" target="_blank" rel="noopener noreferrer"
+          >View larger ↗</a
+        >
+      </figcaption>
+    </figure>
   </div>
   <p class="pricing-note">
     Limited free entrance parking and nearby paid parking.

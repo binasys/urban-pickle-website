@@ -24,6 +24,7 @@
 # ---------------------------------------------------------------------
 name: Urban Pickle # shown in page titles, footer, alt text
 legalName: JD Urban Ventures Sdn Bhd # shown in the footer copyright line
+siteUrl: "https://urbanpickle.com.my" # primary website URL (used for canonical links and sitemap)
 # Default description used by search engines (Google) for every page
 description: "Your game for your people. Covered and open pickleball courts, food and drinks in the heart of Kuala Lumpur."
 
@@ -39,12 +40,13 @@ logo:
   wordmarkWidth: 1086 # pixel size of the image above
   wordmarkHeight: 664
   mark: assets/images/official-up-mark-grey.webp # "UP" mark on the homepage ball
-  favicon: assets/favicon.svg # little icon in the browser tab
+  favicon: assets/icons/icon-48.png # browser tab and Google Search icon (48x48 PNG)
 
 # ---------------------------------------------------------------------
 # CONTACT
 # ---------------------------------------------------------------------
 phone: "+60 12-600 2178" # how the number is displayed
+email: "hello@urbanpickle.com.my" # shown on the Visit page
 whatsapp: "60126002178" # digits only, with country code, no + or spaces
 instagram: https://www.instagram.com/urbanpicklemy/
 # Courtsite booking page (copy the full link from your browser)
@@ -106,7 +108,6 @@ courtRates:
     toHour: 17
     covered: 50
     open: 40
-    machine: 65 # covered court + ball machine
 
   - days: Mon–Fri
     times: 5pm – 10pm
@@ -115,7 +116,6 @@ courtRates:
     toHour: 22
     covered: 85
     open: 75
-    machine: 100
 
   - days: Mon–Fri
     times: 10pm – midnight
@@ -124,7 +124,6 @@ courtRates:
     toHour: 24
     covered: 50
     open: 40
-    machine: 100
 
   - days: Weekends & public holidays
     times: 7am – midnight
@@ -133,7 +132,6 @@ courtRates:
     toHour: 24
     covered: 70
     open: 60
-    machine: 85
 
 # ---------------------------------------------------------------------
 # EXTRAS (RM)
@@ -142,3 +140,5 @@ extras:
   paddle: 5 # paddle rental, per paddle, per session
   ball: 10 # one pickleball
   maxPaddles: 4 # how many paddles the booking calculator offers
+  ballPack: 25 # three pickleballs
+  ballMachine: 15 # ball machine add-on, per hour

@@ -50,11 +50,13 @@ function validate(d) {
   [
     "name",
     "legalName",
+    "siteUrl",
     "description",
     "logo.wordmark",
     "logo.mark",
     "logo.favicon",
     "phone",
+    "email",
     "instagram",
     "bookingUrl",
     "whatsappCommunityUrl",
@@ -68,6 +70,9 @@ function validate(d) {
     "hours.days",
     "currency",
   ].forEach((k) => requireText(d, k));
+  if (!/^https?:\/\/[^/]+/.test(d.siteUrl)) {
+    fail(`"siteUrl" must be a full http(s) URL, e.g. "https://urbanpickle.com.my".`);
+  }
   if (!/^\d{8,15}$/.test(String(d.whatsapp ?? ""))) {
     fail(`"whatsapp" must be digits only with country code, e.g. "60126002178".`);
   }
@@ -88,6 +93,8 @@ function validate(d) {
   }
   requireNumber(d, "extras.paddle");
   requireNumber(d, "extras.ball");
+  requireNumber(d, "extras.ballPack");
+  requireNumber(d, "extras.ballMachine");
   requireNumber(d, "extras.maxPaddles", { min: 0, max: 20 });
 
   if (!Array.isArray(d.courtRates) || d.courtRates.length === 0) {
@@ -101,7 +108,7 @@ function validate(d) {
       fail(`${p} (${r.days} ${r.times}): "dayType" must be weekday or weekend.`);
     }
     ["fromHour", "toHour"].forEach((k) => requireNumber({ r }, `r.${k}`, { min: 0, max: 24 }));
-    ["covered", "open", "machine"].forEach((k) => {
+    ["covered", "open"].forEach((k) => {
       if (typeof r[k] !== "number") {
         fail(
           `${p} (${r.days} ${r.times}): "${k}" must be a plain number. Found: ${JSON.stringify(r[k])}`,
@@ -123,11 +130,75 @@ function validate(d) {
 export default function () {
   const d = load();
   validate(d);
+  const siteUrl = d.siteUrl.replace(/\/+$/, "");
   const { latitude: lat, longitude: lng } = d.map;
   const min = (k) => Math.min(...d.courtRates.map((r) => r[k]));
+  const max = (k) => Math.max(...d.courtRates.map((r) => r[k]));
+  const padHour = (h) => String(h).padStart(2, "0") + ":00";
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": `${siteUrl}/#website`,
+        url: `${siteUrl}/`,
+        name: d.name,
+        alternateName: [`${d.name} KL`, `${d.name} ${d.address.city}`],
+        publisher: { "@id": `${siteUrl}/#organization` },
+      },
+      {
+        "@type": "SportsActivityLocation",
+        "@id": `${siteUrl}/#organization`,
+        name: d.name,
+        legalName: d.legalName,
+        description: d.description,
+        url: `${siteUrl}/`,
+        logo: {
+          "@type": "ImageObject",
+          url: `${siteUrl}/assets/icons/icon-192.png`,
+          width: 192,
+          height: 192,
+        },
+        image: `${siteUrl}/assets/images/courts.webp`,
+        telephone: d.phone,
+        priceRange: `${d.currency}${min("open")}–${d.currency}${max("covered")}`,
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: `${d.address.street}, ${d.address.area}`,
+          addressLocality: d.address.city,
+          addressCountry: "MY",
+        },
+        geo: {
+          "@type": "GeoCoordinates",
+          latitude: lat,
+          longitude: lng,
+        },
+        openingHoursSpecification: [
+          {
+            "@type": "OpeningHoursSpecification",
+            dayOfWeek: [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday",
+              "Saturday",
+              "Sunday",
+            ],
+            opens: padHour(d.hours.openHour),
+            closes: d.hours.closeHour === 24 ? "23:59" : padHour(d.hours.closeHour),
+          },
+        ],
+        sameAs: [d.instagram],
+      },
+    ],
+  };
   return {
     ...d,
+    siteUrl,
+    structuredDataJson: JSON.stringify(structuredData),
     phoneHref: "tel:" + d.phone.replace(/[^\d+]/g, ""),
+    emailHref: "mailto:" + d.email,
     whatsappUrl: `https://wa.me/${d.whatsapp}`,
     mapsDirectionsUrl: `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`,
     wazeUrl: `https://waze.com/ul?ll=${lat},${lng}&navigate=yes`,
@@ -139,7 +210,7 @@ export default function () {
       (r) =>
         r.dayType === "weekday" && r.fromHour <= d.hours.openHour && d.hours.openHour < r.toHour,
     ).covered,
-    fromPrice: { covered: min("covered"), open: min("open"), machine: min("machine") },
+    fromPrice: { covered: min("covered"), open: min("open") },
     bookingStartHours: Array.from(
       { length: d.hours.closeHour - d.hours.openHour },
       (_, i) => d.hours.openHour + i,
@@ -154,10 +225,11 @@ export default function () {
         toHour,
         covered,
         open,
-        machine,
       })),
       paddle: d.extras.paddle,
       ball: d.extras.ball,
+      ballPack: d.extras.ballPack,
+      ballMachine: d.extras.ballMachine,
     },
   };
 }
