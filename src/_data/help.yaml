@@ -1,0 +1,125 @@
+# =====================================================================
+#  URBAN PICKLE: FAQS, BOOKING POLICY & CLUB GUIDELINES
+# =====================================================================
+#  The Help page (help) is built from this file.
+#
+#  - faqs: the questions shown under "FAQs". Each entry has a
+#    "question" and an "answer".
+#
+#  HOW TO EDIT SAFELY
+#   - Keep the spaces at the start of each line exactly as they are.
+#     Use spaces, never the Tab key.
+#   - Only change the text after the colon ( : ). Never rename the
+#     words before the colon.
+#   - Lines starting with # are notes and are ignored.
+#   - Each entry is one "- " item. Keep the dash and the space.
+#   - The text can contain simple links, e.g.
+#     <a href="visit">Visit us</a>
+#   - Business details such as {{ business.name }} or
+#     {{ business.hoursLine }} are filled in automatically from
+#     business.yaml. Keep those placeholders as they are.
+#   - If a value contains a colon ( : ) or a # sign, wrap it in quotes.
+#
+#  If you make a mistake, the build fails with a message naming the
+#  field to fix, and the live site keeps its previous version.
+# =====================================================================
+
+general:
+  - question: "Where is {{ business.name }} located, and what are your operating hours?"
+    answer: >
+      We are located at {{ business.addressLine }}.
+      <br>Our opening hours are {{ business.hoursLine }}.
+
+  - question: "Is parking available at the venue?"
+    answer: >
+      Limited free parking is available at the entrance.
+      <br>Paid parking is available at {{ business.parking.name }}, facing the main road.
+      Flat rate of {{business.currency }}{{ business.parking.price }} on weekdays after 5pm and
+      weekends all day. Validate your parking at the counter.
+  
+  - question: "What should I wear on court?"
+    answer: >
+      Players must wear proper sports attire and non-marking court shoes (such as pickleball, tennis,
+      or badminton shoes). Running shoes with dark marking soles, sandals, heels, or bare feet are
+      not permitted on court to protect the playing surface.
+
+  - question: "Do you provide paddle and ball rentals?"
+    answer: >
+      Yes. Pickleball paddles and balls are available for rent at the venue counter.
+      Feel free to bring your own gear as well!
+
+  - question: "Are children allowed at {{ business.name }}?"
+    answer: >
+      Yes. However, children aged 12 years old and below are strictly permitted on the premises only
+      under the direct supervision of a parent or responsible adult. The supervising adult is fully
+      responsible for the child's safety, behavior, and any damages caused to the facilities.
+
+  - question: "Do you host corporate events, tournaments, or private group bookings?"
+    answer: >
+      Yes. For bulk court bookings, private tournaments, coaching clinics, or corporate events, reach
+      out to us directly via WhatsApp at
+      <a href="{{ business.whatsappUrl | escape }}" target="_bank" rel="noopener noreferrer"
+        >{{ business.phone }}<span class="arrow" aria-hidden="true">↗</span></a
+      > so we can help tailor a package for your group.
+
+bookings:
+  - question: "How do I book a court at {{ business.name }}?"
+    answer: >
+      You can book a court in two convenient ways:
+      <br>- Book via our official booking partner, Courtsite,
+      <a href="{{ business.bookingUrl | escape }}" target="_blank" rel="noopener noreferrer"
+        >here<span class="arrow" aria-hidden="true">↗</span></a
+      >. Select your preferred date, time slot, and court, and pay online for instant confirmation.
+      <br>- Message our team on WhatsApp at
+      <a href="{{ business.whatsappUrl | escape }}" target="_bank" rel="noopener noreferrer"
+        >{{ business.phone }}<span class="arrow" aria-hidden="true">↗</span></a
+      > with your preferred date, time, and duration. Our team will check availability, assist you
+      with the reservation, and share our bank transfer details to confirm your slot.
+
+  - question: "Can I walk in without a booking?"
+    answer: >
+      Walk-ins are subject to court availability. To guarantee your playing time, especially during
+      peak weekday evenings and weekends, we strongly recommend booking your slot in advance.
+  
+  - question: "What payment methods are accepted?"
+    answer: >
+      Online bookings through Courtsite support FPX online banking, credit/debit cards, and selected e-wallets.
+      For bookings arranged directly via WhatsApp, payment is accepted via online bank transfer,
+      and your slot is confirmed once payment has been received and a receipt is shared with our team.
+
+cancellations:
+  - question: "What is your cancellation and refund policy?"
+    answer: >
+      We have a strictly no-refund and no carry-forward policy for any non-utilized or missed booking sessions.
+      Please ensure your schedule is confirmed before completing your booking.
+
+  - question: "Can I reschedule my booking if my plans change?"
+    answer: >
+      Yes, provided you give us at least 72 hours' advance notice prior to your scheduled session.
+      All time-change requests are subject to court availability and can only be made once per reservation.
+
+  - question: "How do I request a booking time change?"
+    answer: >
+      If your session is more than 72 hours away, contact our team via WhatsApp at
+      <a href="{{ business.whatsappUrl | escape }}" target="_bank" rel="noopener noreferrer"
+        >{{ business.phone }}<span class="arrow" aria-hidden="true">↗</span></a
+      > with your booking reference number and preferred new date and time.
+  
+  - question: "What happens if it rains during my session?"
+    answer: >
+      If your session is cut short due to rain and you have played for under 35 minutes, you are eligible
+      to reschedule the session at no extra charge. No cash refunds are issued for rain-affected bookings.
+
+  - question: "How do I claim a rain-affected reschedule, and how long do I have to use it?"
+    answer: >
+      You must submit your rescheduling request within 48 hours of your original booking time by messaging
+      us on WhatsApp at
+      <a href="{{ business.whatsappUrl | escape }}" target="_bank" rel="noopener noreferrer"
+        >{{ business.phone }}<span class="arrow" aria-hidden="true">↗</span></a
+      > Your replacement session must be rescheduled to a new date and time within one (1) month from
+      the original booking date, subject to court availability.
+
+  - question: "What if it rains after we have already played for 35 minutes or more?"
+    answer: >
+      Sessions that have exceeded 35 minutes of play are considered utilized and are not eligible for
+      rain rescheduling or refunds.

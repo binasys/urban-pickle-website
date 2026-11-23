@@ -6,7 +6,8 @@
     { "id": "about", "label": "The club" },
     { "id": "gallery", "label": "Gallery" },
     { "id": "events", "label": "Events" },
-    { "id": "visit", "label": "Visit us" }
+    { "id": "visit", "label": "Visit us" },
+    { "id": "help", "label": "FAQs" }
   ],
   "brandOptions": [
     { "id": "1", "label": "2025 · beige" },

@@ -878,6 +878,11 @@ details p {
   text-decoration: underline;
   text-underline-offset: 3px;
 }
+.footer-legal {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+}
 .footer-word {
   font-family: var(--display);
   font-size: clamp(70px, 15vw, 220px);
@@ -6852,6 +6857,13 @@ html.has-cinema-snap {
   align-items: center;
   min-height: 44px;
 }
+.cinema-footer-legal {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 18px;
+}
 @media (max-width: 600px) and (min-height: 401px) {
   .cinema-stage.is-stacked .cinema-final-footer {
     grid-area: footer;
@@ -7445,27 +7457,6 @@ html.has-cinema-snap {
   }
   .faq-content .faq-action {
     margin-top: 20px !important;
-  }
-  .policy-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 28px;
-  }
-  .policy-grid .policy-item {
-    margin: 0;
-    padding-top: 16px;
-    border-top: 1px solid var(--line);
-  }
-  .policy-grid .policy-item h2 {
-    font-size: 26px;
-    margin: 0 0 12px;
-  }
-  .policy-grid .policy-action {
-    grid-column: 1/-1;
-    margin: 0 !important;
-  }
-  .policy-grid .policy-action .btn {
-    margin: 0;
   }
   /* Visit essentials retain their raised position beside the introduction. */
   body[data-page="visit"] #main {
@@ -8340,10 +8331,6 @@ body[data-page="help"] :is(#faqs, .page-body > h2) {
 body[data-page="about"] #play {
   scroll-margin-top: calc(var(--header-height, 77px) + 24px);
 }
-body[data-page="help"] .policy-grid .policy-item h3 {
-  font-size: 26px;
-  margin: 0 0 12px;
-}
 
 /* Gallery: landscape court photos keep their 4:3 composition. */
 .gallery-wide img,
@@ -8791,7 +8778,7 @@ body[data-page="visit"] .visit-photo .page-photo {
 }
 .visit-map .venue-map {
   width: 100%;
-  height: clamp(260px, 32vh, 360px);
+  height: clamp(360px, 32vh, 360px);
   margin: 0;
   border-radius: 14px;
 }
@@ -8849,4 +8836,82 @@ body[data-page="visit"] .visit-photo .page-photo {
   .visit-lower {
     padding-top: 24px;
   }
+  .cinema-footer-legal {
+    gap: 12px;
+  }
+}
+
+/* ==== terms: general terms and campaign add-ons ==== */
+@media (min-width: 901px) {
+  body[data-page="terms"] .terms-content {
+    max-width: 840px;
+  }
+}
+body[data-page="terms"] .terms-updated {
+  margin-top: 18px;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+body[data-page="terms"] .terms-jump {
+  margin-top: 24px;
+}
+body[data-page="terms"] :is(#campaign-terms, .terms-campaign) {
+  scroll-margin-top: calc(var(--header-height, 77px) + 24px);
+}
+body[data-page="terms"] .terms-campaigns {
+  margin-top: clamp(64px, 8vw, 112px);
+  border-top: 1px solid var(--line);
+  padding-top: clamp(32px, 4vw, 48px);
+}
+body[data-page="terms"] .terms-campaigns-head .eyebrow {
+  color: var(--muted);
+}
+body[data-page="terms"] .terms-campaigns-head h2 {
+  margin-top: 14px;
+}
+body[data-page="terms"] .terms-campaigns-head p {
+  margin-top: 12px;
+}
+.terms-campaign {
+  margin-top: 32px;
+  padding: clamp(22px, 3vw, 32px);
+  background: var(--up-surface);
+  border-radius: 16px;
+}
+.terms-campaign + .terms-campaign {
+  margin-top: 20px;
+}
+body[data-page="terms"] .terms-campaign .terms-period {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.terms-campaign h3 {
+  margin: 8px 0 14px;
+}
+.terms-campaign h4 {
+  margin: 26px 0 8px;
+  font-family: var(--body);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+/* ==== privacy: legal page ==== */
+@media (min-width: 901px) {
+  body[data-page="privacy"] .privacy-content {
+    max-width: 840px;
+  }
+}
+body[data-page="privacy"] .privacy-updated {
+  margin-top: 18px;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
 }

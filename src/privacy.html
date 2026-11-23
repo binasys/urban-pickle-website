@@ -1,0 +1,35 @@
+---
+title: "Privacy &amp; Your Data"
+description: "How Urban Pickle handles information when you use our website, book a court, or contact us."
+pageId: "privacy"
+headerHeight: 77
+---
+
+<div class="page-top">
+  <div class="container">
+    <div class="eyebrow"><span class="dot"></span>Legal</div>
+    <h1>Privacy &amp; your data.</h1>
+    <p class="privacy-updated">Last updated {{ privacy.updated }}</p>
+  </div>
+</div>
+<section class="container page-body">
+  <div class="prose privacy-content">
+    <p>{{ privacy.intro | safe }}</p>
+    {%- for section in privacy.sections %}
+    <h2>{{ section.heading }}</h2>
+    {%- for paragraph in section.paragraphs %}
+    <p>{{ paragraph | safe }}</p>
+    {%- endfor %} {%- if section.items %}
+    <ul>
+      {%- for item in section.items %}
+      <li>{{ item | safe }}</li>
+      {%- endfor %}
+    </ul>
+    {%- endif %} {%- if section.notes %} {%- for note in section.notes %}
+    <p>{{ note | safe }}</p>
+    {%- endfor %} {%- endif %} {%- endfor %}
+    <div class="policy-action" style="margin-top: 30px">
+      <a class="btn" href="visit">Get in touch<span class="arrow" aria-hidden="true">↗</span></a>
+    </div>
+  </div>
+</section>
