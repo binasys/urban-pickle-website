@@ -1,0 +1,35 @@
+---
+layout: false
+permalink: /llms.txt
+eleventyExcludeFromCollections: true
+---
+# {{ business.name }}
+
+> {{ business.name }} is a pickleball venue in Kuala Lumpur, Malaysia, with {{ business.courts.total }} courts ({{ business.courts.covered }} covered, {{ business.courts.openAir }} open-air) off {{ business.address.street }}. Open {{ business.hoursLine }}. Court hire from {{ business.currency }}{{ business.fromPrice.open }} per hour.
+
+## Key facts
+
+- Address: {{ business.addressLine }}, Malaysia
+- Opening hours: {{ business.hoursLine }}
+- Courts: {{ business.courts.total }} ({{ business.courts.covered }} covered, {{ business.courts.openAir }} open-air)
+- Court rates (per court, per hour):
+{%- for rate in business.courtRates %}
+  - {{ rate.days | safe }}, {{ rate.times | safe }}: covered {{ business.currency }}{{ rate.covered }}, open-air {{ business.currency }}{{ rate.open }}
+{%- endfor %}
+- Add-ons: paddle rental {{ business.currency }}{{ business.extras.paddle }} per session, balls {{ business.currency }}{{ business.extras.ball }} each or {{ business.currency }}{{ business.extras.ballPack }} for 3, ball machine {{ business.currency }}{{ business.extras.ballMachine }} per hour
+- Facilities: changing rooms and showers, Haven Club Cafe (food and drinks), AED, pet-friendly, entrance and nearby paid parking ({{ business.parking.name }}, {{ business.currency }}{{ business.parking.price }} flat rate)
+- Also offers: coaching, open play / social games, corporate events and private group bookings
+- Booking: online via Courtsite ({{ business.bookingUrl | safe }}) or WhatsApp {{ business.phone }}
+- Phone / WhatsApp: {{ business.phone }}
+- Email: {{ business.email }}
+- Instagram: {{ business.instagram }}
+
+## Pages
+
+- [Courts & facilities]({{ business.siteUrl }}/courts): court types, ball machine, amenities, court layout
+- [Pricing]({{ business.siteUrl }}/pricing): hourly rates, add-ons, session estimator
+- [The club]({{ business.siteUrl }}/about): social play, regular games, coaching
+- [Events]({{ business.siteUrl }}/events): corporate team outings and private hire
+- [Visit us]({{ business.siteUrl }}/visit): directions, parking, contact
+- [Help & FAQs]({{ business.siteUrl }}/help): booking, payment, cancellation and rain policy
+- [Gallery]({{ business.siteUrl }}/gallery): photos of the courts and community

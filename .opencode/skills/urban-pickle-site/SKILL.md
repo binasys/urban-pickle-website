@@ -25,7 +25,13 @@ or client-side router.
 5. **Fonts via variables:** `font-family: var(--display)` / `var(--body)`, never literal names.
 6. **Images:** WebP for raster, SVG for diagrams. Descriptive names with no versions, dates or pixel
    sizes. Put them in `src/assets/images/` (feature illustrations in `images/feature-art/`).
-7. **No git commands** unless the user explicitly asks.
+   Compress before adding (photos ≤1280px long side, top-of-page photos ≤1920px plus an
+   `<name>-800.webp` copy used in `srcset`). The first photo on a page uses `loading="eager"` +
+   `fetchpriority="high"`; others stay lazy.
+7. **CSS is minified into `dist/` at build** (lightningcss, in `eleventy.config.js`); edit `src/` as normal.
+8. **`src/404.html`** uses `<base href="/">` (set in `base.njk` for `pageId: "404"`) so relative paths
+   work at any URL depth.
+9. **No git commands** unless the user explicitly asks.
 
 ## Page front matter
 
@@ -51,21 +57,19 @@ Page bodies are rendered with Nunjucks, so a literal `{{` or `{%` in content mus
 | Task                                                   | Where                                                                                                                                                                        |
 | ------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Change page copy                                       | `src/<page>.html`                                                                                                                                                            |
-| Add a page                                             | New `src/<name>.html`; add to `mainNav` in `src/_data/site.json` if it belongs in the nav                                                                                    |
+| Add a page                                             | New `src/<name>.html`; add to `mainNav` in `src/_data/site.json` (`footerOnly: true` keeps it out of the header)                                                                                    |
 | Internal links                                         | Extensionless and relative: `href="pricing"`, never `pricing.html`                                                                                                           |
 | Footer links                                           | `src/_includes/partials/footer.njk`                                                                                                                                          |
 | Name, phone, address, hours, prices, logo, booking URL | `src/_data/business.yaml` (loaded/validated/derived by `src/_data/business.js`; use `{{ business.phone }}`, `{{ business.whatsappUrl }}` etc. Never hardcode these in pages) |
-| Nav, brand options                                     | `src/_data/site.json`                                                                                                                                                        |
+| Nav                                                    | `src/_data/site.json`                                                                                                                                                        |
 | `<head>`, global CSS/JS                                | `src/_includes/layouts/base.njk`                                                                                                                                             |
 | Logo markup                                            | `src/_includes/partials/logo.njk`                                                                                                                                            |
 | Prices in booking estimate                             | `RATES` in `src/assets/js/site.js`. Keep in sync with `src/pricing.html`                                                                                                     |
 
 ## Scripts (`src/assets/js/`)
 
-- `brand-query.js`: runs first in `<body>`; sets `data-brand`/`data-compare` from the query string.
 - `site.js`: mobile menu, Escape to close, footer year, booking estimator (only when `data-page="book"`).
 - `motion.js`: header `is-scrolled`, reveal/scroll effects; respects `prefers-reduced-motion`.
-- `brand-options.js`: brand switcher links in `.brand-comparison`.
 - Home only: `court-scene.js` (minified renderer, exposes `window.UPCourt`; do not hand-edit),
   `court-scene-config.js` (`window.__UP_LOGO_URL__`, `__UP_TEXTURE_URL__`), `home-cinema.js`
   (scroll-driven sequence; falls back to a static image if the scene fails).
@@ -93,6 +97,6 @@ GitHub Actions (`.github/workflows/deploy.yml`) builds and deploys `dist/` to Gi
 push to `main`. Pull requests into `main` only build and lint. Only a build failure blocks deployment;
 lint is reported but non-blocking, so still run `npm run lint` locally. Keep all paths relative and
 extensionless. GitHub Pages serves `/pricing` from `pricing.html`. `src/CNAME` is copied to `dist/`
-for the custom domain `www.urbanpickle.com.my` (primary; bare domain redirects to it). The `www`
-record must be a `CNAME` to `binasys.github.io`. Only keep `src/CNAME` while the domain is owned and
+for the custom domain `urbanpickle.com.my` (primary; `www` redirects to it). The bare domain needs
+GitHub Pages `A` records and `www` a `CNAME` to `binasys.github.io`. Only keep `src/CNAME` while the domain is owned and
 configured (see README.md, "Deploying").

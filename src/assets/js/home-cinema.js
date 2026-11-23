@@ -134,7 +134,6 @@
         const rise = Number.parseFloat(panel.style.getPropertyValue("--support-rise")) || 0;
         panel.style.opacity = panelOpacity;
         panel.style.visibility = panelOpacity > 0.005 ? "visible" : "hidden";
-        panel.setAttribute("aria-hidden", panelOpacity < 0.5 ? "true" : "false");
         panel.style.setProperty(
           "--support-offset",
           (p < keys[i] ? 1 : -1) * rise * (0.3 * phase + 0.7 * phase * phase) + "px",

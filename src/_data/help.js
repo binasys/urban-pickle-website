@@ -86,5 +86,23 @@ function validate(data, business) {
 export default function () {
   const data = load();
   validate(data, businessData());
+  // FAQPage structured data for Google, built from the same questions shown on the page.
+  const plain = (html) =>
+    html
+      .replace(/<br\s*\/?>/gi, " ")
+      .replace(/<[^>]+>/g, "")
+      .replace(/↗/g, "")
+      .replace(/\s+/g, " ")
+      .trim();
+  const all = [...data.general, ...data.bookings, ...data.cancellations];
+  data.structuredDataJson = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: all.map((faq) => ({
+      "@type": "Question",
+      name: plain(faq.question),
+      acceptedAnswer: { "@type": "Answer", text: plain(faq.answer) },
+    })),
+  }).replace(/</g, "\\u003c");
   return data;
 }

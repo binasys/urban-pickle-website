@@ -2,22 +2,29 @@
 {%- set pageDescription -%}{% if description %}{{ description | safe }}{% else %}{{ business.description | escape }}{% endif %}{%- endset -%}
 {%- set canonicalPath = "/" if page.filePathStem == "/index" else page.filePathStem -%}
 {%- set canonicalUrl = business.siteUrl + canonicalPath -%}
-{%- set ogImageUrl = business.siteUrl + "/" + (ogImage or "assets/images/courts.webp") -%}
+{%- set ogImageUrl = business.siteUrl + "/" + (ogImage or "assets/images/og-default.jpg") -%}
 <!DOCTYPE html>
 <html lang="en" style="--header-height: {{ headerHeight or 77 }}px;">
 <head>
   <meta charset="utf-8">
+  {%- if pageId == "404" %}
+  <base href="/">
+  <meta name="robots" content="noindex">
+  {%- endif %}
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#ffffff">
   <meta name="description" content="{{ pageDescription | safe }}">
   <title>{{ pageTitle | safe }}</title>
+  {%- if pageId != "404" %}
   <link rel="canonical" href="{{ canonicalUrl }}">
+  {%- endif %}
   <link rel="preload" href="assets/fonts/playfair-display-regular.woff2" as="font" type="font/woff2" crossorigin="">
   <link rel="preload" href="assets/fonts/work-sans-medium.woff2" as="font" type="font/woff2" crossorigin="">
   <link rel="icon" href="favicon.ico" sizes="48x48">
   <link rel="icon" type="image/png" sizes="48x48" href="{{ business.logo.favicon }}">
   <link rel="icon" type="image/png" sizes="96x96" href="assets/icons/icon-96.png">
   <link rel="icon" type="image/png" sizes="192x192" href="assets/icons/icon-192.png">
+  <link rel="manifest" href="manifest.webmanifest">
   <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="en_MY">
@@ -26,18 +33,25 @@
   <meta property="og:description" content="{{ pageDescription | safe }}">
   <meta property="og:url" content="{{ canonicalUrl }}">
   <meta property="og:image" content="{{ ogImageUrl }}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{{ pageTitle | safe }}">
   <meta name="twitter:description" content="{{ pageDescription | safe }}">
   <meta name="twitter:image" content="{{ ogImageUrl }}">
   {%- if pageId == "home" %}
   <script type="application/ld+json">{{ business.structuredDataJson | safe }}</script>
+  {%- elif pageId != "404" %}
+  {%- set crumbName = pageId | navLabel(site.mainNav, title | striptags | replace("&amp;", "&")) %}
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"{{ business.siteUrl }}/"},{"@type":"ListItem","position":2,"name":{{ crumbName | dump | safe }},"item":"{{ canonicalUrl }}"}]}</script>
+  {%- endif %}
+  {%- if pageId == "help" %}
+  <script type="application/ld+json">{{ help.structuredDataJson | safe }}</script>
   {%- endif %}
   <link rel="stylesheet" href="assets/css/site.css">
   <!-- Fonts: SIL Open Font License 1.1, see assets/fonts/*-OFL.txt -->
 </head>
-<body data-brand="1" data-compare="false"{% if bodyClass %} class="{{ bodyClass }}"{% endif %} data-page="{{ pageId }}">
-  <script src="assets/js/brand-query.js"></script>
+<body{% if bodyClass %} class="{{ bodyClass }}"{% endif %} data-page="{{ pageId }}">
   <a class="skip" href="#main">Skip to content</a>
   {% include "partials/header.njk" %}
   <main id="main" tabindex="-1">{{ content | safe }}</main>
@@ -45,14 +59,15 @@
   {%- if estimator %}
   <script>window.__UP_PRICING__ = {{ business.pricingForScript | dump | safe }};</script>
   {%- endif %}
-  <script src="assets/js/site.js"></script>
-  <script src="assets/js/motion.js"></script>
-  <script src="assets/js/brand-options.js"></script>
   {%- if courtScene %}
-  <script src="assets/js/court-scene.js"></script>
   <script>window.__UP_LOGO_URL__ = {{ business.logo.mark | dump | safe }};</script>
-  <script src="assets/js/court-scene-config.js"></script>
-  <script src="assets/js/home-cinema.js"></script>
+  {%- endif %}
+  <script src="assets/js/site.js" defer></script>
+  <script src="assets/js/motion.js" defer></script>
+  {%- if courtScene %}
+  <script src="assets/js/court-scene.js" defer></script>
+  <script src="assets/js/court-scene-config.js" defer></script>
+  <script src="assets/js/home-cinema.js" defer></script>
   {%- endif %}
 </body>
 </html>

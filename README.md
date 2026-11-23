@@ -30,7 +30,7 @@ src/                         Everything that ends up on the site
   _data/terms.js             Loads + checks terms.yaml and exposes the active campaigns
   _data/privacy.yaml         PRIVACY: intro and privacy sections (edit this!)
   _data/privacy.js           Loads + checks privacy.yaml
-  _data/site.json            Developer settings: navigation, brand options
+  _data/site.json            Developer settings: navigation
   _includes/
     layouts/base.njk         The page shell: <head>, CSS/JS includes, header, footer
     partials/header.njk      Brand switcher, concept bar, site header, desktop + mobile nav
@@ -184,10 +184,8 @@ Use `var(--display)` and `var(--body)` for fonts rather than font names.
 
 | File                       | Loaded on  | Purpose                                                  |
 | -------------------------- | ---------- | -------------------------------------------------------- |
-| `js/brand-query.js`        | every page | Reads `?brand=` / `?compare=` before first paint         |
 | `js/site.js`               | every page | Mobile menu, footer year, Pricing page session estimator |
 | `js/motion.js`             | every page | Header scroll state, reveal animations                   |
-| `js/brand-options.js`      | every page | Brand switcher links, shown with `?compare=1`            |
 | `js/court-scene.js`        | home only  | Court illustration renderer (`window.UPCourt`), minified |
 | `js/court-scene-config.js` | home only  | Image URLs used by the court scene                       |
 | `js/home-cinema.js`        | home only  | Scroll-driven homepage court sequence and its fallback   |
@@ -223,7 +221,7 @@ The site is deployed to **GitHub Pages** by `.github/workflows/deploy.yml`:
 Only a **failed build** stops a deploy. Formatting, CSS and HTML lint failures appear as failed steps
 in the run, but the site is still published. Run `npm run lint` locally to see them.
 
-Live URL: `https://www.urbanpickle.com.my/` (the GitHub Pages URL redirects to it). Links are
+Live URL: `https://urbanpickle.com.my/` (the GitHub Pages URL redirects to it). Links are
 relative and extensionless, so GitHub Pages serves `dist/pricing.html` at `/pricing`.
 
 `src/.nojekyll` is copied to `dist/` so GitHub serves the files as they are, without Jekyll.
@@ -234,9 +232,9 @@ relative and extensionless, so GitHub Pages serves `dist/pricing.html` at `/pric
 1. In **Settings → Pages → Build and deployment → Source**, choose **GitHub Actions**.
 2. Push or merge to `main`. The run's `deploy` job shows the live URL.
 
-### Custom domain checklist (`www.urbanpickle.com.my`)
+### Custom domain checklist (`urbanpickle.com.my`)
 
-The main address is **`www.urbanpickle.com.my`**. The bare domain `urbanpickle.com.my` redirects to
+The main address is the bare domain **`urbanpickle.com.my`**. `www.urbanpickle.com.my` redirects to
 it.
 
 Only keep `src/CNAME` while you own the domain; otherwise the site redirects to a domain that does
@@ -246,17 +244,17 @@ not resolve.
 2. Optional but recommended: verify `urbanpickle.com.my` under your GitHub account (or the `binasys`
    organisation) **Settings → Pages → Verified domains**, so nobody else can claim it.
 3. At the DNS provider, add:
-   - `CNAME` record for `www` → `binasys.github.io` (this serves the main address)
+   - `CNAME` record for `www` → `binasys.github.io` (so `www` can redirect to the bare domain)
    - `A` records for the bare domain `urbanpickle.com.my` (`@`) → `185.199.108.153`,
-     `185.199.109.153`, `185.199.110.153`, `185.199.111.153` (needed so it can redirect to `www`)
+     `185.199.109.153`, `185.199.110.153`, `185.199.111.153` (these serve the main address)
    - Optionally `AAAA` for `@` → `2606:50c0:8000::153`, `2606:50c0:8001::153`,
      `2606:50c0:8002::153`, `2606:50c0:8003::153`
-4. Ensure `src/CNAME` contains the single line `www.urbanpickle.com.my`, and that
+4. Ensure `src/CNAME` contains the single line `urbanpickle.com.my`, and that
    `eleventyConfig.addPassthroughCopy("src/CNAME");` is in `eleventy.config.js` (both already
    done).
-5. In **Settings → Pages → Custom domain**, enter `www.urbanpickle.com.my` and save. With `www` as
-   primary, GitHub redirects `urbanpickle.com.my` to it automatically, as long as the `A` records
-   above exist.
+5. In **Settings → Pages → Custom domain**, enter `urbanpickle.com.my` and save. With the bare domain
+   as primary, GitHub redirects `www.urbanpickle.com.my` to it automatically, as long as the `www`
+   `CNAME` above exists.
 6. Once the DNS check passes and the certificate is issued (can take up to 24 hours), tick
    **Enforce HTTPS**.
 

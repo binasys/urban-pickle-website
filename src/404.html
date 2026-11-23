@@ -1,0 +1,28 @@
+---
+title: "Page not found"
+description: "This page doesn't exist. Head back to the Urban Pickle homepage, book a court or find directions."
+pageId: "404"
+headerHeight: 77
+eleventyExcludeFromCollections: true
+---
+
+<div class="page-top">
+  <div class="container">
+    <div class="eyebrow"><span class="dot"></span>404</div>
+    <h1>Out of bounds.</h1>
+    <p class="intro">We couldn't find that page. It may have moved, or the link might be wrong.</p>
+    <div class="direction-links">
+      <a class="btn" href="./">Back to home<span class="arrow" aria-hidden="true">↗</span></a>
+      <a
+        class="btn outline"
+        href="{{ business.bookingUrl | escape }}"
+        target="_blank"
+        rel="noopener noreferrer"
+        >Book a court<span class="arrow" aria-hidden="true">↗</span></a
+      >
+      <a class="btn outline" href="visit"
+        >Visit us<span class="arrow" aria-hidden="true">↗</span></a
+      >
+    </div>
+  </div>
+</div>
