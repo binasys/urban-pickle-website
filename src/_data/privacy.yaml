@@ -1,0 +1,101 @@
+# =====================================================================
+#  URBAN PICKLE: PRIVACY & YOUR DATA
+# =====================================================================
+#  The Privacy page (privacy) is built from this file.
+#
+#  - updated: date shown under the page intro.
+#  - intro: opening paragraph shown above the sections.
+#  - sections: the main privacy content. Each section has a heading and
+#    one or more paragraphs. An optional "items" list adds bullet points.
+#
+#  HOW TO EDIT SAFELY
+#   - Keep the spaces at the start of each line exactly as they are.
+#     Use spaces, never the Tab key.
+#   - Only change the text after the colon ( : ). Never rename the
+#     words before the colon.
+#   - Lines starting with # are notes and are ignored.
+#   - Each paragraph is one "- " item. Keep the dash and the space.
+#   - The text can contain simple links, e.g.
+#     <a href="visit">Visit us</a>
+#   - If a value contains a colon ( : ) or a # sign, wrap it in quotes.
+#
+#  If you make a mistake, the build fails with a message naming the
+#  field to fix, and the live site keeps its previous version.
+# =====================================================================
+
+updated: "20 November 2026"
+
+intro: >
+  Urban Pickle ("we," "our," or "us") respects your privacy and is committed to protecting your personal data in compliance with the Personal Data Protection Act 2010 (PDPA) of Malaysia (including its subsequent amendments). This Privacy Policy explains how we collect, use, disclose, and safeguard your personal data when you visit <code>urbanpickle.com.my</code>, book a court, communicate with us, or visit our venue.
+  <br>By accessing our website, submitting your personal details, or using our facilities, you consent to the processing of your personal data in accordance with this Privacy Policy.
+
+sections:
+  - heading: "1. Bookings & payments"
+    paragraphs:
+      - "Court reservations and payments are completed through Courtsite. Its privacy policy covers the information you share with that service."
+
+  - heading: "1. Personal data we collect"
+    paragraphs:
+      - "Depending on how you interact with us, we may collect the following types of personal data:"
+    items:
+      - "Name, phone number (including WhatsApp contact details), and email address."
+      - "Court booking history, preferred time slots, rescheduling records (including rain-affected session claims), and payment confirmation references processed via our booking partners (such as Courtsite)."
+      - "Records of correspondence when you message us via WhatsApp, email, or social media channels."
+      - "Closed-circuit television (CCTV) footage recorded within our premises for security, safety, and incident management purposes, as well as emergency contact or guardian details where applicable."
+      - "IP address, browser type, device information, and cookies collected automatically when you browse <code>urbanpickle.com.my</code>."
+
+  - heading: "2. Purpose of collecting & processing personal data"
+    paragraphs:
+      - "We collect and process your personal data for the following purposes:"
+    items:
+      - "To process, confirm, and manage court bookings, rescheduling requests, and rain-affected session credits."
+      - "To communicate with you regarding booking updates, weather-related court closures, or customer service inquiries."
+      - "To maintain safety, security, and order at our venue (including CCTV monitoring and enforcing venue rules)."
+      - "To process equipment rentals, event registrations, coaching inquiries, or promotional campaigns (where you have opted in)."
+      - "To improve our website functionality, user experience, and facility operations."
+      - "To comply with legal, regulatory, or law enforcement obligations in Malaysia."
+
+  - heading: "3. Disclosure of personal data to third parties"
+    paragraphs:
+      - "We do not sell, rent, or trade your personal data. However, we may share your personal data with trusted third parties where necessary to operate our business, including:"
+    items:
+      - "Third-party court management systems (such as Courtsite) and payment gateways that facilitate reservations and transactions."
+      - "IT, website hosting, analytics, and communication service providers (such as WhatsApp) that assist us in running <code>urbanpickle.com.my.</code>"
+      - "Government agencies, law enforcement, or legal advisors when required by Malaysian law or necessary to protect our legal rights, property, or the safety of our visitors."
+    notes:
+      - "All third-party service providers are required to handle your data securely and only for the specific purposes instructed by us."
+
+  - heading: "4. Security & retention of personal data"
+    paragraphs:
+      - "We implement reasonable administrative, technical, and physical safeguards—including restricted access controls and secure digital platforms—to protect your personal data against unauthorized access, loss, misuse, or alteration."
+      - "We retain your personal data only for as long as necessary to fulfill the purposes outlined in this Privacy Policy, resolve disputes, enforce our Terms of Use, or comply with applicable Malaysian statutory retention requirements. CCTV footage is routinely overwritten on a periodic cycle unless required for an ongoing incident investigation."
+
+  - heading: "5. Cookies & tracking technologies"
+    paragraphs:
+      - "<code>urbanpickle.com.my</code> may use cookies and similar analytics tools to understand website traffic, remember user preferences, and optimize site performance. You can choose to disable cookies through your browser settings, though certain website features may not function optimally as a result."
+
+  - heading: "6. Minors & parental consent"
+    paragraphs:
+      - "Our services and facilities are open to players of all ages, subject to our venue supervision rules for children aged 12 and below. We do not knowingly collect personal data directly from individuals under the age of 18 without the consent of a parent or legal guardian. If a booking or inquiry involves a minor, the parent or supervising adult provides consent on the minor's behalf."
+
+  - heading: "7. Your rights under the PDPA"
+    paragraphs:
+      - "Subject to exceptions under the Malaysian Personal Data Protection Act 2010, you have the right to:"
+    items:
+      - "Request access to the personal data we hold about you and request corrections if your information is inaccurate, incomplete, or outdated."
+      - "Withdraw your consent to the processing of your personal data or opt out of receiving promotional communications at any time."
+    notes:
+      - "Please note: Providing certain personal data (such as your name and contact number) is mandatory to process court bookings and rescheduling requests. If you withdraw consent or decline to provide mandatory data, we may be unable to fulfill your booking or reschedule rain-affected sessions."
+
+  - heading: "8. Changes to this privacy policy"
+    paragraphs:
+      - 'Urban Pickle reserves the right to amend or update this Privacy Policy from time to time to reflect changes in our operations or Malaysian data protection laws. Any updates will be published on <code>urbanpickle.com.my</code> with a revised "Last Updated" date.'
+
+  - heading: "9. Contact us (Data protection inquiries)"
+    paragraphs:
+      - "If you wish to access or correct your personal data, withdraw consent, or ask questions about this Privacy Policy, please contact us:"
+    items:
+      - "Brand / Venue: Urban Pickle"
+      - "Website: urbanpickle.com.my"
+      - 'Phone: <a href="tel:+60126002178">+60 12-600 2178</a>'
+      - 'Email: <a href="mailto:hello@urbanpickle.com.my">hello@urbanpickle.com.my</a>'

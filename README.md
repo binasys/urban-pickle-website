@@ -26,6 +26,10 @@ src/                         Everything that ends up on the site
   CNAME                      Custom domain for GitHub Pages
   _data/business.yaml        BUSINESS INFO: name, logo, phone, address, hours, prices, courts (edit this!)
   _data/business.js          Loads + checks business.yaml and works out links/prices from it
+  _data/terms.yaml           TERMS: general terms plus campaign add-ons (edit this!)
+  _data/terms.js             Loads + checks terms.yaml and exposes the active campaigns
+  _data/privacy.yaml         PRIVACY: intro and privacy sections (edit this!)
+  _data/privacy.js           Loads + checks privacy.yaml
   _data/site.json            Developer settings: navigation, brand options
   _includes/
     layouts/base.njk         The page shell: <head>, CSS/JS includes, header, footer
@@ -90,6 +94,32 @@ Edit the page in `src/`, e.g. `src/pricing.html`. Everything below the front mat
 `<main>` content. The page is plain HTML, and you can also use
 [Nunjucks](https://mozilla.github.io/nunjucks/) tags such as `{{ business.phone }}`.
 
+### Editing the terms and campaign terms
+
+The Terms & Conditions page is built from **`src/_data/terms.yaml`**. The `generic` block is the
+company-wide terms and always appears. Each entry under `campaigns` is extra terms for a single
+campaign:
+
+- To **publish** a campaign, set its `active:` value to `true`.
+- To **end** a campaign, set it back to `false` (the block stays in the file for later) or delete
+  the block. It disappears from the next build.
+- To **add** a campaign, copy the example block, give it a new lowercase `id` (used as the page
+  anchor, e.g. `terms#year-end-doubles-league`), fill in `name`, `period`, `summary` and
+  `sections`, then set `active: true`.
+
+Only active campaigns are shown; the "Campaign terms" heading is omitted when none are active.
+Update `updated` whenever the general terms change. The build checks the file and names the field
+to fix if something is missing. The wording in the file is placeholder copy: have a qualified
+lawyer review it before publishing. The page is linked from the footer only, not the header nav.
+Contact mentions link to the Visit us page so phone, email and WhatsApp stay in `business.yaml`.
+
+### Editing the privacy page
+
+The Privacy page is built from **`src/_data/privacy.yaml`**. Update `updated`, `intro` and
+`sections` there. It has no campaign blocks. Contact mentions link to the Visit us page so phone,
+email and WhatsApp stay in `business.yaml`. The page is linked from the footer and the homepage
+footer, not the header nav.
+
 ### Front matter fields
 
 ```yaml
@@ -113,11 +143,11 @@ estimator: true # optional: expose prices to the session estimator (Pricing page
 
 ### Page map
 
-The site has eight pages. Six are in the header nav (`courts`, `pricing`, `about`, `gallery`,
+The site has ten pages. Six are in the header nav (`courts`, `pricing`, `about`, `gallery`,
 `events`, `visit`). The `about` page also covers social play and coaching under `about#play`. The
-`help` page keeps FAQs, cancellation, club guidelines and privacy as anchored sections
-(`help#faqs`, `help#cancellation`, `help#guidelines`, `help#privacy`). The homepage (`index`) is the
-eighth.
+`help` page keeps FAQs, cancellation and club guidelines as anchored sections (`help#faqs`,
+`help#cancellation`, `help#guidelines`). The homepage (`index`) and the footer-only `terms` and
+`privacy` pages make up the last three.
 
 ### Change the header, footer or `<head>`
 

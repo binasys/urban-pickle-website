@@ -1,0 +1,123 @@
+# =====================================================================
+#  URBAN PICKLE: TERMS & CONDITIONS
+# =====================================================================
+#  The Terms & Conditions page (terms) is built from this file.
+#
+#  - generic: company-wide terms. These always appear on the page.
+#  - campaigns: extra terms for a running campaign. Each campaign has an
+#    "active" switch:
+#        active: true    -> shown on the Terms & Conditions page
+#        active: false   -> hidden (kept in this file for later)
+#    To end a campaign, change true to false. To add one, copy the
+#    example campaign block, give it a new "id" and set active: true.
+#
+#  PLACEHOLDER COPY
+#  The wording below is a starting template, not legal advice. Have a
+#  qualified lawyer review it before the page is published or relied on.
+#
+#  HOW TO EDIT SAFELY
+#   - Keep the spaces at the start of each line exactly as they are.
+#     Use spaces, never the Tab key.
+#   - Only change the text after the colon ( : ). Never rename the
+#     words before the colon.
+#   - Lines starting with # are notes and are ignored.
+#   - Each paragraph is one "- " item. Keep the dash and the space.
+#   - The text can contain simple links, e.g.
+#     <a href="help#cancellation">the cancellation policy</a>
+#   - If a value contains a colon ( : ) or a # sign, wrap it in quotes.
+#
+#  If you make a mistake, the build fails with a message naming the
+#  field to fix, and the live site keeps its previous version.
+# =====================================================================
+
+updated: "20 November 2026"
+
+# ---------------------------------------------------------------------
+# GENERAL TERMS (always shown)
+# ---------------------------------------------------------------------
+generic:
+  intro: "Welcome to Urban Pickle (<code>urbanpickle.com.my</code>). By accessing our website, booking a court, or entering our premises, you agree to comply with and be bound by the following Terms of Use and Venue Terms and Conditions. If you do not agree with these terms, please refrain from using our website or facilities."
+  sections:
+    - heading: "1. Website use & intellectual property"
+      paragraphs:
+        - "The content on <code>urbanpickle.com.my</code> is provided for general information and booking facilitation. You agree not to misuse the website, introduce malicious software, or attempt unauthorized access to our systems."
+        - "All logos, branding, text, graphics, and media displayed on this website are the property of Urban Pickle unless otherwise stated. Reproduction, distribution, or commercial use without prior written consent is prohibited."
+        - "Court bookings may be processed via third-party platforms (such as Courtsite). When using external booking portals, you are also subject to their respective terms of service and privacy policies."
+        - "While we strive to keep schedules, pricing, and facility details accurate, Urban Pickle reserves the right to modify website content, operating hours, and court rates without prior notice."
+
+    - heading: "2. Court bookings, changes & refunds"
+      paragraphs:
+        - "There is strictly no refund or carry-forward for any non-utilized or missed booking sessions."
+        - "A minimum of 72 hours advance notice is required for any request to change a booking time."
+        - "All time-change requests are subject to court availability and may only be made once per booking."
+
+    - heading: "3. Rain-affected booking policy"
+      paragraphs:
+        - 'Requests to reschedule rain-affected sessions must be submitted within 48 hours of the original booking time via WhatsApp using the contact options on <a href="visit">Visit us</a>.'
+        - "Only sessions cut short due to rain with under 35 minutes of play completed are eligible for rescheduling."
+        - "Approved rain-affected sessions may be rescheduled to a new slot within one (1) month from the original booking date, subject to court availability. No cash refunds will be issued."
+
+    - heading: "4. Venue rules, safety & liability"
+      paragraphs:
+        - "Players and visitors are responsible for their own personal items. Please do not leave valuables unattended. Urban Pickle will not be held liable for any loss, theft, or damage to personal property on the premises."
+        - "Children aged 12 years old and below are strictly permitted on the premises only under the direct supervision of a parent or responsible adult. The supervising adult is fully responsible for the child's safety, conduct, and compliance with venue rules."
+        - "Participation in pickleball and related physical activities carries inherent risks of injury. By entering the venue, all players, guests, and parents/guardians acknowledge these risks. Urban Pickle and its booking partners (including Courtsite) assume no responsibility or liability for any injuries, accidents, or incidents occurring on the premises—particularly involving children aged 12 and below."
+        - "Any damage caused to courts, nets, equipment, or venue facilities by a player, guest, or supervised minor will be charged accordingly to the responsible party."
+        - "Proper non-marking court footwear and appropriate sports attire are required on court. Urban Pickle reserves the right to refuse entry or remove any individual engaging in unsafe, disruptive, or abusive behavior without a refund."
+
+    - heading: "5. Limitation of liability & governing law"
+      paragraphs:
+        - "To the fullest extent permitted by Malaysian law, Urban Pickle shall not be liable for any indirect, incidental, or consequential damages arising from your use of our website or facilities."
+        - "Urban Pickle reserves the right to update or revise these Terms and Conditions at any time. Continued use of our website or facilities constitutes acceptance of the updated terms."
+        - "These Terms and Conditions shall be governed by and construed in accordance with the laws of Malaysia."
+
+    - heading: "6. Contact us"
+      paragraphs:
+        - 'For booking inquiries, rain-affected rescheduling, or general assistance, please contact us through the options on <a href="visit">Visit us</a>.'
+
+# ---------------------------------------------------------------------
+# CAMPAIGN TERMS (shown only while active: true)
+#   Copy this block for each new campaign. Give it a unique, lowercase
+#   "id" using hyphens. The id becomes the link anchor, e.g.
+#   terms#year-end-doubles-league.
+# ---------------------------------------------------------------------
+campaigns:
+  - id: "black-friday-2026"
+    active: false
+    name: "Black Friday 2026"
+    period: "27 - 30 November 2026"
+    summary: "Urban Pickle Black Friday 25% Off Promotion - Terms & Conditions"
+    sections:
+      - heading: "Promotion overview"
+        paragraphs:
+          - "Enjoy 25% off regular rates on eligible court and ball machine bookings at Urban Pickle during the promotional period. Promotional prices apply automatically across Courtsite, official WhatsApp bookings, and walk-in counter bookings. No promo code is required."
+      - heading: "Booking & play validity period"
+        paragraphs:
+          - "Valid exclusively for bookings confirmed and paid in full between 27 November 2026 and 30 November 2026:"
+          - "\t- Courtsite: 27 November 2026 (12:00 AM MYT) to 30 November 2026 (11:59 PM MYT)."
+          - "\t- WhatsApp & Walk-In: During Urban Pickle's official operating/admin hours between 27 November 2026 and 30 November 2026. Unpaid reservations or inquiries sent without completed payment by 11:59 PM on 30 November 2026 will revert to standard rates."
+          - "Applicable for sessions scheduled up to 14 days in advance from the date of booking (valid for play dates between 27 November 2026 and 14 December 2026, subject to slot availability)."
+      - heading: "Eligible services & exclusions"
+        paragraphs:
+          - "Valid only for court bookings and ball machine rentals (corresponding to the core services listed on Courtsite)."
+          - "Strictly excludes add-ons and other venue services, including paddle rentals, pickleballs, private/group coaching sessions, open play/social sessions, tournaments, leagues, private events, food & beverages, and merchandise."
+      - heading: "Pricing & no retroactive application"
+        paragraphs:
+          - "Promotional rates are reflected directly on Courtsite and quoted by our team for WhatsApp/walk-in bookings during the promotional window. Standard rates resume automatically after 30 November 2026."
+          - "Promotional pricing cannot be applied retroactively to existing bookings made prior to 27 November 2026, nor extended to bookings paid after 30 November 2026. Cancelling an existing booking to rebook at promotional rates is strictly not permitted."
+      - heading: "Usage & fair-play limits"
+        paragraphs:
+          - "Bookings are strictly for personal recreational play. Urban Pickle reserves the right to cancel bookings suspected of commercial sub-letting, unauthorized coaching, or bulk slot hoarding."
+      - heading: "Cancellations, refunds & rescheduling"
+        paragraphs:
+          - "All bookings made at Black Friday promotional rates are strictly non-refundable and cannot be exchanged for cash, store credit, or vouchers."
+          - "Any rescheduling requests are subject to Urban Pickle's standard rescheduling notice period and court availability. If a promotional booking is rescheduled to a slot with a higher prevailing rate (e.g., from off-peak to peak hours) or to a play date outside the promotional window (after 14 December 2026), the customer must pay the price difference between the promotional amount paid and the prevailing standard rate."
+      - heading: "Non-stackability & pricing errors"
+        paragraphs:
+          - "Promotional rates are not valid in conjunction with any other ongoing promotions, credit packages, membership discounts, vouchers, or corporate/partner rates. In the event of a system error or unauthorized stacking of additional promo codes on top of Black Friday discounted rates, Urban Pickle reserves the right to cancel the booking (with a refund of the amount paid) or require payment of the price difference prior to play."
+      - heading: "System & platform errors"
+        paragraphs:
+          - "Urban Pickle shall not be held liable for any technical errors, network delays, WhatsApp message delays, or payment gateway failures that prevent a customer from completing a booking and payment within the promotional window."
+      - heading: "Right to amend or terminate"
+        paragraphs:
+          - "Urban Pickle reserves the right to amend, suspend, or terminate this promotion and its Terms & Conditions at any time without prior notice or liability. In the event of any dispute, Urban Pickle's decision shall be final and binding."
