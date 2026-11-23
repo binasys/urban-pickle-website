@@ -57,9 +57,12 @@ whatsappCommunityUrl: "https://chat.whatsapp.com/Fdwi55VsjUk1k0GfSiamox"
 # LOCATION
 # ---------------------------------------------------------------------
 address:
-  street: Jalan Tun Razak
+  unit: "Lot 140, Jalan 2/68F" # lot number and side road
+  street: Jalan Tun Razak # main road; pages say "off Jalan Tun Razak"
   area: Taman U Thant
   city: Kuala Lumpur
+  postcode: "50400"
+  state: Wilayah Persekutuan Kuala Lumpur
   cityShort: KL # used in the footer
 # Map pin. In Google Maps: right-click the venue, click the numbers to
 # copy them. The first number is latitude, the second is longitude.

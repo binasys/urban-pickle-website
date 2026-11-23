@@ -260,20 +260,7 @@ section {
   gap: 10px;
   flex-shrink: 0;
 }
-.brand-symbol {
-  width: 33px;
-  height: 33px;
-}
-.brand-name {
-  font-family: var(--display);
-  font-size: 27px;
-  font-weight: 800;
-  line-height: 0.78;
-  letter-spacing: -0.02em;
-}
-.brand-name span {
-  display: block;
-}
+
 .desktop-nav {
   display: flex;
   gap: 25px;
@@ -842,9 +829,7 @@ details p {
   grid-template-columns: 1.7fr 1fr 1fr;
   gap: 45px;
 }
-.footer-brand .brand-name {
-  font-size: 38px;
-}
+
 .footer-brand p {
   max-width: 230px;
   margin-top: 24px;
@@ -1465,13 +1450,7 @@ dialog .close {
   .container {
     width: calc(100% - 36px);
   }
-  .brand-name {
-    font-size: 23px;
-  }
-  .brand-symbol {
-    width: 28px;
-    height: 28px;
-  }
+
   .header-inner {
     gap: 10px;
     min-height: 69px;
@@ -1890,9 +1869,7 @@ dialog .close {
   .brand {
     gap: 6px;
   }
-  .brand-name {
-    font-size: 21px;
-  }
+
   .header-actions {
     gap: 6px;
   }
@@ -3117,39 +3094,7 @@ body {
 body {
   background: var(--paper);
 }
-.brand-comparison {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 22px;
-  background: #e7eadb;
-  color: #344430;
-  padding: 9px 18px;
-  font-size: 10px;
-  letter-spacing: 0.08em;
-  border-bottom: 1px solid #cbd3bf;
-}
-.brand-options {
-  display: flex;
-  gap: 7px;
-}
-.brand-options a {
-  display: inline-flex;
-  gap: 9px;
-  align-items: center;
-  padding: 7px 11px;
-  border: 1px solid #b6c3a7;
-  border-radius: 7px;
-  min-height: 35px;
-  letter-spacing: 0;
-  font-size: 11px;
-  font-weight: 600;
-}
-.brand-options a[aria-current="true"] {
-  background: #26362c;
-  color: #f5f2e6;
-  border-color: #26362c;
-}
+
 .site-header,
 .on-home .site-header {
   background: #26362c;
@@ -3172,9 +3117,7 @@ body {
   color: #26362c;
   background: #f4f0e6;
 }
-.brand-symbol circle:first-of-type {
-  fill: var(--lime);
-}
+
 .official-logo {
   display: none;
   position: relative;
@@ -3192,19 +3135,10 @@ body {
   transform: translateY(-50%);
   object-fit: contain;
 }
-body[data-brand="1"] .official-logo {
+.official-logo {
   display: block;
 }
-body[data-brand="1"] .brand-symbol,
-body[data-brand="1"] .brand-name {
-  display: none;
-}
-body[data-brand="2"] .official-logo {
-  display: none;
-}
-body[data-brand="2"] .brand-name {
-  display: block;
-}
+
 .hero {
   background: #26362c;
   min-height: 710px;
@@ -3429,22 +3363,6 @@ body[data-brand="2"] .brand-name {
   }
 }
 @media (max-width: 600px) {
-  .brand-comparison {
-    padding: 8px 12px;
-    gap: 10px;
-    font-size: 8px;
-  }
-  .brand-options {
-    gap: 5px;
-  }
-  .brand-options a {
-    font-size: 10px;
-    padding: 5px 8px;
-    gap: 5px;
-  }
-  .brand-comparison > span {
-    max-width: 45px;
-  }
   .official-logo {
     width: 107px;
     height: 55px;
@@ -3514,12 +3432,6 @@ body[data-brand="2"] .brand-name {
   }
 }
 @media (max-width: 360px) {
-  .brand-comparison {
-    gap: 7px;
-  }
-  .brand-options a {
-    font-size: 9px;
-  }
   .hero,
   .hero-content {
     min-height: 630px;
@@ -3593,12 +3505,7 @@ textarea,
   font-family: var(--body);
   font-weight: 500;
 }
-.brand-name,
-.footer-brand .brand-name {
-  font-family: "Barlow Condensed", Impact, sans-serif;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-}
+
 .official-logo {
   width: 148px;
   height: 65px;
@@ -3613,7 +3520,7 @@ textarea,
   height: auto;
   max-width: 100%;
 }
-body[data-brand="1"] .official-logo {
+.official-logo {
   display: flex;
 }
 .site-header,
@@ -3622,16 +3529,7 @@ body[data-brand="1"] .official-logo {
   background: #27372e;
   color: #e6e6e6;
 }
-.brand-comparison {
-  background: #d9dfd9;
-  color: #27372e;
-  border-color: #c3cdc4;
-}
-.brand-options a[aria-current="true"] {
-  background: #27372e;
-  color: #e6e6e6;
-  border-color: #27372e;
-}
+
 .hero {
   background: #27372e;
 }
@@ -3705,9 +3603,7 @@ body[data-brand="1"] .official-logo {
   background: #b39c82;
   color: #27372e;
 }
-.brand-symbol circle:first-of-type {
-  fill: #b39c82;
-}
+
 .ticker {
   background: #dce1dc;
 }
@@ -4004,67 +3900,6 @@ summary {
   }
 }
 
-/* Requested comparison: official 2025 artwork, original pickleball-lime UI accents. */
-body[data-brand="3"] {
-  --lime: #bbdf57;
-}
-body[data-brand="3"] .official-logo {
-  display: flex;
-}
-body[data-brand="3"] .brand-symbol,
-body[data-brand="3"] .brand-name {
-  display: none;
-}
-body[data-brand="3"] .btn.lime,
-body[data-brand="3"] .btn .arrow,
-body[data-brand="3"] .story-progress span {
-  background: var(--lime);
-  color: var(--ink);
-}
-body[data-brand="3"] .belonging-line.is-lime,
-body[data-brand="3"] .story-copy h2 span,
-body[data-brand="3"] .experience.is-blue .experience-number {
-  color: var(--lime);
-}
-body[data-brand="3"] .notice {
-  border-color: var(--lime);
-}
-body[data-brand="3"] .ticker .star,
-body[data-brand="3"] .large-word,
-body[data-brand="3"] .experience-number {
-  color: #546c25;
-}
-body[data-brand="3"] .closing-invitation {
-  background: #dce3d3;
-}
-body[data-brand="3"] .brand-options a[aria-current="true"] {
-  background: var(--lime);
-  color: var(--ink);
-  border-color: var(--lime);
-}
-.brand-options a {
-  white-space: nowrap;
-}
-@media (max-width: 600px) {
-  .brand-comparison {
-    flex-direction: column;
-    gap: 6px;
-  }
-  .brand-comparison > span {
-    max-width: none;
-    font-size: 8px;
-  }
-  .brand-options {
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-  .brand-options a {
-    gap: 5px;
-    padding: 6px 8px;
-    font-size: 10px;
-  }
-}
-
 /* Factual guides and venue photographs retain crisp framing. */
 .venue-reference-grid img {
   border-radius: 18px;
@@ -4266,12 +4101,7 @@ body[data-brand="3"] .brand-options a[aria-current="true"] {
 
 /* ==== customer-facing layout system ==== */
 /* Customer-facing layout system; supplied 2025 palette and fonts stay authoritative. */
-.brand-comparison {
-  display: none;
-}
-body[data-compare="true"] .brand-comparison {
-  display: flex;
-}
+
 main:focus {
   outline: none;
 }
@@ -5112,9 +4942,6 @@ summary:after {
   align-items: center;
   min-height: 44px;
 }
-body[data-brand="3"] .btn.lime .arrow {
-  background: rgba(39, 55, 46, 0.12);
-}
 
 /* Visit essentials and map sit beside the introduction, ahead of the venue photo. */
 .visit-page {
@@ -5328,6 +5155,7 @@ body.on-home {
   visibility: visible;
 }
 .cinema-copy .eyebrow {
+  font-family: var(--body);
   justify-content: center;
   letter-spacing: 0.17em;
   font-size: 10px;
@@ -8914,4 +8742,12 @@ body[data-page="privacy"] .privacy-updated {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--muted);
+}
+
+/* Homepage final panel: short descriptive line under "See you on court". */
+.cinema-stage .cinema-copy-final .cinema-final-tagline {
+  margin: 8px 0 0;
+  font-size: 13px;
+  line-height: 1.4;
+  color: #536358;
 }

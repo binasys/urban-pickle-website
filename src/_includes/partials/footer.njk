@@ -3,18 +3,19 @@
     <div class="footer-top">
       <div class="footer-brand">
         {% include "partials/logo.njk" %}
-        <p>{{ business.address.street }}, {{ business.address.area }}, {{ business.address.cityShort }}.<br>{{ business.hoursLine }}.<br><a href="{{ business.phoneHref }}">{{ business.phone }}</a></p>
+        <p>{{ business.addressLine }}.<br>{{ business.hoursLine }}.<br><a href="{{ business.phoneHref }}">{{ business.phone }}</a></p>
       </div>
       <div class="footer-column">
         <h3>Explore</h3>
         {%- for item in site.mainNav -%}
-          <a href="{{ item.id }}">{{ item.label }}</a>
+          <a href="{{ item.href or item.id }}">{{ item.label }}</a>
         {%- endfor -%}
       </div>
       <div class="footer-column">
         <h3>Book &amp; contact</h3>
         <a href="{{ business.bookingUrl | escape }}" target="_blank" rel="noopener noreferrer">Book a court</a>
         <a href="{{ business.whatsappUrl }}" target="_blank" rel="noopener noreferrer">WhatsApp us</a>
+        <a href="{{ business.emailHref }}">Email us</a>
         <a href="{{ business.whatsappCommunityUrl }}" target="_blank" rel="noopener noreferrer">Community chat</a>
         <a href="{{ business.instagram }}" target="_blank" rel="noopener noreferrer">Instagram</a>
         <a href="{{ business.mapsDirectionsUrl | escape }}" target="_blank" rel="noopener noreferrer">Get directions</a>

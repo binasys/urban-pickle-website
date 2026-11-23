@@ -30,10 +30,6 @@ intro: >
   <br>By accessing our website, submitting your personal details, or using our facilities, you consent to the processing of your personal data in accordance with this Privacy Policy.
 
 sections:
-  - heading: "1. Bookings & payments"
-    paragraphs:
-      - "Court reservations and payments are completed through Courtsite. Its privacy policy covers the information you share with that service."
-
   - heading: "1. Personal data we collect"
     paragraphs:
       - "Depending on how you interact with us, we may collect the following types of personal data:"

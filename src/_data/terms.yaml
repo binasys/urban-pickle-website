@@ -23,7 +23,7 @@
 #   - Lines starting with # are notes and are ignored.
 #   - Each paragraph is one "- " item. Keep the dash and the space.
 #   - The text can contain simple links, e.g.
-#     <a href="help#cancellation">the cancellation policy</a>
+#     <a href="help#cancellations">the cancellation policy</a>
 #   - If a value contains a colon ( : ) or a # sign, wrap it in quotes.
 #
 #  If you make a mistake, the build fails with a message naming the
@@ -83,7 +83,7 @@ generic:
 # ---------------------------------------------------------------------
 campaigns:
   - id: "black-friday-2026"
-    active: false
+    active: true
     name: "Black Friday 2026"
     period: "27 - 30 November 2026"
     summary: "Urban Pickle Black Friday 25% Off Promotion - Terms & Conditions"

@@ -5,11 +5,10 @@ eleventyExcludeFromCollections: true
 ---
 <?xml version="1.0" encoding="utf-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-{%- for item in collections.all %}
+{%- for item in collections.all %}{% if item.data.pageId != "404" %}
   {%- set itemPath = "/" if item.filePathStem == "/index" else item.filePathStem %}
   <url>
     <loc>{{ business.siteUrl }}{{ itemPath }}</loc>
-    <lastmod>{{ item.date.toISOString().slice(0, 10) }}</lastmod>
   </url>
-{%- endfor %}
+{%- endif %}{%- endfor %}
 </urlset>

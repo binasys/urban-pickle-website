@@ -61,3 +61,19 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
+
+      # Tell Bing / IndexNow (used by ChatGPT search) that the site changed. Never blocks.
+      - name: Ping IndexNow
+        continue-on-error: true
+        run: |
+          curl -sf -X POST https://api.indexnow.org/indexnow -H "Content-Type: application/json" -d '{
+            "host": "urbanpickle.com.my",
+            "key": "42518ffbf9294b8190bcf519e5adcbd4",
+            "keyLocation": "https://urbanpickle.com.my/42518ffbf9294b8190bcf519e5adcbd4.txt",
+            "urlList": [
+              "https://urbanpickle.com.my/", "https://urbanpickle.com.my/courts",
+              "https://urbanpickle.com.my/pricing", "https://urbanpickle.com.my/about",
+              "https://urbanpickle.com.my/events", "https://urbanpickle.com.my/visit",
+              "https://urbanpickle.com.my/gallery", "https://urbanpickle.com.my/help"
+            ]
+          }'
